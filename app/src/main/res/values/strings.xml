@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">OpenDoorApp</string>
+    <string name="continueButton">Continue</string>
+
+    // Main Activity
+    <string name="welcome">Welcome To Camrose Open Door</string>
+    <string name="checkIn">Check-In</string>
+
+    // Name
+    <string name="textEnterName">Your Name</string>
+    <string name="placeHolderName">Please Enter Your Name Here . . .</string>
+
+    // Services
+
+
+    // Emotions
+    <string name="howAreYouFeeling">How are you feeling today?</string>
+
+    // Confirmation
+
+
 </resources>
