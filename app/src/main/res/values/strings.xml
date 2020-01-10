@@ -4,12 +4,22 @@
     <string name="what_i_need">What I need...</string>
     <string name="todo">TODO</string>
 
+    // Services items
     <string-array name="services">
         <item>Service 1</item>
         <item>Service 2</item>
         <item>Service 3</item>
         <item>Service 4</item>
     </string-array>
+
+    <string-array name="names">
+        <item>Name 1</item>
+        <item>Name 2</item>
+        <item>Name 3</item>
+        <item>Name 4</item>
+    </string-array>
+
+
     <string name="emotions_question">How are you feeling?</string>
     <string name="submit_button">Submit</string>
 
