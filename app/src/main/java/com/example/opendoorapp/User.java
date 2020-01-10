@@ -29,4 +29,10 @@ public class User {
     service = inputService;
 
   }//addService
+
+  public void addWorker(String inputWorker){
+
+    worker = inputWorker;
+
+  }
 }
