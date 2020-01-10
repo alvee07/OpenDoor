@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 
 public class EmotionsCheck extends AppCompatActivity {
 
@@ -43,7 +44,7 @@ public class EmotionsCheck extends AppCompatActivity {
         selectedEmotion = "happy";
 
         happyButton.setPressed(true);
-        checkOtherButtons(selectedEmotion);
+        checkOtherButtons();
       }
     });
 
@@ -54,7 +55,7 @@ public class EmotionsCheck extends AppCompatActivity {
         selectedEmotion = "content";
 
         contentButton.setPressed(true);
-        checkOtherButtons(selectedEmotion);
+        checkOtherButtons();
       }
     });
 
@@ -65,7 +66,7 @@ public class EmotionsCheck extends AppCompatActivity {
         selectedEmotion = "neutral";
 
         neutralButton.setPressed(true);
-        checkOtherButtons(selectedEmotion);
+        checkOtherButtons();
       }
     });
 
@@ -76,7 +77,7 @@ public class EmotionsCheck extends AppCompatActivity {
         selectedEmotion = "upset";
 
         upsetButton.setPressed(true);
-        checkOtherButtons(selectedEmotion);
+        checkOtherButtons();
       }
     });
 
@@ -87,7 +88,7 @@ public class EmotionsCheck extends AppCompatActivity {
         selectedEmotion = "sad";
 
         sadButton.setPressed(true);
-        checkOtherButtons(selectedEmotion);
+        checkOtherButtons();
       }
     });
 
@@ -98,7 +99,7 @@ public class EmotionsCheck extends AppCompatActivity {
         selectedEmotion = "angry";
 
         angryButton.setPressed(true);
-        checkOtherButtons(selectedEmotion);
+        checkOtherButtons();
       }
     });
 
@@ -112,5 +113,60 @@ public class EmotionsCheck extends AppCompatActivity {
 
   }//onCreate
 
+  private void checkOtherButtons(){
+
+    happyButton = findViewById(R.id.happyButton);
+    contentButton = findViewById(R.id.contentButton);
+    neutralButton = findViewById(R.id.neutralButton);
+    upsetButton = findViewById(R.id.upsetButton);
+    sadButton = findViewById(R.id.sadButton);
+    angryButton = findViewById(R.id.angryButton);
+
+    switch (selectedEmotion){
+
+      case "happy":
+        contentButton.setPressed(false);
+        neutralButton.setPressed(false);
+        upsetButton.setPressed(false);
+        sadButton.setPressed(false);
+        angryButton.setPressed(false);
+
+      case "content":
+        happyButton.setPressed(false);
+        neutralButton.setPressed(false);
+        upsetButton.setPressed(false);
+        sadButton.setPressed(false);
+        angryButton.setPressed(false);
+
+      case "neutral":
+        happyButton.setPressed(false);
+        contentButton.setPressed(false);
+        upsetButton.setPressed(false);
+        sadButton.setPressed(false);
+        angryButton.setPressed(false);
+
+      case "upset":
+        happyButton.setPressed(false);
+        contentButton.setPressed(false);
+        neutralButton.setPressed(false);
+        sadButton.setPressed(false);
+        angryButton.setPressed(false);
+
+      case "sad":
+        happyButton.setPressed(false);
+        contentButton.setPressed(false);
+        neutralButton.setPressed(false);
+        upsetButton.setPressed(false);
+        angryButton.setPressed(false);
+
+      case "angry":
+        happyButton.setPressed(false);
+        contentButton.setPressed(false);
+        neutralButton.setPressed(false);
+        upsetButton.setPressed(false);
+        sadButton.setPressed(false);
+    }//switch
+
+  }//checkOtherButtons
 
 }
