@@ -11,7 +11,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginEnd="28dp"
-        android:background="@drawable/content_emoji"
+        android:background="@drawable/content_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/neutralButton"
         app:layout_constraintTop_toTopOf="parent" />
@@ -83,7 +83,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginEnd="28dp"
-        android:background="@drawable/neutral_emoji"
+        android:background="@drawable/neutral_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/downButton"
         app:layout_constraintTop_toTopOf="parent" />
