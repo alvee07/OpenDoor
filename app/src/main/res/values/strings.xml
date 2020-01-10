@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OpenDoorApp</string>
+    <string name="app_name" translatable="false">OpenDoorApp</string>
     <string name="continueButton">Continue</string>
 
     // Main Activity
@@ -7,11 +7,12 @@
     <string name="checkIn">Check-In</string>
 
     // Name
-    <string name="textEnterName">Your Name</string>
-    <string name="placeHolderName">Please Enter Your Name Here . . .</string>
+    <string name="textEnterName">Name</string>
+    <string name="placeHolderName">Please Enter Name Here . . .</string>
 
     // Services
-
+    <string name="servicesHowCanWeHelp">How can we help you today?</string>
+    <string name="workersWhoDoYouWantToSee">Who do you want to see today?</string>
 
     // Emotions
     <string name="howAreYouFeeling">How are you feeling today?</string>

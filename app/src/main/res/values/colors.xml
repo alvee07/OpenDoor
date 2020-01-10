@@ -2,7 +2,9 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#FBAB48</color>
+
+    // color chosen from open door logo
     <color name="openDoorYellowColor">#FBF818</color>
     <color name="openDoorOrangeColor">#FBAB48</color>
     <color name="openDoorTextColor">#FCFDFD</color>
