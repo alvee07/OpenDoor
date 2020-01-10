@@ -11,7 +11,7 @@ public class Services extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.services);
 
-        // Services spinner! 
+        // Services spinner!
         Spinner services = (Spinner) findViewById(R.id.servicesSpinner);
 
         //container that hold the values and integrate them with the spinner
