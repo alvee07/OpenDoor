@@ -21,6 +21,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,28 +48,23 @@ public class ConfirmationActivity extends AppCompatActivity {
     // getting userName from
     userName = getIntent().getStringExtra("userName");
     
-    // one option
-    new Timer().schedule(new TimerTask(){
-      public void run() {
-        startActivity(new Intent(ConfirmationActivity.this, MainActivity.class));
-        finish();
-      
-        Log.d("MainActivity:", "onCreate: waiting 5 seconds for MainActivity... loading PrimaryActivity.class");
-      }
-    }, 5000 );
-    
-    
-    //two option
-  
+
+    // Start Main Activity in 5 seconds
+
     new Handler().postDelayed(new Runnable() {
       @Override
       public void run() {
-        final Intent mainIntent = new Intent(ConfirmationActivity.this, MainActivity.class);
-        ConfirmationActivity.this.startActivity(mainIntent);
+        final Intent goBackToMainActivity = new Intent(ConfirmationActivity.this, MainActivity.class);
+        ConfirmationActivity.this.startActivity(goBackToMainActivity);
         ConfirmationActivity.this.finish();
       }
     }, 5000);
-    
+  
+  
+  
+    Toast.makeText(getApplicationContext(),"this is confirmation page",Toast.LENGTH_SHORT).show();
+  
+  
   } // onCreate
   
   
