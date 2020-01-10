@@ -18,19 +18,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class ConfirmationActivity extends AppCompatActivity {
   /**
    * userName - String value - Store user name
    * */
   String userName;
+  
+  
+  TextView confirmationMessage01, confirmationMessage02;
+  
   
   /**
    * When the program starts.
@@ -47,7 +46,14 @@ public class ConfirmationActivity extends AppCompatActivity {
     
     // getting userName from
     userName = getIntent().getStringExtra("userName");
+    userName = "AAB";
     
+    confirmationMessage01 = findViewById(R.id.confirmationMessage01);
+    confirmationMessage01.setText(buildConfirmationMessage(userName));
+  
+    confirmationMessage02 = findViewById(R.id.confirmationMessage02);
+  
+    confirmationMessage02.setText(R.string.confirmationMessage02);
 
     // Start Main Activity in 5 seconds
 
@@ -58,7 +64,7 @@ public class ConfirmationActivity extends AppCompatActivity {
         ConfirmationActivity.this.startActivity(goBackToMainActivity);
         ConfirmationActivity.this.finish();
       }
-    }, 5000);
+    }, 100000);
   
   
   
@@ -66,6 +72,19 @@ public class ConfirmationActivity extends AppCompatActivity {
   
   
   } // onCreate
+  
+  
+  
+  public String buildConfirmationMessage(String userName){
+    String confirmationMessage01 = getString(R.string.confirmationMessage01);
+    
+    StringBuilder confirmationMessage = new StringBuilder(confirmationMessage01);
+    
+    confirmationMessage.append(userName);
+    confirmationMessage.append(" !");
+    
+    return confirmationMessage.toString();
+  }
   
   
 } // ConfirmationActivity
