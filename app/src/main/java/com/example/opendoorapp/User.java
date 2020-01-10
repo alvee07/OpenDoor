@@ -35,4 +35,10 @@ public class User {
     worker = inputWorker;
 
   }
+
+  public void addEmotion(String inputEmotion){
+
+    emotion = inputEmotion;
+
+  }
 }
