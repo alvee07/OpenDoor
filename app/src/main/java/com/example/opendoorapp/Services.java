@@ -11,6 +11,7 @@ public class Services extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.services);
 
+        // Services spinner! 
         Spinner services = (Spinner) findViewById(R.id.servicesSpinner);
 
         //container that hold the values and integrate them with the spinner
@@ -20,6 +21,8 @@ public class Services extends AppCompatActivity {
         //specifiy that it is a drop down list
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         services.setAdapter(myadapter);
+
+        Spinner names = (Spinner) findViewById(R.id.namesSpinner);
     }
 
 
