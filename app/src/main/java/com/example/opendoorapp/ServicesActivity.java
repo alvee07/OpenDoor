@@ -1,3 +1,13 @@
+/**
+ * AUCSC 320
+ * ServicesActivity.java
+ * By Arnold Gihozo
+ *
+ *
+ * This class will give the opportunity to the user to choose between either a service
+ * or a worker. 
+ */
+
 package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +17,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 public class ServicesActivity extends AppCompatActivity {
+
+    private String selectedServices;
+    //private Worker selectedWorker;
+    private User currentUser;
+    private Boolean isSelectedService;
+    private Boolean isSelectedWorker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,5 +53,5 @@ public class ServicesActivity extends AppCompatActivity {
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         names.setAdapter(namesAdapter);
 
-    }
+    } // end of onCreate
 }
