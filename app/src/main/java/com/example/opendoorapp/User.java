@@ -52,4 +52,29 @@ public class User {
 
     return name;
   }
-}
+
+  public String getService(){
+
+    return service;
+
+  }
+
+  public String getWorker(){
+
+    return worker;
+
+  }
+
+  public String getEmotion(){
+
+    return emotion;
+
+  }
+
+  public String getTime(){
+
+    return timeInputted.toString();
+
+  }
+
+}//User
