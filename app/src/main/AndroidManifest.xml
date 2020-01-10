@@ -9,8 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".Admin"></activity>
         <activity android:name=".MainActivity">
+=======
+        <activity android:name=".EmotionsCheck"></activity>
+        <activity android:name=".Services">
+>>>>>>> origin/Developing
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
