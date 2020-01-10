@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">OpenDoorApp</string>
+    <string name="what_is_your_name">What is your name?</string>
+    <string name="what_i_need">What I need...</string>
+    <string name="todo">TODO</string>
+
+    <string-array name="services">
+        <item>Service 1</item>
+        <item>Service 2</item>
+        <item>Service 3</item>
+        <item>Service 4</item>
+    </string-array>
     <string name="emotions_question">How are you feeling?</string>
     <string name="submit_button">Submit</string>
 
