@@ -57,10 +57,28 @@ public class ConfirmationActivity extends AppCompatActivity {
     startMainActivity();
   
   
-    Toast.makeText(getApplicationContext(),"this is confirmation page",Toast.LENGTH_SHORT).show();
+    Toast.makeText(getApplicationContext(),"You will be moved to Main Activity page pretty soon",Toast.LENGTH_LONG).show();
   
   
   } // onCreate
+  
+  //port 587
+  
+  //
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -83,8 +101,6 @@ public class ConfirmationActivity extends AppCompatActivity {
   //for testing
     userName = "AAB";
   }
-  
-  
   /**
    * Gets thanksUser textView from XML
    * Sets thanks user message with userName variable on the screen
@@ -105,7 +121,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   }
   
   /**
-   * Takes the userName, adds userName to resource string with !
+   * Takes the userName, adds userName to resource string with '!'
    * @param userName - String value
    * @return message - String value
    */
@@ -119,7 +135,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   }
   
   /**
-   * Starts MainActivity class in 10000000 seconds
+   * Starts MainActivity class in 1000000000000 seconds
    */
   public void startMainActivity(){
   
