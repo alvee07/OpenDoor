@@ -10,5 +10,6 @@
     
     <color name="continueButton"></color>
     <color name="buttonText"></color>
+    <color name="textColor">#02020F</color>
 
 </resources>

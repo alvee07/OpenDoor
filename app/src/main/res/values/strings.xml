@@ -17,7 +17,7 @@
     <string name="howAreYouFeeling">How are you feeling today?</string>
 
     // Confirmation
-    <string name="confirmationMessage01">Thanks\&#160;</string>
-    <string name="confirmationMessage02">Someone will help you shortly.</string>
+    <string name="thanksUser">Thanks\&#160;</string>
+    <string name="confirmationMessage">Someone will help you shortly.</string>
 
 </resources>
