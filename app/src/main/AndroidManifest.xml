@@ -10,10 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".EmotionsCheck"></activity>
-        <activity android:name=".ServicesActivity"></activity>
-        <activity android:name=".Admin"></activity>
+        <activity android:name=".EmotionsCheck"
+            android:screenOrientation="portrait"/>
 
+        <activity android:name=".ServicesActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".Admin"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".NameActivity"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".ConfirmationActivity"

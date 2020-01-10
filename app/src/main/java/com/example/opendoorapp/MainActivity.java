@@ -23,4 +23,17 @@ public class MainActivity extends AppCompatActivity {
       }
     });
   }
+  /**
+   * Takes user to next Activity - 'Name Activity'
+   * @param view - View object - Button object in this scenario
+   * by Alvee
+   *
+   */
+  public void checkInBtnClicked(View view){
+    Intent name = new Intent(MainActivity.this, NameActivity.class);
+    startActivity(name);
+    finish();
+  } // checkInBtnClicked
+  
+  
 }
