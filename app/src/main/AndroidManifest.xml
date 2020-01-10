@@ -10,8 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".EmotionsCheck"></activity>
+        <activity android:name=".Services"></activity>
         <activity android:name=".Admin"></activity>
-        <activity android:name=".MainActivity">
+
+
+        <activity
+            android:name=".ConfirmationActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
