@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">OpenDoorApp</string>
+    <string name="emotions_question">How are you feeling?</string>
+
 </resources>
