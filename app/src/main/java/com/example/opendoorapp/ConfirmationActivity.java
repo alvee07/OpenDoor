@@ -85,7 +85,6 @@ public class ConfirmationActivity extends AppCompatActivity {
   }
   
   
-  
   /**
    * Gets thanksUser textView from XML
    * Sets thanks user message with userName variable on the screen
