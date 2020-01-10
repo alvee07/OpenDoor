@@ -17,10 +17,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/downButton"
+        android:id="@+id/upsetButton"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:background="@drawable/upset_emoji"
+        android:background="@drawable/upset_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.561"
@@ -44,7 +44,7 @@
         android:layout_marginStart="28dp"
         android:background="@drawable/sad_emoji"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/downButton"
+        app:layout_constraintStart_toEndOf="@+id/upsetButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -85,7 +85,7 @@
         android:layout_marginEnd="28dp"
         android:background="@drawable/neutral_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/downButton"
+        app:layout_constraintEnd_toStartOf="@+id/upsetButton"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
