@@ -1,11 +1,14 @@
 package com.example.opendoorapp;
 
+import java.time.LocalTime;
+
 public class User {
 
-  String name;
-  String service;
-  String worker;
-  String emotion;
+  private String name;
+  private String service;
+  private String worker;
+  private String emotion;
+  private LocalTime timeInputted;
 
   User(){
 
@@ -13,6 +16,8 @@ public class User {
     service = "Not Applicable";
     worker = "Not Applicable";
     emotion = "Not Applicable";
+    timeInputted = timeInputted.now();
+
 
   }//User defaultConstructor
 
@@ -22,6 +27,7 @@ public class User {
     service = "Not Applicable";
     worker = "Not Applicable";
     emotion = "Not Applicable";
+    timeInputted = timeInputted.now();
   }
 
   public void addService(String inputService){
@@ -40,5 +46,10 @@ public class User {
 
     emotion = inputEmotion;
 
+  }
+
+  public String getName(){
+
+    return name;
   }
 }
