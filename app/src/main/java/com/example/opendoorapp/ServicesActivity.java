@@ -12,7 +12,6 @@ package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.os.Bundle;
 import android.view.View;
@@ -49,7 +48,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
         //Workers
         //==============================================================================
-        worker =(Spinner) findViewById(R.id.namesSpinner);
+        worker =(Spinner) findViewById(R.id.workerSpinner);
         // Container that hold the values and integrate them with the spinner
         ArrayAdapter<String> namesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
@@ -80,22 +79,14 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
                     Toast.makeText(parent.getContext(),
                             "Services selected is : " + parent.getItemAtPosition(position).toString(),
                             Toast.LENGTH_SHORT).show();
-                    if (worker.isEnabled()) {
-                        worker.setEnabled(false);
-                    } else {
-                        worker.setEnabled(true);
-                    }
+                    worker.setEnabled(false);
                     break;
 
-                case R.id.namesSpinner:
+                case R.id.workerSpinner:
                     Toast.makeText(parent.getContext(),
                             "Worker selected is : " + parent.getItemAtPosition(position).toString(),
                             Toast.LENGTH_SHORT).show();
-                    if (services.isEnabled()) {
-                        services.setEnabled(false);
-                    } else {
-                        services.setEnabled(true);
-                    }
+                    services.setEnabled(false);
                     break;
 
             }// end of switch
