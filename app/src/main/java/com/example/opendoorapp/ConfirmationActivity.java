@@ -57,7 +57,7 @@ public class ConfirmationActivity extends AppCompatActivity {
     startMainActivity();
   
   
-    Toast.makeText(getApplicationContext(),"You will be moved to Main Activity page pretty soon",Toast.LENGTH_LONG).show();
+    //Toast.makeText(getApplicationContext(),"You will be moved to Main Activity page pretty soon",Toast.LENGTH_LONG).show();
   
   
   } // onCreate
