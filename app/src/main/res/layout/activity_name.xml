@@ -9,7 +9,7 @@
         android:id="@+id/openDoorLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/todo"
+        android:contentDescription="@string/alt_logo"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/open_door_logo" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/nameContinue"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:background="@drawable/button_shape"

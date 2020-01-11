@@ -35,7 +35,7 @@ public class EmotionsCheck extends AppCompatActivity {
     upsetButton = findViewById(R.id.upsetButton);
     sadButton = findViewById(R.id.sadButton);
     angryButton = findViewById(R.id.angryButton);
-    submitButton = findViewById(R.id.submitButton);
+    submitButton = findViewById(R.id.emotionsCheckSubmit);
 
 
     happyButton.setOnClickListener(new View.OnClickListener() {
@@ -175,7 +175,7 @@ public class EmotionsCheck extends AppCompatActivity {
    * by Alvee
    *
    */
-  public void continueBtnClicked(View view){
+  public void submitBtnClicked(View view){
     Intent name = new Intent(EmotionsCheck.this, ConfirmationActivity.class);
     startActivity(name);
     finish();
