@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,7 +21,7 @@ public class Admin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
-        ImageButton backButton = (ImageButton) findViewById(R.id.backTo);
+        Button backButton = (Button) findViewById(R.id.backTo);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,11 +31,11 @@ public class Admin extends AppCompatActivity {
 //        startTimer();
     }
 
-    public void onUserInteraction(){
-        super.onUserInteraction();
-        stopTimer();
-        startTimer();
-    }
+//    public void onUserInteraction(){
+//        super.onUserInteraction();
+//        stopTimer();
+//        startTimer();
+//    }
 
     private void startTimer() {
         timeout = new Timer();
@@ -52,7 +53,6 @@ public class Admin extends AppCompatActivity {
     }
 
     private void goToHome(){
-        Intent homePage = new Intent (getApplicationContext(), MainActivity.class);
-        startActivity(homePage);
+        finish();
     }
 }
