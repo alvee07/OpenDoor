@@ -31,8 +31,8 @@
     <string name="howCanWeHelpYou">How Can We Help You?</string>
 
     // Name
-    <string name="textEnterName">Name</string>
-    <string name="placeHolderName">Please Enter Name Here . . .</string>
+    <string name="textEnterName">Your Name</string>
+    <string name="placeHolderName">Enter Name Here . . .</string>
 
     // Services
     <string name="servicesHowCanWeHelp">How Can We Help You?</string>
