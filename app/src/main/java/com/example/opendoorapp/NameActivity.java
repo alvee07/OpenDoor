@@ -9,7 +9,6 @@ import android.view.View;
 
 public class NameActivity extends AppCompatActivity {
     
-    //User user;
     String name;
     
     @Override
@@ -18,7 +17,7 @@ public class NameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_name);
         
         name = "alvee";
-        
+        User.userName = name;
         
     }
     
@@ -31,13 +30,8 @@ public class NameActivity extends AppCompatActivity {
      *
      */
     public void whatDoINeedHelpBtnClicked(View view){
-        User user = new User();
-        user.setName(name);
+
         Intent name = new Intent(NameActivity.this, ServicesActivity.class);
-        Bundle data = new Bundle();
-        data.putSerializable("data", user);
-        name.putExtras(data);
-        
         startActivity(name);
         finish();
     } // checkInBtnClicked

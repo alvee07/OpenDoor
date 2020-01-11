@@ -1,9 +1,8 @@
 package com.example.opendoorapp;
 
-import java.io.Serializable;
 import java.time.LocalTime;
 
-public class User implements Serializable {
+public class User {
 
   private String name;
   private String service;
@@ -83,9 +82,12 @@ public class User implements Serializable {
     return timeInputted.toString();
 
   }
+
   
-  public static void userInfo(String userName){
-    String name;
-  }
+  public static String userName;
+  public static String serviceName;
+  public static String workerName;
+  public static String emotionName;
+  public static LocalTime localTime;
 
 }//User

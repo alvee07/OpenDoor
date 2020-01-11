@@ -21,6 +21,8 @@ import android.os.Handler;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.time.LocalTime;
+
 public class ConfirmationActivity extends AppCompatActivity {
   
   /**
@@ -32,9 +34,11 @@ public class ConfirmationActivity extends AppCompatActivity {
    * services - String value - Store what type of services user chose
    * workers - String value - Store who they chose to talk
    * emotions - String value - Store how they are feeling today
+   * localTime - LocalTime value - Store system current time
    */
   TextView thanksUser, confirmationMessage;
   String userName, services, workers, emotions;
+  LocalTime localTime;
   
   /**
    * When the program starts.
@@ -82,23 +86,16 @@ public class ConfirmationActivity extends AppCompatActivity {
   
   
   
-  
   /**
    * Sets userName, services, workers, emotions from previous activity - (Services/Emotion Activity)
    */
-  private void setUsercredentials(){
-    if (getIntent().hasExtra("USERNAME") &&
-            getIntent().hasExtra("SERVICES") &&
-            getIntent().hasExtra("WORKERS") &&
-            getIntent().hasExtra("EMOTIONS")){
-  
-      userName = getIntent().getStringExtra("USERNAME");
-      services = getIntent().getStringExtra("SERVICES");
-      workers = getIntent().getStringExtra("WORKERS");
-      emotions = getIntent().getStringExtra("EMOTIONS");
-
-    } // if
-  //for testing
+  private void setUserCredentials(){
+    userName = User.userName;
+    services = User.serviceName;
+    workers = User.workerName;
+    emotions = User.emotionName;
+    localTime = User.localTime;
+    // for testing
     userName = "AAB";
   }
   /**
@@ -106,7 +103,7 @@ public class ConfirmationActivity extends AppCompatActivity {
    * Sets thanks user message with userName variable on the screen
    */
   private void setThanksUser(){
-    setUsercredentials();
+    setUserCredentials();
     thanksUser = findViewById(R.id.thanksUser);
     thanksUser.setText(buildThanksUserMessage(userName));
   }

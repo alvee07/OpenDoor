@@ -11,7 +11,7 @@ import android.widget.Switch;
 public class EmotionsCheck extends AppCompatActivity {
 
   private String selectedEmotion;
-
+  
 
   Button happyButton;
   Button contentButton;
@@ -104,15 +104,16 @@ public class EmotionsCheck extends AppCompatActivity {
       }
     });
 
-//    submitButton.setOnClickListener(new View.OnClickListener() {
-//      @Override
-//      public void onClick(View v) {
-//
-//
-//      }
-//    });
+    //    submitButton.setOnClickListener(new View.OnClickListener() {
+    //      @Override
+    //      public void onClick(View v) {
+    //
+    //
+    //      }
+    //    });
 
-  }//onCreate
+    
+  } // onCreate
 
   private void checkOtherButtons(){
 
