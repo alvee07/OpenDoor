@@ -38,7 +38,13 @@ public class ServicesActivity extends AppCompatActivity {
 
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         names.setAdapter(namesAdapter);
-
+    
+    
+        
+    
+        User user = (User) getIntent().getSerializableExtra("data");
+        
+        System.out.println(user.getName()+"....................................................");
     }
     
     /**
@@ -48,7 +54,9 @@ public class ServicesActivity extends AppCompatActivity {
      *
      */
     public void continueBtnClicked(View view){
+
         Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
+
         startActivity(name);
         finish();
     } // checkInBtnClicked

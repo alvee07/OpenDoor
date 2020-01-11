@@ -1,14 +1,16 @@
 package com.example.opendoorapp;
 
+import java.io.Serializable;
 import java.time.LocalTime;
 
-public class User {
+public class User implements Serializable {
 
   private String name;
   private String service;
   private String worker;
   private String emotion;
   private LocalTime timeInputted;
+  
 
   User(){
 
@@ -28,6 +30,11 @@ public class User {
     worker = "Not Applicable";
     emotion = "Not Applicable";
     timeInputted = timeInputted.now();
+  }
+  
+  
+  public void setName(String userName){
+    this.name = userName;
   }
 
   public void addService(String inputService){
@@ -75,6 +82,10 @@ public class User {
 
     return timeInputted.toString();
 
+  }
+  
+  public static void userInfo(String userName){
+    String name;
   }
 
 }//User
