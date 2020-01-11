@@ -27,20 +27,17 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     private User currentUser;
     private Boolean isSelectedService;
     private Boolean isSelectedWorker;
-
-
-    public Spinner services;
-    private Spinner names;
+    private Spinner services;
+    private Spinner worker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
 
-        // Services spinner!
+        // Services
+        // ===========================================================================
         services = (Spinner) findViewById(R.id.servicesSpinner);
-
-
         //container that hold the values and integrate them with the spinner
         ArrayAdapter<String> myadapter = new ArrayAdapter<String>(ServicesActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.services));
@@ -48,29 +45,46 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         //specifiy that it is a drop down list
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         services.setAdapter(myadapter);
+        //=============================================================================
 
-
-
-        // Drop down menu for the workers
-        names =(Spinner) findViewById(R.id.namesSpinner);
-
-
-
+        //Workers
+        //==============================================================================
+        worker =(Spinner) findViewById(R.id.namesSpinner);
         // Container that hold the values and integrate them with the spinner
         ArrayAdapter<String> namesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
 
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        names.setAdapter(namesAdapter);
+        worker.setAdapter(namesAdapter);
+        //======================================================================================
+        services.setOnItemSelectedListener(this);
+        worker.setOnItemSelectedListener(this);
+
+
+
 
     } // end of onCreate
 
 
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id){
-        Toast.makeText(parent.getContext(),
-                "OnItemSelectedListener : " + parent.getItemAtPosition(position).toString(),
-                Toast.LENGTH_SHORT).show();
+        switch (parent.getId()){
+            case R.id.servicesSpinner:
+                Toast.makeText(parent.getContext(),
+                        "Services selected is : " + parent.getItemAtPosition(position).toString(),
+                        Toast.LENGTH_SHORT).show();
+//                worker.setVisibility(View.INVISIBLE);
+//                services.setVisibility(View.VISIBLE);
+                break;
 
+            case R.id.namesSpinner:
+                Toast.makeText(parent.getContext(),
+                        "Worker selected is : " + parent.getItemAtPosition(position).toString(),
+                        Toast.LENGTH_SHORT).show();
+//                services.setVisibility(View.INVISIBLE);
+//                worker.setVisibility(View.VISIBLE);
+                break;
+
+        }
 
     }
 
@@ -80,7 +94,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     private void setSelectedServices (){
 
         if (isSelectedWorker = true){
-            //services.setVisibility(View.INVISIBLE);
+            services.setVisibility(View.INVISIBLE);
             isSelectedWorker = false;
         }else{
             isSelectedService = true;
@@ -90,4 +104,13 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     private void setSelectedWorker(){
 
     }
+
+    /**
+     * After lunch break work on :
+     *
+     * Getting the switch between spinners (which one selected)
+     * Getting the info of the spinner saved into a variable
+     * Refactoring the code (make it pretty) and cleaning it up
+     * Add comments
+     */
 }
