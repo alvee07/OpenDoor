@@ -82,7 +82,11 @@ public class User {
     return timeInputted.toString();
 
   }
-
+  
+  /**
+   * These variables are used for storing data throughout the application run time.
+   * By Alvee
+   */
   
   public static String userName;
   public static String serviceName;
