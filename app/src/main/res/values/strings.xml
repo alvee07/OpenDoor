@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">OpenDoorApp</string>
     <string name="alt_logo">Camrose Open Door Logo</string>
-    <string name="what_is_your_name">What is your name?</string>
-    <string name="what_i_need">What I need...</string>
-    <string name="todo">TODO</string>
+    <string name="continueButton">Continue</string>
 
     // Services items
     <string-array name="services">
@@ -20,30 +18,29 @@
         <item>Name 4</item>
     </string-array>
 
-
-    <string name="emotions_question">How are you feeling?</string>
-    <string name="submit_button">Submit</string>
-
-    <string name="continueButton">Continue</string>
-
     // Main Activity
     <string name="welcome">Welcome</string>
     <string name="checkIn">Check-In</string>
     <string name="howCanWeHelpYou">How Can We Help You Today?</string>
 
-    // Name
+
+    // Name Activity
     <string name="textEnterName">Your Name:</string>
     <string name="placeHolderName">Enter Here . . .</string>
 
-    // Services
+
+    // Services Activity
     <string name="servicesHowCanWeHelp">How Can We Help You?</string>
     <string name="workersWhoDoYouWantToSee">Who Do You Want To Visit Today?</string>
 
-    // Emotions
+
+    // Emotions Activity
     <string name="howAreYouFeeling">How Are You Feeling Today?</string>
+    <string name="emotions_question">How are you feeling?</string>
     <string name="submit">Submit</string>
 
-    // Confirmation
+
+    // Confirmation Activity
     <string name="thanksUser">Thanks\&#160;</string>
     <string name="confirmationMessage">Someone Will Help You Shortly.</string>
 
