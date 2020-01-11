@@ -66,27 +66,43 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     } // end of onCreate
 
 
-    public void onItemSelected(AdapterView<?> parent, View v, int position, long id){
-        switch (parent.getId()){
-            case R.id.servicesSpinner:
-                Toast.makeText(parent.getContext(),
-                        "Services selected is : " + parent.getItemAtPosition(position).toString(),
-                        Toast.LENGTH_SHORT).show();
-//                worker.setVisibility(View.INVISIBLE);
-//                services.setVisibility(View.VISIBLE);
-                break;
+    public void onItemSelected (AdapterView<?> parent, View v, int position, long id) {
+        if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
+            services.setEnabled(true);
+            worker.setEnabled(true);
 
-            case R.id.namesSpinner:
-                Toast.makeText(parent.getContext(),
-                        "Worker selected is : " + parent.getItemAtPosition(position).toString(),
-                        Toast.LENGTH_SHORT).show();
-//                services.setVisibility(View.INVISIBLE);
-//                worker.setVisibility(View.VISIBLE);
-                break;
+        } else {
 
-        }
+            switch (parent.getId()) {
 
-    }
+
+                case R.id.servicesSpinner:
+                    Toast.makeText(parent.getContext(),
+                            "Services selected is : " + parent.getItemAtPosition(position).toString(),
+                            Toast.LENGTH_SHORT).show();
+                    if (worker.isEnabled()) {
+                        worker.setEnabled(false);
+                    } else {
+                        worker.setEnabled(true);
+                    }
+                    break;
+
+                case R.id.namesSpinner:
+                    Toast.makeText(parent.getContext(),
+                            "Worker selected is : " + parent.getItemAtPosition(position).toString(),
+                            Toast.LENGTH_SHORT).show();
+                    if (services.isEnabled()) {
+                        services.setEnabled(false);
+                    } else {
+                        services.setEnabled(true);
+                    }
+                    break;
+
+            }// end of switch
+
+        }// end of else
+
+    }// end of onItemSelected
 
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub

@@ -6,6 +6,7 @@
 
     // Services items
     <string-array name="services">
+        <item>-- Choose an option --</item>
         <item>Service 1</item>
         <item>Service 2</item>
         <item>Service 3</item>
@@ -13,6 +14,7 @@
     </string-array>
 
     <string-array name="names">
+        <item>-- Choose an option --</item>
         <item>Name 1</item>
         <item>Name 2</item>
         <item>Name 3</item>

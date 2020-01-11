@@ -1,3 +1,7 @@
+/**
+ * By Arnold Gihozo
+ */
+
 package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
