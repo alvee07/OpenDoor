@@ -2,6 +2,7 @@ package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -103,13 +104,13 @@ public class EmotionsCheck extends AppCompatActivity {
       }
     });
 
-    submitButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-
-
-      }
-    });
+//    submitButton.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//
+//
+//      }
+//    });
 
   }//onCreate
 
@@ -168,5 +169,16 @@ public class EmotionsCheck extends AppCompatActivity {
     }//switch
 
   }//checkOtherButtons
-
+  /**
+   * Takes user to next Activity - 'Confirmation Activity'
+   * @param view - View object - Button object in this scenario
+   * by Alvee
+   *
+   */
+  public void continueBtnClicked(View view){
+    Intent name = new Intent(EmotionsCheck.this, ConfirmationActivity.class);
+    startActivity(name);
+    finish();
+    System.out.println("Alveeeeeeeejddhchchhdhdhdh");
+  } // continueBtnClicked
 }

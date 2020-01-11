@@ -146,7 +146,7 @@ public class ConfirmationActivity extends AppCompatActivity {
         ConfirmationActivity.this.startActivity(goBackToMainActivity);
         ConfirmationActivity.this.finish();
       }
-    }, 100000);
+    }, 10000);
   } // startMainActivity
   
   

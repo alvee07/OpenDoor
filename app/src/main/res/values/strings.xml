@@ -26,15 +26,16 @@
     <string name="continueButton">Continue</string>
 
     // Main Activity
-    <string name="welcome">Welcome To Camrose Open Door</string>
+    <string name="welcome">Welcome</string>
     <string name="checkIn">Check-In</string>
+    <string name="howCanWeHelpYou">How Can We Help You?</string>
 
     // Name
     <string name="textEnterName">Name</string>
     <string name="placeHolderName">Please Enter Name Here . . .</string>
 
     // Services
-    <string name="servicesHowCanWeHelp">How can we help you today?</string>
+    <string name="servicesHowCanWeHelp">How Can We Help You?</string>
     <string name="workersWhoDoYouWantToSee">Who do you want to see today?</string>
 
     // Emotions

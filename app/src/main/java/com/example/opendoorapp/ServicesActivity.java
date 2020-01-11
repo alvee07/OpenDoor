@@ -2,7 +2,9 @@ package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -38,4 +40,16 @@ public class ServicesActivity extends AppCompatActivity {
         names.setAdapter(namesAdapter);
 
     }
+    
+    /**
+     * Takes user to next Activity - 'Emotions Activity' or, 'Confirmation Activity'
+     * @param view - View object - Button object in this scenario
+     * by Alvee
+     *
+     */
+    public void continueBtnClicked(View view){
+        Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
+        startActivity(name);
+        finish();
+    } // checkInBtnClicked
 }
