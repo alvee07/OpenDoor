@@ -22,10 +22,13 @@
     <Spinner
         android:id="@+id/servicesSpinner"
         android:layout_width="300dp"
+        android:elevation="2dp"
         android:layout_height="100dp"
         android:layout_marginTop="220dp"
         android:popupElevation="1000sp"
         android:textSize ="40sp"
+        android:background="@drawable/spinner_background"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openDoorLogo" />
@@ -35,6 +38,7 @@
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:layout_marginTop="204dp"
+        android:background="@drawable/spinner_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/servicesSpinner" />
@@ -52,5 +56,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/servicesSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/servicesSpinner"
+        app:layout_constraintVertical_bias="0.772" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ServicesActivity extends AppCompatActivity implements OnItemSelectedListener {
@@ -44,6 +45,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.services));
 
         //specifiy that it is a drop down list
+        //services.setBackgroundColor(R.color.openDoorBackGroundColor);
         myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         services.setAdapter(myadapter);
         //=============================================================================
@@ -68,6 +70,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
 
     public void onItemSelected (AdapterView<?> parent, View v, int position, long id) {
+        services.setPopupBackgroundResource(R.color.openDoorYellowColor);
+        services.getChildAt(0).setOutlineSpotShadowColor(getResources().getColor(R.color.openDoorYellowColor));
         if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
             services.setEnabled(true);
             worker.setEnabled(true);
