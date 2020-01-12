@@ -71,7 +71,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
     public void onItemSelected (AdapterView<?> parent, View v, int position, long id) {
         services.setPopupBackgroundResource(R.color.openDoorYellowColor);
-        services.getChildAt(0).setOutlineSpotShadowColor(getResources().getColor(R.color.openDoorYellowColor));
+        worker.setPopupBackgroundResource(R.color.openDoorYellowColor);
+        //services.getChildAt(0).setOutlineSpotShadowColor(getResources().getColor(R.color.openDoorYellowColor));
         if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
             services.setEnabled(true);
             worker.setEnabled(true);
@@ -131,3 +132,12 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         finish();
     } // checkInBtnClicked
 }
+
+/**
+ * To work on after supper:
+ *
+ * Setting a black color once the second option has been disabled
+ * Remove the blue lines color inside the spinner
+ * Setting up an arrow within the spinners
+ *
+ */
