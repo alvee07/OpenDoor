@@ -19,7 +19,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.time.LocalTime;
 
@@ -69,6 +68,11 @@ public class ConfirmationActivity extends AppCompatActivity {
   //port 587
   
   //
+  
+
+  
+  
+  
   
   
   
