@@ -16,45 +16,35 @@ import android.widget.EditText;
 
 public class NameActivity extends AppCompatActivity {
 
-
-
-    private User currentUser;
-    private String name;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name);
-
-        name = "alvee";
-        User.userName = name;
-
-
-        Button submitBtn = (Button) findViewById(R.id.nameContinue);
-        final EditText nameTxt = (EditText) findViewById(R.id.userName);
-        submitBtn.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                name = nameTxt.getText().toString();
-                //currentUser.setName(name);
-            }
-        });
+        
 
     }
 
 
 
     /**
-     * Takes user to next Activity - 'Name Activity'
+     * Checks the EditText input empty or not, then takes it value and stores it in the
+     * User class for using email purpose.
+     * Also Takes user to next Activity - 'Services Activity'
+     *
      * @param view - View object - Button object in this scenario
      * by Alvee
      *
      */
     public void whatDoINeedHelpBtnClicked(View view){
-
-        Intent name = new Intent(NameActivity.this, ServicesActivity.class);
-        startActivity(name);
+        
+        EditText textInputFromUser = findViewById(R.id.userName);
+        String userNameFromInput = textInputFromUser.getText().toString().trim();
+        if (userNameFromInput.isEmpty()){
+            //return;
+        }
+        User.userName = userNameFromInput;
+        Intent nextActivity = new Intent(NameActivity.this, ServicesActivity.class);
+        startActivity(nextActivity);
         finish();
     } // checkInBtnClicked
 }
