@@ -2,6 +2,7 @@ package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +11,7 @@ import android.widget.Switch;
 public class EmotionsCheck extends AppCompatActivity {
 
   private String selectedEmotion;
-
+  
 
   Button happyButton;
   Button contentButton;
@@ -34,7 +35,7 @@ public class EmotionsCheck extends AppCompatActivity {
     upsetButton = findViewById(R.id.upsetButton);
     sadButton = findViewById(R.id.sadButton);
     angryButton = findViewById(R.id.angryButton);
-    submitButton = findViewById(R.id.submitButton);
+    submitButton = findViewById(R.id.emotionsCheckSubmit);
 
 
     happyButton.setOnClickListener(new View.OnClickListener() {
@@ -103,15 +104,16 @@ public class EmotionsCheck extends AppCompatActivity {
       }
     });
 
-    submitButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
+    //    submitButton.setOnClickListener(new View.OnClickListener() {
+    //      @Override
+    //      public void onClick(View v) {
+    //
+    //
+    //      }
+    //    });
 
-
-      }
-    });
-
-  }//onCreate
+    
+  } // onCreate
 
   private void checkOtherButtons(){
 
@@ -168,5 +170,16 @@ public class EmotionsCheck extends AppCompatActivity {
     }//switch
 
   }//checkOtherButtons
-
+  /**
+   * Takes user to next Activity - 'Confirmation Activity'
+   * @param view - View object - Button object in this scenario
+   * by Alvee
+   *
+   */
+  public void submitBtnClicked(View view){
+    Intent name = new Intent(EmotionsCheck.this, ConfirmationActivity.class);
+    startActivity(name);
+    finish();
+    System.out.println("Alveeeeeeeejddhchchhdhdhdh");
+  } // continueBtnClicked
 }

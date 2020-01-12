@@ -15,11 +15,26 @@ package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.time.LocalTime;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class ConfirmationActivity extends AppCompatActivity {
   
@@ -32,9 +47,22 @@ public class ConfirmationActivity extends AppCompatActivity {
    * services - String value - Store what type of services user chose
    * workers - String value - Store who they chose to talk
    * emotions - String value - Store how they are feeling today
+   * localTime - LocalTime value - Store system current time
    */
   TextView thanksUser, confirmationMessage;
   String userName, services, workers, emotions;
+  LocalTime localTime;
+  
+  
+  Session session = null;
+
+  
+  
+  final String rec = "highpressure93@gmail.com";
+  final String subject = "First subject";
+  final String textMessage = "This is one more try";
+  
+  
   
   /**
    * When the program starts.
@@ -57,7 +85,39 @@ public class ConfirmationActivity extends AppCompatActivity {
     startMainActivity();
   
   
-    Toast.makeText(getApplicationContext(),"You will be moved to Main Activity page pretty soon",Toast.LENGTH_LONG).show();
+
+    
+    
+  
+    Properties properties = new Properties();
+    properties.put("mail.smtp.host", "smtp.gmail.com");
+    properties.put("mail.smtp.socketFactory.port", "465");
+    properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+    properties.put("mail.smtp.auth", "true");
+    properties.put("mail.smtp.port", "465");
+    
+    session = Session.getDefaultInstance(properties, new Authenticator() {
+      @Override
+      protected PasswordAuthentication getPasswordAuthentication() {
+        return new PasswordAuthentication("camopenthedoor@gmail.com", "openthedoor!");
+      }
+    });
+    
+    RetrieveFeedTask task = new RetrieveFeedTask();
+    task.execute();
+    
+    
+    
+    
+  
+  
+  
+  
+  
+  
+  
+  
+    //Toast.makeText(getApplicationContext(),"You will be moved to Main Activity page pretty soon",Toast.LENGTH_LONG).show();
   
   
   } // onCreate
@@ -65,40 +125,51 @@ public class ConfirmationActivity extends AppCompatActivity {
   //port 587
   
   //
+  class RetrieveFeedTask extends AsyncTask<String, Void, String>{
+  
+    @Override
+    protected String doInBackground(String... strings) {
+    
+      try {
+      
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress("camopenthedoor@gmail.com"));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(rec));
+        message.setSubject(subject);
+        message.setContent(textMessage, "text/html; charset=utf-8");
+  
+        Toast.makeText(getApplicationContext(),"Maybe Before Transport", Toast.LENGTH_SHORT).show();
+  
+        Transport.send(message);
+        Toast.makeText(getApplicationContext(),"Maybe After Transport", Toast.LENGTH_SHORT).show();
   
   
+      } catch (Exception e){
+        e.printStackTrace();
+      }
+    
+      return null;
+    }
+  
+    @Override
+    protected void onPostExecute(String result){
+      Toast.makeText(getApplicationContext(),"Maybe On Post Execute", Toast.LENGTH_SHORT).show();
+    }
   
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  }
   
   
   /**
    * Sets userName, services, workers, emotions from previous activity - (Services/Emotion Activity)
    */
-  private void setUsercredentials(){
-    if (getIntent().hasExtra("USERNAME") &&
-            getIntent().hasExtra("SERVICES") &&
-            getIntent().hasExtra("WORKERS") &&
-            getIntent().hasExtra("EMOTIONS")){
-  
-      userName = getIntent().getStringExtra("USERNAME");
-      services = getIntent().getStringExtra("SERVICES");
-      workers = getIntent().getStringExtra("WORKERS");
-      emotions = getIntent().getStringExtra("EMOTIONS");
-
-    } // if
-  //for testing
+  private void setUserCredentials(){
+    userName = User.userName;
+    services = User.serviceName;
+    workers = User.workerName;
+    emotions = User.emotionName;
+    localTime = User.localTime;
+    // for testing
     userName = "AAB";
   }
   /**
@@ -106,7 +177,7 @@ public class ConfirmationActivity extends AppCompatActivity {
    * Sets thanks user message with userName variable on the screen
    */
   private void setThanksUser(){
-    setUsercredentials();
+    setUserCredentials();
     thanksUser = findViewById(R.id.thanksUser);
     thanksUser.setText(buildThanksUserMessage(userName));
   }

@@ -9,6 +9,7 @@ public class User {
   private String worker;
   private String emotion;
   private LocalTime timeInputted;
+  
 
   User(){
 
@@ -28,6 +29,11 @@ public class User {
     worker = "Not Applicable";
     emotion = "Not Applicable";
     timeInputted = timeInputted.now();
+  }
+  
+  
+  public void setName(String userName){
+    this.name = userName;
   }
 
   public void addService(String inputService){
@@ -76,5 +82,16 @@ public class User {
     return timeInputted.toString();
 
   }
+  
+  /**
+   * These variables are used for storing data throughout the application run time.
+   * By Alvee
+   */
+  
+  public static String userName;
+  public static String serviceName;
+  public static String workerName;
+  public static String emotionName;
+  public static LocalTime localTime;
 
 }//User

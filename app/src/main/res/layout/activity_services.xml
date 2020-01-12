@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ServicesActivity">
 
     <ImageView
-        android:id="@+id/logoServices"
-        android:layout_width="800dp"
-        android:layout_height="218dp"
+        android:id="@+id/openDoorLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/alt_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/open_door_logo" />
 
     <Spinner
         android:id="@+id/servicesSpinner"
@@ -23,7 +26,7 @@
         android:textSize ="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoServices" />
+        app:layout_constraintTop_toBottomOf="@+id/openDoorLogo" />
 
     <Spinner
         android:id="@+id/workerSpinner"
@@ -33,4 +36,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/servicesSpinner" />
+
+    <Button
+        android:id="@+id/servicesContinue"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:background="@drawable/button_shape"
+        android:onClick="continueBtnClicked"
+        android:text="@string/continueButton"
+        android:textColor="@color/textColor"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/namesSpinner" />
 </androidx.constraintlayout.widget.ConstraintLayout>

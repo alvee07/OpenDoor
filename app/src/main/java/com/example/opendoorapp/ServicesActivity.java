@@ -13,6 +13,8 @@ package com.example.opendoorapp;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -113,11 +115,15 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     }
 
     /**
-     * After lunch break work on :
+     * Takes user to next Activity - 'Emotions Activity' or, 'Confirmation Activity'
+     * @param view - View object - Button object in this scenario
+     * by Alvee
      *
-     * Getting the switch between spinners (which one selected)
-     * Getting the info of the spinner saved into a variable
-     * Refactoring the code (make it pretty) and cleaning it up
-     * Add comments
      */
+    public void continueBtnClicked(View view){
+
+        Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
+        startActivity(name);
+        finish();
+    } // checkInBtnClicked
 }

@@ -58,24 +58,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="791dp"
-        android:layout_height="225dp"
+        android:id="@+id/openDoorLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/alt_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/image007" />
+        app:srcCompat="@drawable/open_door_logo" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/emotions_question"
-        android:textSize="42sp"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/openDoorLogo"
         app:layout_constraintVertical_bias="0.1" />
 
     <Button
@@ -89,11 +91,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/submitButton"
-        android:layout_width="182dp"
-        android:layout_height="105dp"
-        android:text="@string/submit_button"
-        android:textSize="30sp"
+        android:id="@+id/emotionsCheckSubmit"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:background="@drawable/button_shape"
+        android:onClick="submitBtnClicked"
+        android:text="@string/submit"
+        android:textColor="@color/textColor"
+        android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

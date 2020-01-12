@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name" translatable="false">OpenDoorApp</string>
-    <string name="what_is_your_name">What is your name?</string>
-    <string name="what_i_need">What I need...</string>
-    <string name="todo">TODO</string>
+    <string name="alt_logo">Camrose Open Door Logo</string>
+    <string name="continueButton">Continue</string>
 
     // Services items
     <string-array name="services">
@@ -21,29 +20,30 @@
         <item>Name 4</item>
     </string-array>
 
-
-    <string name="emotions_question">How are you feeling?</string>
-    <string name="submit_button">Submit</string>
-
-    <string name="continueButton">Continue</string>
-
     // Main Activity
-    <string name="welcome">Welcome To Camrose Open Door</string>
+    <string name="welcome">Welcome</string>
     <string name="checkIn">Check-In</string>
+    <string name="howCanWeHelpYou">How Can We Help You Today?</string>
 
-    // Name
-    <string name="textEnterName">Name</string>
-    <string name="placeHolderName">Please Enter Name Here . . .</string>
 
-    // Services
-    <string name="servicesHowCanWeHelp">How can we help you today?</string>
-    <string name="workersWhoDoYouWantToSee">Who do you want to see today?</string>
+    // Name Activity
+    <string name="textEnterName">Your Name:</string>
+    <string name="placeHolderName">Enter Here . . .</string>
 
-    // Emotions
-    <string name="howAreYouFeeling">How are you feeling today?</string>
 
-    // Confirmation
+    // Services Activity
+    <string name="servicesHowCanWeHelp">How Can We Help You?</string>
+    <string name="workersWhoDoYouWantToSee">Who Do You Want To Visit Today?</string>
+
+
+    // Emotions Activity
+    <string name="howAreYouFeeling">How Are You Feeling Today?</string>
+    <string name="emotions_question">How are you feeling?</string>
+    <string name="submit">Submit</string>
+
+
+    // Confirmation Activity
     <string name="thanksUser">Thanks\&#160;</string>
-    <string name="confirmationMessage">Someone will help you shortly.</string>
+    <string name="confirmationMessage">Someone Will Help You Shortly.</string>
 
 </resources>
