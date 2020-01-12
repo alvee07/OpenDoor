@@ -37,7 +37,7 @@ public class NameActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 name = nameTxt.getText().toString();
-                currentUser.setName(name);
+                //currentUser.setName(name);
             }
         });
 

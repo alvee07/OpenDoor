@@ -27,14 +27,14 @@ import android.widget.Toast;
 import java.time.LocalTime;
 import java.util.Properties;
 
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
+//import javax.mail.Authenticator;
+//import javax.mail.Message;
+//import javax.mail.MessagingException;
+//import javax.mail.PasswordAuthentication;
+//import javax.mail.Session;
+//import javax.mail.Transport;
+//import javax.mail.internet.InternetAddress;
+//import javax.mail.internet.MimeMessage;
 
 public class ConfirmationActivity extends AppCompatActivity {
   
@@ -54,7 +54,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   LocalTime localTime;
   
   
-  Session session = null;
+  //Session session = null;
 
   
   
@@ -96,12 +96,12 @@ public class ConfirmationActivity extends AppCompatActivity {
     properties.put("mail.smtp.auth", "true");
     properties.put("mail.smtp.port", "465");
     
-    session = Session.getDefaultInstance(properties, new Authenticator() {
-      @Override
-      protected PasswordAuthentication getPasswordAuthentication() {
-        return new PasswordAuthentication("camopenthedoor@gmail.com", "openthedoor!");
-      }
-    });
+//    session = Session.getDefaultInstance(properties, new Authenticator() {
+//      @Override
+//      protected PasswordAuthentication getPasswordAuthentication() {
+//        return new PasswordAuthentication("camopenthedoor@gmail.com", "openthedoor!");
+//      }
+//    });
     
     RetrieveFeedTask task = new RetrieveFeedTask();
     task.execute();
@@ -132,18 +132,18 @@ public class ConfirmationActivity extends AppCompatActivity {
     
       try {
       
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress("camopenthedoor@gmail.com"));
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(rec));
-        message.setSubject(subject);
-        message.setContent(textMessage, "text/html; charset=utf-8");
-  
-        Toast.makeText(getApplicationContext(),"Maybe Before Transport", Toast.LENGTH_SHORT).show();
-  
-        Transport.send(message);
-        Toast.makeText(getApplicationContext(),"Maybe After Transport", Toast.LENGTH_SHORT).show();
-  
-  
+//        Message message = new MimeMessage(session);
+//        message.setFrom(new InternetAddress("camopenthedoor@gmail.com"));
+//        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(rec));
+//        message.setSubject(subject);
+//        message.setContent(textMessage, "text/html; charset=utf-8");
+//
+//        Toast.makeText(getApplicationContext(),"Maybe Before Transport", Toast.LENGTH_SHORT).show();
+//
+//        Transport.send(message);
+//        Toast.makeText(getApplicationContext(),"Maybe After Transport", Toast.LENGTH_SHORT).show();
+//
+//
       } catch (Exception e){
         e.printStackTrace();
       }
