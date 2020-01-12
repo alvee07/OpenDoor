@@ -27,7 +27,10 @@ public class NameActivity extends AppCompatActivity {
 
 
     /**
-     * Takes user to next Activity - 'Name Activity'
+     * Checks the EditText input empty or not, then takes it value and stores it in the
+     * User class for using email purpose.
+     * Also Takes user to next Activity - 'Services Activity'
+     *
      * @param view - View object - Button object in this scenario
      * by Alvee
      *
@@ -37,7 +40,7 @@ public class NameActivity extends AppCompatActivity {
         EditText textInputFromUser = findViewById(R.id.userName);
         String userNameFromInput = textInputFromUser.getText().toString().trim();
         if (userNameFromInput.isEmpty()){
-            return;
+            //return;
         }
         User.userName = userNameFromInput;
         Intent nextActivity = new Intent(NameActivity.this, ServicesActivity.class);

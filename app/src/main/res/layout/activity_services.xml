@@ -12,39 +12,53 @@
         android:id="@+id/openDoorLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="fitXY"
         android:contentDescription="@string/alt_logo"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/open_door_logo" />
 
-    <Spinner
-        android:id="@+id/servicesSpinner"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="220dp"
-        android:popupElevation="1000sp"
-        android:textSize ="40sp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/openDoorLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/openDoorLogo">
 
-    <Spinner
-        android:id="@+id/workerSpinner"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="204dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/servicesSpinner" />
+        <Spinner
+            android:id="@+id/workerSpinner"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/servicesSpinner" />
+
+        <Spinner
+            android:id="@+id/servicesSpinner"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:popupElevation="1000sp"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toTopOf="@+id/workerSpinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/servicesContinue"
         android:layout_width="300dp"
         android:layout_height="100dp"
         android:background="@drawable/button_shape"
-        android:onClick="continueBtnClicked"
+        android:onClick="servicesContinueBtnClicked"
         android:text="@string/continueButton"
         android:textColor="@color/textColor"
         android:textSize="40sp"
@@ -52,5 +66,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/namesSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

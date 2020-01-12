@@ -36,6 +36,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
 
+    System.out.println(User.userName);
+
         // Services
         // ===========================================================================
         services = (Spinner) findViewById(R.id.servicesSpinner);
@@ -120,10 +122,10 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
      * by Alvee
      *
      */
-    public void continueBtnClicked(View view){
+    public void servicesContinueBtnClicked (View view){
 
         Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
         startActivity(name);
         finish();
-    } // checkInBtnClicked
+    } // servicesContinueBtnClicked
 }
