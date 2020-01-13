@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">OpenDoorApp</string>
+    <string name="app_name" translatable="false">Camrose Open Door</string>
     <string name="alt_logo">Camrose Open Door Logo</string>
     <string name="continueButton">Continue</string>
 
