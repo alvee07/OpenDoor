@@ -20,9 +20,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.example.opendoorapp.Sending_GMail_Files.MailSender;
+
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConfirmationActivity extends AppCompatActivity {
 
@@ -59,6 +64,23 @@ public class ConfirmationActivity extends AppCompatActivity {
 
     // Go back to Main Activity screen
     startMainActivity();
+  
+  
+  
+    List<String> recipients = new ArrayList<>();
+    //    recipients.add("gihozo@ualberta.ca");
+    //    recipients.add("awtaylor@ualberta.ca");
+    //    recipients.add("benjamin@wilsonsnet.ca");
+    recipients.add("camopnethedoor@gmail.com");
+  
+    String body = "<h1>This is Header for Email body</h1>";
+  
+    for (String temp : recipients) {
+      sendGMailToStaffs(temp, body);
+    }
+    
+    
+    
   } // onCreate
 
   /** Sets userName, services, workers, emotions from User class */
@@ -116,4 +138,26 @@ public class ConfirmationActivity extends AppCompatActivity {
             },
             10000);
   } // startMainActivity
+  
+  
+  
+  
+  
+  public void sendGMailToStaffs(final String oneRecipients, final String emailBody) {
+    new Thread(
+            new Runnable() {
+              @Override
+              public void run() {
+                try {
+                  MailSender sender = new MailSender();
+                  
+                  sender.sendMail(oneRecipients, emailBody, oneRecipients);
+                  
+                } catch (Exception e) {
+                  Log.e("SendMail", e.getMessage(), e);
+                }
+              }
+            })
+            .start();
+  }
 } // ConfirmationActivity
