@@ -31,7 +31,7 @@ import android.widget.Toast;
 public class ServicesActivity extends AppCompatActivity implements OnItemSelectedListener {
 
     private String selectedServices;
-    private Workers selectedWorker;
+    private String selectedWorker;
     private User currentUser;
     private Boolean isSelectedService;
     private Boolean isSelectedWorker;
@@ -46,7 +46,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
     
-        mDetector = new GestureDetectorCompat(this, new MyGestureListener());
+        // Alvee is working onTouchEvent for timer
+        //mDetector = new GestureDetectorCompat(this, new MyGestureListener());
 
         // Services
         // ===========================================================================
@@ -99,18 +100,16 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
             switch (parent.getId()) {
                 case R.id.servicesSpinner:
-                    Toast.makeText(parent.getContext(),
-                            "Services selected is : " + parent.getItemAtPosition(position).toString(),
-                            Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(parent.getContext(), "Services selected is : " + parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+                    
                     selectedServices = parent.getItemAtPosition(position).toString();
                     worker.setEnabled(false);
                     break;
 
                 case R.id.workerSpinner:
-                    Toast.makeText(parent.getContext(),
-                            "Worker selected is : " + parent.getItemAtPosition(position).toString(),
-                            Toast.LENGTH_SHORT).show();
-                    //selectedWorker = parent.getItemAtPosition(position).toString();
+                    //Toast.makeText(parent.getContext(), "Worker selected is : " + parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+                    
+                    selectedWorker = parent.getItemAtPosition(position).toString();
                     services.setEnabled(false);
                     break;
 
@@ -136,21 +135,11 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     } // servicesContinueBtnClicked
 
     /**
-     * Starts MainActivity class in 1000000000000 seconds
+     * Starts MainActivity class in 10 seconds
      *
      * by Alvee
      */
     public void startMainActivity(){
-//        View entireScreen = findViewById(R.id.entireScreen);
-//
-//        entireScreen.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                //show dialog here
-//                return false;
-//            }
-//        });
-        
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -162,24 +151,23 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     } // startMainActivity
     
     
-    
-    @Override
-    public boolean onTouchEvent(MotionEvent event){
-        this.mDetector.onTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
-    
-    
-    
-    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
-    
-        @Override
-        public boolean onSingleTapUp(MotionEvent e) {
-            Toast.makeText(getApplicationContext(),"Touch detected",Toast.LENGTH_LONG).show();
-    
-            return super.onSingleTapUp(e);
-        }
-    }
+    // alvee is working on
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event){
+//        this.mDetector.onTouchEvent(event);
+//        return super.onTouchEvent(event);
+//    }
+//
+//    // alvee is working on
+//    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+//
+//        @Override
+//        public boolean onSingleTapUp(MotionEvent e) {
+//            Toast.makeText(getApplicationContext(),"Touch detected",Toast.LENGTH_LONG).show();
+//
+//            return super.onSingleTapUp(e);
+//        }
+//    }
 
 
 }

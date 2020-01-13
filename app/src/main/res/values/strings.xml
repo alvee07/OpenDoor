@@ -6,18 +6,31 @@
     // Services items
     <string-array name="services">
         <item>-- Choose an option --</item>
-        <item>Service 1</item>
-        <item>Service 2</item>
-        <item>Service 3</item>
-        <item>Service 4</item>
+        <item>I AM IN CRISIS</item>
+        <item>Outreaching</item>
+        <item>FASD Support</item>
+        <item>Restorative Justice</item>
+        <item>Community Helpers</item>
+        <item>ID</item>
+        <item>Tenant Education</item>
+        <item>Counselling</item>
+        <item>Food</item>
+        <item>Clothes</item>
+        <item>A ride</item>
+        <item>Someone to talk to</item>
+        <item>Information</item>
+        <item>Help with paperwork</item>
     </string-array>
 
     <string-array name="names">
         <item>-- Choose an option --</item>
-        <item>Name 1</item>
-        <item>Name 2</item>
-        <item>Name 3</item>
-        <item>Name 4</item>
+        <item>Brianne</item>
+        <item>Mariah</item>
+        <item>Chelsea</item>
+        <item>Javan</item>
+        <item>Silas</item>
+        <item>Jessica</item>
+        <item>Wayne</item>
     </string-array>
 
     // Main Activity

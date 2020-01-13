@@ -20,60 +20,55 @@ android:id="@+id/entireScreen"
         app:srcCompat="@drawable/open_door_logo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/servicesWorkersHolder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openDoorLogo">
 
         <Spinner
             android:id="@+id/workerSpinner"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_width="450dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/spinner_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/servicesSpinner" />
+            app:layout_constraintTop_toBottomOf="@+id/workersID" />
 
         <Spinner
             android:id="@+id/servicesSpinner"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_width="450dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/spinner_background"
-            android:popupElevation="1000sp"
             android:textSize="40sp"
-            app:layout_constraintBottom_toTopOf="@+id/workerSpinner"
+            app:layout_constraintBottom_toTopOf="@+id/workersID"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/serviceID" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/workersID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:text="@string/workers"
             android:textSize="40sp"
             app:layout_constraintBottom_toTopOf="@+id/workerSpinner"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/servicesSpinner" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/serviceID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
             android:text="@string/services"
             android:textSize="40sp"
             app:layout_constraintBottom_toTopOf="@+id/servicesSpinner"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -91,5 +86,5 @@ android:id="@+id/entireScreen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/servicesWorkersHolder" />
 </androidx.constraintlayout.widget.ConstraintLayout>
