@@ -64,17 +64,14 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         //======================================================================================
         services.setOnItemSelectedListener(this);
         worker.setOnItemSelectedListener(this);
-
-
-
-
     } // end of onCreate
 
 
     public void onItemSelected (AdapterView<?> parent, View v, int position, long id) {
+
         services.setPopupBackgroundResource(R.color.openDoorYellowColor);
         worker.setPopupBackgroundResource(R.color.openDoorYellowColor);
-        //services.getChildAt(0).setOutlineSpotShadowColor(getResources().getColor(R.color.openDoorYellowColor));
+
         if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
             services.setEnabled(true);
             worker.setEnabled(true);
@@ -82,12 +79,11 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         } else {
 
             switch (parent.getId()) {
-
-
                 case R.id.servicesSpinner:
                     Toast.makeText(parent.getContext(),
                             "Services selected is : " + parent.getItemAtPosition(position).toString(),
                             Toast.LENGTH_SHORT).show();
+                    worker.setBackgroundColor(getResources().getColor(R.color.openDoorBackGroundColor));
                     worker.setEnabled(false);
                     break;
 
@@ -105,20 +101,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     }// end of onItemSelected
 
     public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
-    }
-    private void setSelectedServices (){
-
-        if (isSelectedWorker = true){
-            services.setVisibility(View.INVISIBLE);
-            isSelectedWorker = false;
-        }else{
-            isSelectedService = true;
-        }
-    }// end of setSelectedServices
-
-    private void setSelectedWorker(){
-
+        // Auto-generated
     }
 
     /**
@@ -138,8 +121,13 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 /**
  * To work on after supper:
  *
+ * 
  * Setting a black color once the second option has been disabled
  * Remove the blue lines color inside the spinner
  * Setting up an arrow within the spinners
+ * Clean up code
+ * Add a timer
+ *
+ *
  *
  */

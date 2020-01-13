@@ -15,7 +15,7 @@
         <activity android:name=".EmotionsCheck"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".ServicesActivity"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".Admin"
@@ -28,7 +28,7 @@
             android:name=".ConfirmationActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ServicesActivity"
+        <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
 
             <intent-filter>
