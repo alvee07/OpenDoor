@@ -38,30 +38,28 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
 
-    System.out.println(User.userName);
-
         // Services
         // ===========================================================================
         services = (Spinner) findViewById(R.id.servicesSpinner);
         //container that hold the values and integrate them with the spinner
-        ArrayAdapter<String> myadapter = new ArrayAdapter<String>(ServicesActivity.this,
+        ArrayAdapter<String> servicesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.services));
 
         //specifiy that it is a drop down list
         //services.setBackgroundColor(R.color.openDoorBackGroundColor);
-        myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        services.setAdapter(myadapter);
+        servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        services.setAdapter(servicesAdapter);
         //=============================================================================
 
         //Workers
         //==============================================================================
         worker =(Spinner) findViewById(R.id.workerSpinner);
         // Container that hold the values and integrate them with the spinner
-        ArrayAdapter<String> namesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
+        ArrayAdapter<String> workerAdapter = new ArrayAdapter<String>(ServicesActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
 
-        myadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        worker.setAdapter(namesAdapter);
+        servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        worker.setAdapter(workerAdapter);
         //======================================================================================
         services.setOnItemSelectedListener(this);
         worker.setOnItemSelectedListener(this);
@@ -69,7 +67,15 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         startMainActivity();
     } // end of onCreate
 
-
+    /**
+     *
+     * @param parent
+     * @param v
+     * @param position
+     * @param id
+     *
+     * by Arnold
+     */
     public void onItemSelected (AdapterView<?> parent, View v, int position, long id) {
 
         services.setPopupBackgroundResource(R.color.openDoorYellowColor);
@@ -86,6 +92,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
                     Toast.makeText(parent.getContext(),
                             "Services selected is : " + parent.getItemAtPosition(position).toString(),
                             Toast.LENGTH_SHORT).show();
+                    selectedServices = parent.getItemAtPosition(position).toString();
                     worker.setEnabled(false);
                     break;
 
@@ -93,6 +100,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
                     Toast.makeText(parent.getContext(),
                             "Worker selected is : " + parent.getItemAtPosition(position).toString(),
                             Toast.LENGTH_SHORT).show();
+                    //selectedWorker = parent.getItemAtPosition(position).toString();
                     services.setEnabled(false);
                     break;
 
@@ -102,9 +110,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
     }// end of onItemSelected
 
-    public void onNothingSelected(AdapterView<?> arg0) {
-        // Auto-generated
-    }
+    public void onNothingSelected(AdapterView<?> arg0) {}
 
     /**
      * Takes user to next Activity - 'Emotions Activity' or, 'Confirmation Activity'
