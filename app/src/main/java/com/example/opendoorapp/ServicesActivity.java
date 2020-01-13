@@ -11,8 +11,13 @@
 package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GestureDetectorCompat;
 
+import android.app.Activity;
 import android.os.Handler;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -32,11 +37,16 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     private Boolean isSelectedWorker;
     private Spinner services;
     private Spinner worker;
-
+    
+    private GestureDetectorCompat mDetector;
+    
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
+    
+        mDetector = new GestureDetectorCompat(this, new MyGestureListener());
 
         // Services
         // ===========================================================================
@@ -64,7 +74,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         services.setOnItemSelectedListener(this);
         worker.setOnItemSelectedListener(this);
 
-        startMainActivity();
+        //startMainActivity();
     } // end of onCreate
 
     /**
@@ -78,8 +88,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
      */
     public void onItemSelected (AdapterView<?> parent, View v, int position, long id) {
 
-        services.setPopupBackgroundResource(R.color.openDoorYellowColor);
-        worker.setPopupBackgroundResource(R.color.openDoorYellowColor);
+        services.setPopupBackgroundResource(R.color.servicesSpinnerBackground);
+        worker.setPopupBackgroundResource(R.color.servicesSpinnerBackground);
 
         if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
             services.setEnabled(true);
@@ -131,7 +141,16 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
      * by Alvee
      */
     public void startMainActivity(){
-
+//        View entireScreen = findViewById(R.id.entireScreen);
+//
+//        entireScreen.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                //show dialog here
+//                return false;
+//            }
+//        });
+        
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -141,6 +160,28 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
             }
         }, 10000);
     } // startMainActivity
+    
+    
+    
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        this.mDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
+    }
+    
+    
+    
+    class MyGestureListener extends GestureDetector.SimpleOnGestureListener {
+    
+        @Override
+        public boolean onSingleTapUp(MotionEvent e) {
+            Toast.makeText(getApplicationContext(),"Touch detected",Toast.LENGTH_LONG).show();
+    
+            return super.onSingleTapUp(e);
+        }
+    }
+
+
 }
 
 /**

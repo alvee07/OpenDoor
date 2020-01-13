@@ -6,56 +6,81 @@
     android:layout_height="match_parent"
     tools:context=".EmotionsCheck">
 
-    <Button
-        android:id="@+id/contentButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="28dp"
-        android:background="@drawable/content_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/neutralButton"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toTopOf="@+id/emotionsCheckSubmit"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="-45dp">
 
-    <Button
-        android:id="@+id/upsetButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:background="@drawable/upset_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.561"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/happyButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/happy_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/contentButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/happyButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="28dp"
-        android:background="@drawable/happy_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/contentButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/contentButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/content_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/neutralButton"
+            app:layout_constraintStart_toEndOf="@+id/happyButton"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/sadButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="28dp"
-        android:background="@drawable/sad_emoji"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/upsetButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/neutralButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/neutral_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/upsetButton"
+            app:layout_constraintStart_toEndOf="@+id/contentButton"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/angryButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="28dp"
-        android:background="@drawable/angry_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/sadButton"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/upsetButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/upset_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/sadButton"
+            app:layout_constraintStart_toEndOf="@+id/neutralButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/sadButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/sad_emoji"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/angryButton"
+            app:layout_constraintStart_toEndOf="@+id/upsetButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/angryButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/angry_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sadButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
         android:id="@+id/openDoorLogo"
@@ -79,16 +104,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openDoorLogo"
         app:layout_constraintVertical_bias="0.1" />
-
-    <Button
-        android:id="@+id/neutralButton"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="28dp"
-        android:background="@drawable/neutral_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/upsetButton"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/emotionsCheckSubmit"

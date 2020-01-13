@@ -8,6 +8,7 @@
  * option 1 - https://coderanch.com/t/674882/Automatically-starting-activity-time
  * option 2 - https://stackoverflow.com/questions/6304035/how-to-display-an-activity-automatically-after-5-seconds
  *
+ * @author Alvee Hassan Akash
  * @version 1.0
  * @since 2020-01-10
  */
@@ -40,9 +41,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   String userName, services, workers, emotions;
   LocalTime localTime;
   
-
-
-
+  
   
   /**
    * When the program starts.
@@ -63,20 +62,16 @@ public class ConfirmationActivity extends AppCompatActivity {
     setConfirmationMessage();
     
     startMainActivity();
-  
-  
-    //Toast.makeText(getApplicationContext(),"You will be moved to Main Activity page pretty soon",Toast.LENGTH_LONG).show();
-  
+    
   
   } // onCreate
   
-  //port 587
   
 
   
   
   /**
-   * Sets userName, services, workers, emotions from previous activity - (Services/Emotion Activity)
+   * Sets userName, services, workers, emotions from User class
    */
   private void setUserCredentials(){
     userName = User.userName;
@@ -84,8 +79,7 @@ public class ConfirmationActivity extends AppCompatActivity {
     workers = User.workerName;
     emotions = User.emotionName;
     localTime = User.localTime;
-    // for testing
-    userName = "AAB";
+
   }
   /**
    * Gets thanksUser textView from XML
@@ -121,7 +115,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   }
   
   /**
-   * Starts MainActivity class in 1000000000000 seconds
+   * Starts MainActivity class in 10 seconds after showing Confirmation screen
    */
   public void startMainActivity(){
   

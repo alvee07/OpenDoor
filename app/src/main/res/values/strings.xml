@@ -34,6 +34,8 @@
     // Services Activity
     <string name="servicesHowCanWeHelp">How Can We Help You?</string>
     <string name="workersWhoDoYouWantToSee">Who Do You Want To Visit Today?</string>
+    <string name="services">Services</string>
+    <string name="workers">Workers</string>
 
 
     // Emotions Activity
