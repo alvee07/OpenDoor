@@ -10,9 +10,7 @@
     <color name="openDoorTextColor">#FCFDFD</color>
     <color name="openDoorBackGroundColor">#02020F</color>
     <color name="servicesSpinnerBackground">#FDFDFDFD</color>
-    
-    <color name="continueButton"></color>
-    <color name="buttonText"></color>
+
     <color name="textColor">#02020F</color>
 
 

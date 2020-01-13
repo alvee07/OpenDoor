@@ -40,7 +40,7 @@ public class NameActivity extends AppCompatActivity {
         EditText textInputFromUser = findViewById(R.id.userName);
         String userNameFromInput = textInputFromUser.getText().toString().trim();
         if (userNameFromInput.isEmpty()){
-            //return;
+            return;
         }
         User.userName = userNameFromInput;
         Intent nextActivity = new Intent(NameActivity.this, ServicesActivity.class);
