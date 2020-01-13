@@ -140,9 +140,6 @@ public class ConfirmationActivity extends AppCompatActivity {
   } // startMainActivity
   
   
-  
-  
-  
   public void sendGMailToStaffs(final String oneRecipients, final String emailBody) {
     new Thread(
             new Runnable() {
