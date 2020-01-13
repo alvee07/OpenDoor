@@ -15,26 +15,13 @@ package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.time.LocalTime;
-import java.util.Properties;
 
-//import javax.mail.Authenticator;
-//import javax.mail.Message;
-//import javax.mail.MessagingException;
-//import javax.mail.PasswordAuthentication;
-//import javax.mail.Session;
-//import javax.mail.Transport;
-//import javax.mail.internet.InternetAddress;
-//import javax.mail.internet.MimeMessage;
 
 public class ConfirmationActivity extends AppCompatActivity {
   
@@ -53,16 +40,9 @@ public class ConfirmationActivity extends AppCompatActivity {
   String userName, services, workers, emotions;
   LocalTime localTime;
   
-  
-  //Session session = null;
 
-  
-  
-  final String rec = "highpressure93@gmail.com";
-  final String subject = "First subject";
-  final String textMessage = "This is one more try";
-  
-  
+
+
   
   /**
    * When the program starts.
@@ -85,38 +65,6 @@ public class ConfirmationActivity extends AppCompatActivity {
     startMainActivity();
   
   
-
-    
-    
-  
-    Properties properties = new Properties();
-    properties.put("mail.smtp.host", "smtp.gmail.com");
-    properties.put("mail.smtp.socketFactory.port", "465");
-    properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-    properties.put("mail.smtp.auth", "true");
-    properties.put("mail.smtp.port", "465");
-    
-//    session = Session.getDefaultInstance(properties, new Authenticator() {
-//      @Override
-//      protected PasswordAuthentication getPasswordAuthentication() {
-//        return new PasswordAuthentication("camopenthedoor@gmail.com", "openthedoor!");
-//      }
-//    });
-    
-    RetrieveFeedTask task = new RetrieveFeedTask();
-    task.execute();
-    
-    
-    
-    
-  
-  
-  
-  
-  
-  
-  
-  
     //Toast.makeText(getApplicationContext(),"You will be moved to Main Activity page pretty soon",Toast.LENGTH_LONG).show();
   
   
@@ -124,40 +72,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   
   //port 587
   
-  //
-  class RetrieveFeedTask extends AsyncTask<String, Void, String>{
-  
-    @Override
-    protected String doInBackground(String... strings) {
-    
-      try {
-      
-//        Message message = new MimeMessage(session);
-//        message.setFrom(new InternetAddress("camopenthedoor@gmail.com"));
-//        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(rec));
-//        message.setSubject(subject);
-//        message.setContent(textMessage, "text/html; charset=utf-8");
-//
-//        Toast.makeText(getApplicationContext(),"Maybe Before Transport", Toast.LENGTH_SHORT).show();
-//
-//        Transport.send(message);
-//        Toast.makeText(getApplicationContext(),"Maybe After Transport", Toast.LENGTH_SHORT).show();
-//
-//
-      } catch (Exception e){
-        e.printStackTrace();
-      }
-    
-      return null;
-    }
-  
-    @Override
-    protected void onPostExecute(String result){
-      Toast.makeText(getApplicationContext(),"Maybe On Post Execute", Toast.LENGTH_SHORT).show();
-    }
-  
-  
-  }
+
   
   
   /**
@@ -217,7 +132,7 @@ public class ConfirmationActivity extends AppCompatActivity {
         ConfirmationActivity.this.startActivity(goBackToMainActivity);
         ConfirmationActivity.this.finish();
       }
-    }, 100000);
+    }, 10000);
   } // startMainActivity
   
   
