@@ -11,6 +11,8 @@
 package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Handler;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -19,13 +21,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class ServicesActivity extends AppCompatActivity implements OnItemSelectedListener {
 
     private String selectedServices;
-    //private Worker selectedWorker;
+    private Workers selectedWorker;
     private User currentUser;
     private Boolean isSelectedService;
     private Boolean isSelectedWorker;
@@ -64,6 +65,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         //======================================================================================
         services.setOnItemSelectedListener(this);
         worker.setOnItemSelectedListener(this);
+
+        startMainActivity();
     } // end of onCreate
 
 
@@ -83,7 +86,6 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
                     Toast.makeText(parent.getContext(),
                             "Services selected is : " + parent.getItemAtPosition(position).toString(),
                             Toast.LENGTH_SHORT).show();
-                    worker.setBackgroundColor(getResources().getColor(R.color.openDoorBackGroundColor));
                     worker.setEnabled(false);
                     break;
 
@@ -116,17 +118,33 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         startActivity(name);
         finish();
     } // servicesContinueBtnClicked
+
+    /**
+     * Starts MainActivity class in 1000000000000 seconds
+     *
+     * by Alvee
+     */
+    public void startMainActivity(){
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                final Intent goBackToMainActivity = new Intent(ServicesActivity.this, MainActivity.class);
+               ServicesActivity.this.startActivity(goBackToMainActivity);
+               ServicesActivity.this.finish();
+            }
+        }, 10000);
+    } // startMainActivity
 }
 
 /**
  * To work on after supper:
  *
- * 
+ *
  * Setting a black color once the second option has been disabled
- * Remove the blue lines color inside the spinner
  * Setting up an arrow within the spinners
  * Clean up code
- * Add a timer
+ * Modify the timer to go on when screen not touched
  *
  *
  *
