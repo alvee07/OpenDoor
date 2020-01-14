@@ -46,39 +46,60 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_services);
-    
-    // Alvee is working onTouchEvent for timer
-    //mDetector = new GestureDetectorCompat(this, new MyGestureListener());
-    
-    // Services
-    // ===========================================================================
-    services =  findViewById(R.id.servicesSpinner);
-    //container that hold the values and integrate them with the spinner
-    ArrayAdapter<String> servicesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
-            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.services));
-    
-    //Drop down list of services stored in .xml file
-    servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    services.setAdapter(servicesAdapter);
-    //=============================================================================
 
-    
-    //Workers
-    //==============================================================================
-    worker = findViewById(R.id.workerSpinner);
-    // Container that hold the values and integrate them with the spinner
-    ArrayAdapter<String> workerAdapter = new ArrayAdapter<String>(ServicesActivity.this,
-            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
-    
-    servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    worker.setAdapter(workerAdapter);
-    //======================================================================================
+    servicesSpinner();
+    workerSpinner();
 
     services.setOnItemSelectedListener(this);
     worker.setOnItemSelectedListener(this);
     
 
   } // end of onCreate
+
+
+  /**
+   * Sets up the services spinner (with the items from the string.xml file) and sets up
+   * the drop down menu
+   *
+   * by Arnold
+   *
+   * Initial setup of this has been inspired from this source
+   * https://developer.android.com/guide/topics/ui/controls/spinner.
+   * Accessed on January 11, 2020
+   */
+  public void servicesSpinner(){
+    services =  findViewById(R.id.servicesSpinner);
+    //container that hold the values and integrate them with the spinner
+    ArrayAdapter<String> servicesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
+            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.services));
+
+    //Drop down list of services stored in .xml file
+    servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    services.setAdapter(servicesAdapter);
+  } // end of servicesSpinner
+
+  /**
+   * Sets up the worker spinner (with the items from the string.xml file) and sets up
+   * the drop down menu
+   *
+   * by Arnold
+   *
+   * Initial setup of this has been inspired from this source
+   * https://developer.android.com/guide/topics/ui/controls/spinner.
+   * Accessed on January 11, 2020
+   */
+  public void workerSpinner(){
+    //Workers
+    //==============================================================================
+    worker = findViewById(R.id.workerSpinner);
+    // Container that hold the values and integrate them with the spinner
+    ArrayAdapter<String> workerAdapter = new ArrayAdapter<String>(ServicesActivity.this,
+            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
+
+    workerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    worker.setAdapter(workerAdapter);
+
+  }// end of workerSpinner
   
   /**
    * Checks the selections of the user. If user selects services, it disables the staff
@@ -88,6 +109,10 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    * @param view -- the view that was selected
    * @param position -- position of the view
    * @param id -- the id of the item selected
+   *
+   * To excecute this section, I looked over the code on StackOver flow on Saturday January 11, 2020
+   * https://stackoverflow.com/questions/4476379/spinner-switch-case-problem
+   * Changes have been made to fit this project and refactoring the code
    *
    * by Arnold
    */
