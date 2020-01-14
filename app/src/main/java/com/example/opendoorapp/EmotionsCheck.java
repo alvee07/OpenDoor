@@ -38,138 +38,130 @@ public class EmotionsCheck extends AppCompatActivity {
     submitButton = findViewById(R.id.emotionsCheckSubmit);
 
 
-    happyButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
+    happyButton.setOnClickListener(new View.OnClickListener(){
+      public void onClick(View v){
 
         selectedEmotion = "happy";
 
-        happyButton.setPressed(true);
-        checkOtherButtons();
+        if(v == happyButton){
+
+          happyButton.setBackground(getDrawable(R.drawable.happy_emoji_selected));
+
+          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+
+        }
+
       }
     });
 
-    contentButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
+    contentButton.setOnClickListener(new View.OnClickListener(){
+      public void onClick(View v){
 
         selectedEmotion = "content";
 
-        contentButton.setPressed(true);
-        checkOtherButtons();
+        if(v == contentButton){
+
+          contentButton.setBackground(getDrawable(R.drawable.content_emoji_selected));
+
+          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+
+        }
+
       }
     });
 
-    neutralButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
+    neutralButton.setOnClickListener(new View.OnClickListener(){
+      public void onClick(View v){
 
         selectedEmotion = "neutral";
 
-        neutralButton.setPressed(true);
-        checkOtherButtons();
+        if(v == neutralButton){
+
+          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji_selected));
+
+          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+
+        }
+
       }
     });
 
-    upsetButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
+    upsetButton.setOnClickListener(new View.OnClickListener(){
+      public void onClick(View v){
 
         selectedEmotion = "upset";
 
-        upsetButton.setPressed(true);
-        checkOtherButtons();
+        if(v == upsetButton){
+
+          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji_selected));
+
+          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+        }
+
       }
     });
 
-    sadButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
+    sadButton.setOnClickListener(new View.OnClickListener(){
+      public void onClick(View v){
 
         selectedEmotion = "sad";
 
-        sadButton.setPressed(true);
-        checkOtherButtons();
+        if(v == sadButton){
+
+          sadButton.setBackground(getDrawable(R.drawable.sad_emoji_selected));
+
+          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+
+        }
+
       }
     });
 
-    angryButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
+    angryButton.setOnClickListener(new View.OnClickListener(){
+      public void onClick(View v){
 
         selectedEmotion = "angry";
 
-        angryButton.setPressed(true);
-        checkOtherButtons();
+        if(v == angryButton){
+
+          angryButton.setBackground(getDrawable(R.drawable.angry_emoji_selected));
+
+          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+
+        }
+
       }
     });
 
-    //    submitButton.setOnClickListener(new View.OnClickListener() {
-    //      @Override
-    //      public void onClick(View v) {
-    //
-    //
-    //      }
-    //    });
 
     
   } // onCreate
 
-  private void checkOtherButtons(){
 
-    happyButton = findViewById(R.id.happyButton);
-    contentButton = findViewById(R.id.contentButton);
-    neutralButton = findViewById(R.id.neutralButton);
-    upsetButton = findViewById(R.id.upsetButton);
-    sadButton = findViewById(R.id.sadButton);
-    angryButton = findViewById(R.id.angryButton);
-
-    switch (selectedEmotion){
-
-      case "happy":
-        contentButton.setPressed(false);
-        neutralButton.setPressed(false);
-        upsetButton.setPressed(false);
-        sadButton.setPressed(false);
-        angryButton.setPressed(false);
-
-      case "content":
-        happyButton.setPressed(false);
-        neutralButton.setPressed(false);
-        upsetButton.setPressed(false);
-        sadButton.setPressed(false);
-        angryButton.setPressed(false);
-
-      case "neutral":
-        happyButton.setPressed(false);
-        contentButton.setPressed(false);
-        upsetButton.setPressed(false);
-        sadButton.setPressed(false);
-        angryButton.setPressed(false);
-
-      case "upset":
-        happyButton.setPressed(false);
-        contentButton.setPressed(false);
-        neutralButton.setPressed(false);
-        sadButton.setPressed(false);
-        angryButton.setPressed(false);
-
-      case "sad":
-        happyButton.setPressed(false);
-        contentButton.setPressed(false);
-        neutralButton.setPressed(false);
-        upsetButton.setPressed(false);
-        angryButton.setPressed(false);
-
-      case "angry":
-        happyButton.setPressed(false);
-        contentButton.setPressed(false);
-        neutralButton.setPressed(false);
-        upsetButton.setPressed(false);
-        sadButton.setPressed(false);
-    }//switch
-
-  }//checkOtherButtons
   /**
    * Takes user to next Activity - 'Confirmation Activity'
    * @param view - View object - Button object in this scenario

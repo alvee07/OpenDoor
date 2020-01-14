@@ -1,13 +1,15 @@
-
 /**
  * ConfirmationActivity.java
  *
- * <p>This Class is the confirmation view on the tablet. It shows the user that his/her request
- * has been accepted by Camrose Open Door.
+ * <p>This Class is the confirmation view on the tablet. It shows the user that his/her request has
+ * been accepted by Camrose Open Door.
  *
- * option 1 - https://coderanch.com/t/674882/Automatically-starting-activity-time
- * option 2 - https://stackoverflow.com/questions/6304035/how-to-display-an-activity-automatically-after-5-seconds
+ * <p>It also gives User a Feedback by thanking him/her on the screen.
  *
+ * <p>Go to different activity after a certain amount of time code taken from -
+ * https://stackoverflow.com/questions/6304035/how-to-display-an-activity-automatically-after-5-seconds
+ *
+ * @author Alvee Hassan Akash
  * @version 1.0
  * @since 2020-01-10
  */
@@ -22,33 +24,25 @@ import android.widget.TextView;
 
 import java.time.LocalTime;
 
-
 public class ConfirmationActivity extends AppCompatActivity {
-  
+
   /**
    * Variable list
    *
-   * thanksUser - String value
-   * confirmationMessage - String value
-   * userName - String value - Store user name
-   * services - String value - Store what type of services user chose
-   * workers - String value - Store who they chose to talk
-   * emotions - String value - Store how they are feeling today
+   * <p>thanksUser - String value confirmationMessage - String value userName - String value - Store
+   * user name services - String value - Store what type of services user chose workers - String
+   * value - Store who they chose to talk emotions - String value - Store how they are feeling today
    * localTime - LocalTime value - Store system current time
    */
   TextView thanksUser, confirmationMessage;
+
   String userName, services, workers, emotions;
   LocalTime localTime;
-  
 
-
-
-  
   /**
-   * When the program starts.
-   * 1) Set up 'userName' variable to given name from 'Services/Emotion Activity' class.
-   * 2) Shows the confirmation message string on the screen with userName.
-   * 3) This activity stays active for 10000000000000000 seconds and goes back to 'Main Activity' class.
+   * When the program starts. 1) Set up 'userName' variable to given name from 'Services/Emotion
+   * Activity' class. 2) Shows the confirmation message string on the screen with userName. 3) This
+   * activity stays active for 10 seconds and goes back to 'Main Activity' class.
    *
    * @param savedInstanceState
    */
@@ -56,62 +50,48 @@ public class ConfirmationActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_confirmation);
-    
-    
-  
-    setThanksUser();
-    setConfirmationMessage();
-    
-    startMainActivity();
-  
-  
-    //Toast.makeText(getApplicationContext(),"You will be moved to Main Activity page pretty soon",Toast.LENGTH_LONG).show();
-  
-  
-  } // onCreate
-  
-  //port 587
-  
 
-  
-  
-  /**
-   * Sets userName, services, workers, emotions from previous activity - (Services/Emotion Activity)
-   */
-  private void setUserCredentials(){
+    // Set Thank User to the screen
+    setThanksUser();
+
+    // Set general Confirmation message
+    setConfirmationMessage();
+
+    // Go back to Main Activity screen
+    startMainActivity();
+  } // onCreate
+
+  /** Sets userName, services, workers, emotions from User class */
+  private void setUserCredentials() {
     userName = User.userName;
     services = User.serviceName;
     workers = User.workerName;
     emotions = User.emotionName;
     localTime = User.localTime;
-    // for testing
-    userName = "AAB";
   }
+
   /**
-   * Gets thanksUser textView from XML
-   * Sets thanks user message with userName variable on the screen
+   * Gets thanksUser textView from XML Sets thanks user message with userName variable on the screen
    */
-  private void setThanksUser(){
+  private void setThanksUser() {
     setUserCredentials();
     thanksUser = findViewById(R.id.thanksUser);
     thanksUser.setText(buildThanksUserMessage(userName));
   }
-  
-  /**
-   * Gets confirmationMessage textView from XML
-   * Sets confirmationMessage message on the screen
-   */
-  private void setConfirmationMessage(){
+
+  /** Gets confirmationMessage textView from XML Sets confirmationMessage message on the screen */
+  private void setConfirmationMessage() {
     confirmationMessage = findViewById(R.id.confirmationMessage);
     confirmationMessage.setText(R.string.confirmationMessage);
   }
-  
+
   /**
    * Takes the userName, adds userName to resource string with '!'
-   * @param userName - String value
-   * @return message - String value
+   *
+   * @param userName - String value - user inputted name from Name Activity
+   * @return message - String value - Build a string in format of 'Thanks "Name" !'
    */
-  public String buildThanksUserMessage(String userName){
+  public String buildThanksUserMessage(String userName) {
     String confirmationMessage01 = getString(R.string.thanksUser);
     StringBuilder confirmationMessage = new StringBuilder(confirmationMessage01);
     confirmationMessage.append(userName);
@@ -119,21 +99,21 @@ public class ConfirmationActivity extends AppCompatActivity {
     String message = confirmationMessage.toString();
     return message;
   }
-  
-  /**
-   * Starts MainActivity class in 1000000000000 seconds
-   */
-  public void startMainActivity(){
-  
-    new Handler().postDelayed(new Runnable() {
-      @Override
-      public void run() {
-        final Intent goBackToMainActivity = new Intent(ConfirmationActivity.this, MainActivity.class);
-        ConfirmationActivity.this.startActivity(goBackToMainActivity);
-        ConfirmationActivity.this.finish();
-      }
-    }, 10000);
+
+  /** Starts MainActivity class in 10 seconds after showing Confirmation screen */
+  public void startMainActivity() {
+
+    new Handler()
+        .postDelayed(
+            new Runnable() {
+              @Override
+              public void run() {
+                final Intent goBackToMainActivity =
+                    new Intent(ConfirmationActivity.this, MainActivity.class);
+                ConfirmationActivity.this.startActivity(goBackToMainActivity);
+                ConfirmationActivity.this.finish();
+              }
+            },
+            10000);
   } // startMainActivity
-  
-  
 } // ConfirmationActivity

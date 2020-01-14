@@ -45,7 +45,7 @@
             android:id="@+id/enterName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="120dp"
             android:text="@string/textEnterName"
             android:textSize="40sp"
             app:layout_constraintBottom_toTopOf="@+id/userName"

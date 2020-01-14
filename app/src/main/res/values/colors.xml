@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#020016</color>
+    <color name="colorPrimaryDark">#020015</color>
     <color name="colorAccent">#02020F</color>
 
     // color chosen from open door logo
@@ -9,9 +9,8 @@
     <color name="openDoorOrangeColor">#FBAB48</color>
     <color name="openDoorTextColor">#FCFDFD</color>
     <color name="openDoorBackGroundColor">#02020F</color>
-    
-    <color name="continueButton"></color>
-    <color name="buttonText"></color>
+    <color name="servicesSpinnerBackground">#FDFDFDFD</color>
+
     <color name="textColor">#02020F</color>
 
 
