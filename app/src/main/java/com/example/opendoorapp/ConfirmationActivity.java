@@ -6,8 +6,23 @@
  *
  * <p>It also gives User a Feedback by thanking him/her on the screen.
  *
- * <p>Go to different activity after a certain amount of time code taken from -
+ * <p>Go to different activity after a certain amount of time code taken from - (modified by Alvee)
  * https://stackoverflow.com/questions/6304035/how-to-display-an-activity-automatically-after-5-seconds
+ *
+ * Methods names are-
+ *
+ * - onCreate(Bundle savedInstanceState)
+ *    Start of Activity
+ * - setUserCredentials()
+ *    Get user inputted values here
+ * - setThanksUser()
+ *    Set Thanks user to screen
+ * - setConfirmationMessage()
+ *    Set confirmation message that request has been accepted
+ * - buildThanksUserMessage(String userName)
+ *    Building String message from user name and resources String
+ * - startMainActivity()
+ *    After 10 seconds this activity will send user to Main Activity
  *
  * @author Alvee Hassan Akash
  * @version 1.0
@@ -33,11 +48,14 @@ public class ConfirmationActivity extends AppCompatActivity {
    * user name services - String value - Store what type of services user chose workers - String
    * value - Store who they chose to talk emotions - String value - Store how they are feeling today
    * localTime - LocalTime value - Store system current time
+   * delayTimeToStartActivity - Integer value - 10 seconds
    */
   TextView thanksUser, confirmationMessage;
 
   String userName, services, workers, emotions;
   LocalTime localTime;
+  
+  Integer delayTimeToStartActivity = 10000;
 
   /**
    * When the program starts. 1) Set up 'userName' variable to given name from 'Services/Emotion
@@ -71,7 +89,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   }
 
   /**
-   * Gets thanksUser textView from XML Sets thanks user message with userName variable on the screen
+   * Gets thanksUser textView from XML, Sets thanks user message with userName variable on the screen
    */
   private void setThanksUser() {
     setUserCredentials();
@@ -89,9 +107,9 @@ public class ConfirmationActivity extends AppCompatActivity {
    * Takes the userName, adds userName to resource string with '!'
    *
    * @param userName - String value - user inputted name from Name Activity
-   * @return message - String value - Build a string in format of 'Thanks "Name" !'
+   * @return message - String value - Build a string in format of 'Thanks "Benjamin" !'
    */
-  public String buildThanksUserMessage(String userName) {
+  private String buildThanksUserMessage(String userName) {
     String confirmationMessage01 = getString(R.string.thanksUser);
     StringBuilder confirmationMessage = new StringBuilder(confirmationMessage01);
     confirmationMessage.append(userName);
@@ -100,20 +118,19 @@ public class ConfirmationActivity extends AppCompatActivity {
     return message;
   }
 
-  /** Starts MainActivity class in 10 seconds after showing Confirmation screen */
-  public void startMainActivity() {
-
-    new Handler()
-        .postDelayed(
-            new Runnable() {
+  /**
+   * Starts MainActivity class in 10 seconds after showing Confirmation class
+   */
+  private void startMainActivity() {
+    new Handler().postDelayed(new Runnable() {
               @Override
               public void run() {
-                final Intent goBackToMainActivity =
-                    new Intent(ConfirmationActivity.this, MainActivity.class);
+                final Intent goBackToMainActivity = new Intent(ConfirmationActivity.this, MainActivity.class);
                 ConfirmationActivity.this.startActivity(goBackToMainActivity);
                 ConfirmationActivity.this.finish();
               }
-            },
-            10000);
+            }, delayTimeToStartActivity);
   } // startMainActivity
+  
+  
 } // ConfirmationActivity
