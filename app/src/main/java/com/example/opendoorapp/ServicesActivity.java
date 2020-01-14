@@ -7,7 +7,7 @@
  * This class will give the opportunity to the user to choose between either a service
  * or a worker. If a specific services is taken, it will then lead the user to choose
  * their emotion.
- * 
+ *
  */
 
 package com.example.opendoorapp;
