@@ -48,7 +48,8 @@
     <string name="servicesHowCanWeHelp">How Can We Help You?</string>
     <string name="workersWhoDoYouWantToSee">Who Do You Want To Visit Today?</string>
     <string name="services">Services</string>
-    <string name="workers">Workers</string>
+    <string name="staff">Staff</string>
+    <string name="or">Or</string>
 
 
     // Emotions Activity
@@ -59,6 +60,6 @@
 
     // Confirmation Activity
     <string name="thanksUser">Thanks\&#160;</string>
-    <string name="confirmationMessage">Someone Will Help You Shortly.</string>
+    <string name="confirmationMessage">Someone Will Be With You Shortly.</string>
 
 </resources>
