@@ -37,14 +37,14 @@ public class Admin extends AppCompatActivity {
 //        startTimer();
 //    }
   
-  private void startTimer() {
+  private void startTimer(int milliseconds) {
     timeout = new Timer();
     timeout.schedule(new TimerTask() {
       @Override
       public void run() {
         goToHome();
       }
-    }, 15000);
+    }, milliseconds);
     
   }
   

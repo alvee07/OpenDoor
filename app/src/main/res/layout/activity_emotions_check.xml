@@ -111,7 +111,7 @@
         android:id="@+id/emotionsCheckSubmit"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:background="@drawable/button_shape"
+        android:background="@color/openDoorYellowColor"
         android:onClick="submitBtnClicked"
         android:text="@string/submit"
         android:textColor="@color/textColor"

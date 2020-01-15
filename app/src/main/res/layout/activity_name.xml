@@ -22,7 +22,7 @@
         android:id="@+id/nameContinue"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:background="@drawable/button_shape"
+        android:background="@color/openDoorYellowColor"
         android:onClick="whatDoINeedHelpBtnClicked"
         android:text="@string/continueButton"
         android:textColor="@color/textColor"
