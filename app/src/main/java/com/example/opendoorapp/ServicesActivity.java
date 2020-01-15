@@ -157,6 +157,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    */
   public void disableSpinner(Spinner currentSpinner){
     currentSpinner.setEnabled(false);
+    currentSpinner.setAlpha(0.3f);
   }
 
   /**
@@ -166,6 +167,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   public void enableSpinners(){
     services.setEnabled(true);
     worker.setEnabled(true);
+    services.setAlpha(1f);
+    worker.setAlpha(1f);
   }
 
   /**
