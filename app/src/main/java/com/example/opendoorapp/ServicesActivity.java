@@ -31,7 +31,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class ServicesActivity extends AppCompatActivity implements OnItemSelectedListener {
-  
+
   private String selectedServices;
   private String selectedWorker;
   private User currentUser;
@@ -46,40 +46,61 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_services);
-    
-    // Alvee is working onTouchEvent for timer
-    //mDetector = new GestureDetectorCompat(this, new MyGestureListener());
-    
-    // Services
-    // ===========================================================================
+
+    servicesSpinner();
+    workerSpinner();
+
+    services.setOnItemSelectedListener(this);
+    worker.setOnItemSelectedListener(this);
+
+
+  } // end of onCreate
+
+
+  /**
+   * Sets up the services spinner (with the items from the string.xml file) and sets up
+   * the drop down menu
+   *
+   * by Arnold
+   *
+   * Initial setup of this has been inspired from this source
+   * https://developer.android.com/guide/topics/ui/controls/spinner.
+   * Accessed on January 11, 2020
+   */
+  public void servicesSpinner(){
     services =  findViewById(R.id.servicesSpinner);
     //container that hold the values and integrate them with the spinner
     ArrayAdapter<String> servicesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.services));
-    
+
     //Drop down list of services stored in .xml file
     servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     services.setAdapter(servicesAdapter);
-    //=============================================================================
+  } // end of servicesSpinner
 
-    
+  /**
+   * Sets up the worker spinner (with the items from the string.xml file) and sets up
+   * the drop down menu
+   *
+   * by Arnold
+   *
+   * Initial setup of this has been inspired from this source
+   * https://developer.android.com/guide/topics/ui/controls/spinner.
+   * Accessed on January 11, 2020
+   */
+  public void workerSpinner(){
     //Workers
     //==============================================================================
     worker = findViewById(R.id.workerSpinner);
     // Container that hold the values and integrate them with the spinner
     ArrayAdapter<String> workerAdapter = new ArrayAdapter<String>(ServicesActivity.this,
             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
-    
-    servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+    workerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     worker.setAdapter(workerAdapter);
-    //======================================================================================
 
-    services.setOnItemSelectedListener(this);
-    worker.setOnItemSelectedListener(this);
-    
+  }// end of workerSpinner
 
-  } // end of onCreate
-  
   /**
    * Checks the selections of the user. If user selects services, it disables the staff
    * lists and vice versa.
@@ -89,17 +110,21 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    * @param position -- position of the view
    * @param id -- the id of the item selected
    *
+   * To excecute this section, I looked over the code on StackOver flow on Saturday January 11, 2020
+   * https://stackoverflow.com/questions/4476379/spinner-switch-case-problem
+   * Changes have been made to fit this project and refactoring the code
+   *
    * by Arnold
    */
   public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
 
     setBackgroundColor();
-    
+
     if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
       enableSpinners();
-      
+
     } else {
-      
+
       switch (parent.getId()) {
         case R.id.servicesSpinner:
           disableSpinner(worker);
@@ -111,7 +136,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
       getSelectedServices(parent, position);
 
     }// end of else
-    
+
   }// end of onItemSelected
 
   /**
@@ -165,7 +190,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     return selectedServices = parent.getItemAtPosition(position).toString();
 
   }
-  
+
   /**
    * Takes user to next Activity - 'Emotions Activity' or, 'Confirmation Activity'
    * @param view - View object - Button object in this scenario
@@ -173,12 +198,12 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    *
    */
   public void servicesContinueBtnClicked (View view){
-    
+
     Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
     startActivity(name);
     finish();
   } // servicesContinueBtnClicked
-  
+
   /**
    * Starts MainActivity class in 10 seconds
    *
@@ -194,7 +219,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
       }
     }, 10000);
   } // startMainActivity
-  
 
-}
+
+}// end of file
 
