@@ -1,5 +1,7 @@
 package com.example.opendoorapp.Sending_GMail_Files;
 
+
+
 import java.security.Security;
 import java.util.Properties;
 
@@ -14,8 +16,9 @@ import javax.mail.internet.MimeMessage;
 
 public class MailSender extends javax.mail.Authenticator {
   private Session session;
-  final String user = "camopnethedoor@gmail.com";
+  final static String user = "camopnethedoor@gmail.com";
   final String password = "Alberta2020!";
+  
   
   static {
     Security.addProvider(new JSSEProvider());

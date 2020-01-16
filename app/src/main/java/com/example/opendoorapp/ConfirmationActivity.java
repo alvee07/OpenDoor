@@ -36,9 +36,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.example.opendoorapp.Sending_GMail_Files.MailSender;
+
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConfirmationActivity extends AppCompatActivity {
   
@@ -57,6 +62,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   LocalTime localTime;
   
   Integer delayTimeToStartActivity = 10000;
+  Boolean emailSent;
   
   /**
    * When the program starts. 1) Set up 'userName' variable to given name from 'Services/Emotion
@@ -69,16 +75,49 @@ public class ConfirmationActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_confirmation);
-    
-    // Set Thank User to the screen
-    setThanksUser();
-    
-    // Set general Confirmation message
-    setConfirmationMessage();
-    
-    // Go back to Main Activity screen
-    startMainActivity();
+  
+  
+  
+    emailSendingOverTheNetwork();
+
+
+      // Set Thank User to the screen
+      setThanksUser();
+
+      // Set general Confirmation message
+      setConfirmationMessage();
+
+      // Go back to Main Activity screen
+      startMainActivity();
+ 
+  
+  //setConfirmationMessage();
+
+  
+  
+  
+  
+  
   } // onCreate
+  
+  
+  
+  
+  
+  
+  public void emailSendingOverTheNetwork(){
+    List<String> recipients = new ArrayList<>();
+    //    recipients.add("gihozo@ualberta.ca");
+    //    recipients.add("awtaylor@ualberta.ca");
+    //    recipients.add("benjamin@wilsonsnet.ca");
+    recipients.add("camopnethedoor@gmail.com");
+  
+    String body = "<h1>This is Header for Email body</h1>";
+  
+    for (String temp : recipients) {
+      sendGMailToStaffs(temp, body);
+    }
+  }
   
   /** Sets userName, services, workers, emotions from User class */
   private void setUserCredentials() {
@@ -132,5 +171,26 @@ public class ConfirmationActivity extends AppCompatActivity {
       }
     }, delayTimeToStartActivity);
   } // startMainActivity
+  
+  
+  private void sendGMailToStaffs(final String oneRecipients, final String emailBody) {
+    
+    new Thread(
+            new Runnable() {
+              @Override
+              public void run() {
+                try {
+                  MailSender sender = new MailSender();
+                  
+                  sender.sendMail(oneRecipients, emailBody, oneRecipients);
+                  emailSent = true;
+                } catch (Exception e) {
+                  Log.e("SendMail", e.getMessage(), e);
+                }
+              }
+            })
+            .start();
+    
+  }
   
 } // ConfirmationActivity
