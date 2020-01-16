@@ -61,5 +61,6 @@
     // Confirmation Activity
     <string name="thanksUser">Thanks\&#160;</string>
     <string name="confirmationMessage">Someone Will Be With You Shortly.</string>
+    <string name="emailSendFailed">Please Contact Front Desk</string>
 
 </resources>
