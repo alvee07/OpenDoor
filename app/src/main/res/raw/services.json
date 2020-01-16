@@ -1,0 +1,185 @@
+{
+  "services": [
+    {
+    "name":"Housing",
+    "isEmotion": true,
+    "workers":[
+      {
+      "name":"Mariah",
+      "email":"mariah@camroseopendoor.com"
+      },
+      
+      {
+      "name":"wayne",
+      "email":"wayne@camroseopendoor.com"
+      }
+      ]
+    
+    },
+    
+    {
+    "name":"FASD Supports",
+    "isEmotion": true,
+    "workers":[
+      {
+      "name":"Chelsea",
+      "email":"Chelsea@camroseopendoor.com"
+      }
+      ]
+    },
+    
+    {
+    "name":".I AM IN CRISIS",
+    "isEmotion": true,
+    "workers":[
+      {
+      "name":"Brianne",
+      "email":"Brianne@camroseopendoor.com"
+      },
+      {
+      "name":"wayne",
+      "email":"wayne@camroseopendoor.com"
+      },
+      {
+      "name":"Mariah",
+      "email":"mariah@camroseopendoor.com"
+      }
+      ]
+    },
+    
+    {
+    "name":"Outreach",
+    "isEmotion": true,
+    "workers":[
+      {
+      "name":"wayne",
+      "email":"wayne@camroseopendoor.com"
+      }
+      ]
+    },
+    
+    {
+    "name":"Restorative Justice",
+    "isEmotion": true,
+    "workers":[
+      {
+      "name":"Silas",
+      "email":"silas@camroseopendoor.com"
+      },
+      {
+      "name":"brianne",
+      "email":"brianne@camroseopendoor.com"
+      }
+      ]
+    },
+    {
+    "name":"Community Helpers",
+    "isEmotion": false,
+    "workers":[
+      {
+      "name":"Carson",
+      "email":"Carson@camroseopendoor.com"
+      }
+      ]
+    },
+    
+    {
+    "name":"ID",
+    "isEmotion": false,
+    "workers":[
+      {
+      "name":"brianne",
+      "email":"brianne@camroseopendoor.com"
+      }
+      ]
+    },
+    
+    {
+    "name":"Tenant Helpers",
+    "isEmotion": false,
+    "workers":[
+      {
+      "name":"brianne",
+      "email":"brianne@camroseopendoor.com"
+      }
+      ]
+    },
+    
+    {
+    "name":"Counselling",
+    "isEmotion": false,
+    "workers":[
+      {
+      "name":"brianne",
+      "email":"brianne@camroseopendoor.com"
+      }
+      ]
+    },
+    
+    {
+    "name":"food",
+    "isEmotion": true,
+    "workers":[
+      {
+      "name":"wayne",
+      "email":"wayne@camroseopendoor.com"
+      }
+      ]
+    },
+    
+    {
+    "name":"clothes",
+    "isEmotion": true,
+    "workers":[
+      {
+      "name":"wayne",
+      "email":"wayne@camroseopendoor.com"
+      }
+      ]
+    },
+    
+    {
+    "name":"A Ride",
+    "isEmotion": true,
+    "workers":[
+      {
+      "name":"wayne",
+      "email":"wayne@camroseopendoor.com"
+      }
+      ]
+    },
+    
+    {
+    "name":"Someone to talk to",
+    "isEmotion": true,
+    "workers":[
+      {
+      "name":"wayne",
+      "email":"wayne@camroseopendoor.com"
+      }
+      ]
+    },
+    
+    {
+    "name":"Information",
+    "isEmotion": true,
+    "workers":[
+      {
+      "name":"wayne",
+      "email":"wayne@camroseopendoor.com"
+      }
+      ]
+    },
+    
+    {
+    "name":"Help with Paperwork",
+    "isEmotion": true,
+    "workers":[
+      {
+      "name":"wayne",
+      "email":"wayne@camroseopendoor.com"
+      }
+      ]
+    }
+    ]
+}
