@@ -52,7 +52,7 @@ public class ConfirmationActivity extends AppCompatActivity {
    */
   private TextView thanksUser, confirmationMessage, emailSendFailed;
 
-  private String userName, services, workers, emotions;
+  private String userNameForEmail, servicesForEmail, workersForEmail, emotionsForEmail;
   private LocalTime localTime;
 
   private Integer delayTimeToStartActivity = 10000;
@@ -70,10 +70,11 @@ public class ConfirmationActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_confirmation);
-  
+    setUserCredentials();
+    
     List<String> recipients = new ArrayList<>();
     //    recipients.add("gihozo@ualberta.ca");
-        recipients.add("awtaylor@ualberta.ca");
+    //    recipients.add("awtaylor@ualberta.ca");
     //    recipients.add("benjamin@wilsonsnet.ca");
     recipients.add("camopnethedoor@gmail.com");
     
@@ -82,11 +83,15 @@ public class ConfirmationActivity extends AppCompatActivity {
     
   } // onCreate
   
+  /**
+   * Sends Email to Appropriate Staff when User Check-In
+   *
+   * @param recipients - List (String) of Email addresses email needs to send
+   */
   private void listOfEmailSendingOverTheNetwork(List<String> recipients) {
-
-  
-    String body = "<h1>This is Header for Email body</h1>";
-  
+    
+    String body = emailBodyCreation();
+    
     for (String temp : recipients) {
       sendGMailToStaffs(temp, body);
     }
@@ -109,11 +114,13 @@ public class ConfirmationActivity extends AppCompatActivity {
 
   /** Sets userName, services, workers, emotions from User class */
   private void setUserCredentials() {
-    userName = User.userName;
-    services = User.serviceName;
-    workers = User.workerName;
-    emotions = User.emotionName;
+    userNameForEmail = User.userName;
+    servicesForEmail = User.serviceName;
+    workersForEmail = User.workerName;
+    emotionsForEmail = User.emotionName;
     localTime = User.localTime;
+  
+    userNameForEmail = "alvee"; servicesForEmail = "I am in Crisis";
   } // setUserCredentials
 
   /**
@@ -123,7 +130,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   private void setThanksUser() {
     setUserCredentials();
     thanksUser = findViewById(R.id.thanksUser);
-    thanksUser.setText(buildThanksUserMessage(userName));
+    thanksUser.setText(buildThanksUserMessage(userNameForEmail));
   }
 
   /** Gets confirmationMessage textView from XML Sets confirmationMessage message on the screen */
@@ -216,8 +223,17 @@ public class ConfirmationActivity extends AppCompatActivity {
         });// Runnable
   } // whatToShowOnScreenBasedOnEmailSend
   
-  
-  
+  /**
+   * Returns a String, Email Body which is formatted HTML, and contains all the info user inputted
+   *
+   * @return - String value - Email's body in HTML format
+   */
+  private String emailBodyCreation(){
+    String message = "<h3>" + userNameForEmail + " wants to see you.</h3></br>" +
+                      "<h4>Service needs " + servicesForEmail + "</h4></br>" +
+                      "Feeling " + emotionsForEmail + "</br>";
+    return message;
+  }
   
   
 } // ConfirmationActivity
