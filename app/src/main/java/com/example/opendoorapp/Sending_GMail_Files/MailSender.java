@@ -16,8 +16,8 @@ import javax.mail.internet.MimeMessage;
 
 public class MailSender extends javax.mail.Authenticator {
   private Session session;
-  final static String user = "camopnethedoor@gmail.com";
-  final String password = "Alberta2020!";
+  private final static String user = "camopnethedoor@gmail.com";
+  private final static String password = "Alberta2020!";
   
   
   static {
@@ -42,19 +42,30 @@ public class MailSender extends javax.mail.Authenticator {
     
     session.setDebug(true);
   }
-  
-  public synchronized void sendMail(String subject, String body, String recipients) throws Exception {
+
+  public synchronized Boolean sendMail(String subject, String body, String recipients) {
     MimeMessage message = new MimeMessage(session);
-    DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/html; charset=utf-8"));
-    message.setSender(new InternetAddress(user));
-    message.setSubject(subject);
-    message.setDataHandler(handler);
+    DataHandler handler = new DataHandler(
+                new ByteArrayDataSource(body.getBytes(),
+                        "text/html; charset=utf-8"));
     
-    message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipients));
-    
-    Transport transport = session.getTransport("smtp");
-    transport.connect(user, password);
-    transport.sendMessage(message, message.getAllRecipients());
-    transport.close();
-  }
+    try {
+      message.setSender(new InternetAddress(user));
+      message.setSubject(subject);
+      message.setDataHandler(handler);
+
+      message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipients));
+
+      Transport transport = session.getTransport("smtp");
+      transport.connect(user, password);
+      transport.sendMessage(message, message.getAllRecipients());
+      transport.close();
+      return true;
+    } // try
+    catch (Exception e) {
+      e.printStackTrace();
+      return false;
+    } // catch
+  } // sendMail
+  
 }
