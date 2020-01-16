@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -39,6 +40,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   private Boolean isSelectedWorker;
   private Spinner services;
   private Spinner worker;
+  private boolean isSelectedOption;
   private GestureDetectorCompat mDetector;
 
 
@@ -121,15 +123,19 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     setBackgroundColor();
 
     if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
-      enableSpinners(); // think about how you can refactor this
+      enableSpinners();
+      isSelectedOption = false;
+
 
     } else {
 
       switch (parent.getId()) {
         case R.id.servicesSpinner:
+          isSelectedOption = true;
           disableSpinner(worker);
           break;
         case R.id.workerSpinner:
+          isSelectedOption = true;
           disableSpinner(services);
           break;
       }// end of switch
@@ -202,9 +208,19 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    */
   public void servicesContinueBtnClicked (View view){
 
-    Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
-    startActivity(name);
-    finish();
+    if (isSelectedOption){
+      Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
+      startActivity(name);
+      finish();
+    }else{
+      Context context = getApplicationContext();
+      CharSequence text = "Please select a service or a staff to see!";
+      int duration = Toast.LENGTH_SHORT;
+      Toast toast = Toast.makeText(context, text, duration);
+      toast.show();
+    }
+
+
   } // servicesContinueBtnClicked
 
   /**
