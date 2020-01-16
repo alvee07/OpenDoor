@@ -240,7 +240,6 @@ public class ConfirmationActivity extends AppCompatActivity {
                       "<h4>Service needs " + servicesForEmail + "</h4></br>" +
                       "Feeling " + emotionsForEmail + "</br>";
     return message;
-  }
-  
+  } //emailBodyCreation
   
 } // ConfirmationActivity
