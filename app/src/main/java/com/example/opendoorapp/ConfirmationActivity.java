@@ -32,11 +32,18 @@
 package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GestureDetectorCompat;
+import androidx.core.view.MotionEventCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.time.LocalTime;
 
@@ -56,8 +63,15 @@ public class ConfirmationActivity extends AppCompatActivity {
   String userName, services, workers, emotions;
   LocalTime localTime;
   
-  Integer delayTimeToStartActivity = 10000;
-
+  Integer delayTimeToStartActivity = 100000;
+  
+  
+  
+  
+  
+  
+  
+  
   /**
    * When the program starts. 1) Set up 'userName' variable to given name from 'Services/Emotion
    * Activity' class. 2) Shows the confirmation message string on the screen with userName. 3) This
@@ -75,6 +89,45 @@ public class ConfirmationActivity extends AppCompatActivity {
 
     // Set general Confirmation message
     setConfirmationMessage();
+  
+  
+  
+  
+  
+
+  
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     // Go back to Main Activity screen
     startMainActivity();

@@ -35,6 +35,7 @@ android:id="@+id/entireScreen"
             android:text="@string/or"
             android:textSize="50sp"
             app:layout_constraintBottom_toTopOf="@+id/workersID"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/servicesSpinner" />
 
