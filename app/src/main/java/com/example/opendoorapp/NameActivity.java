@@ -22,8 +22,6 @@ public class NameActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_name);
-  
-  
     hideKeyboardAfterTypingName();
 
   
@@ -63,6 +61,27 @@ public class NameActivity extends AppCompatActivity {
     finish();
   } // checkInBtnClicked
   
+
+
+  /**
+   * Hides Keyboard after user touches anywhere one the screen when EditText is on focus.
+   */
+  private void hideKeyboardAfterTypingName() {
+
+    View nameActivityXMLView = findViewById(R.id.nameActivityXML);
+    final EditText userNameInput = findViewById(R.id.userName);
+
+    nameActivityXMLView.setOnTouchListener(new View.OnTouchListener() {
+
+          public boolean onTouch(View v, MotionEvent event) {
+            if (userNameInput.hasFocus()) {
+              hideSoftKeyboard(NameActivity.this);
+              return true;
+            } else return false;
+          }
+        });
+  }
+  
   
   /**
    * Hides keyboard from the current screen
@@ -78,31 +97,4 @@ public class NameActivity extends AppCompatActivity {
             (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
     inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
   } // hideSoftKeyboard
-  
-  
-  /**
-   * Hides Keyboard after user touches anywhere one the screen when EditText is on focus.
-   */
-  private void hideKeyboardAfterTypingName(){
-    
-    View myView = findViewById(R.id.nameActivityXML);
-    final EditText userNameInput = findViewById(R.id.userName);
-    
-    myView.setOnTouchListener(
-            new View.OnTouchListener() {
-              
-              public boolean onTouch(View v, MotionEvent event) {
-                if (userNameInput.hasFocus()) {
-                  
-                  Toast.makeText(getApplicationContext(), "what up", Toast.LENGTH_SHORT).show();
-                  hideSoftKeyboard(NameActivity.this);
-                  return true;
-                }
-                else
-                  return false;
-              }
-            });
-  }
-  
-  
 }
