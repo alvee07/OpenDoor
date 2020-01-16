@@ -8,8 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/emotionsHolderContainer"
-        android:layout_width="556dp"
-        android:layout_height="377dp"
+        android:layout_width="755dp"
+        android:layout_height="441dp"
         app:layout_constraintBottom_toTopOf="@+id/emotionsCheckSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
@@ -55,9 +55,10 @@
             android:id="@+id/upsetButton"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="104dp"
             android:background="@drawable/upset_button"
             app:layout_constraintEnd_toStartOf="@+id/sadButton"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/happyButton" />
 
@@ -69,17 +70,19 @@
             android:background="@drawable/sad_emoji"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.499"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.791" />
+            app:layout_constraintVertical_bias="0.766" />
 
         <Button
             android:id="@+id/angryButton"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="128dp"
+            android:layout_marginTop="172dp"
             android:background="@drawable/angry_button"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toEndOf="@+id/sadButton"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,9 +93,10 @@
             android:text="Happy"
             app:layout_constraintBottom_toTopOf="@+id/upsetButton"
             app:layout_constraintEnd_toStartOf="@+id/content"
-            app:layout_constraintHorizontal_bias="0.475"
+            app:layout_constraintHorizontal_bias="0.478"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/happyButton" />
+            app:layout_constraintTop_toBottomOf="@+id/happyButton"
+            app:layout_constraintVertical_bias="0.387" />
 
         <TextView
             android:id="@+id/content"
@@ -101,8 +105,10 @@
             android:text="Content"
             app:layout_constraintBottom_toTopOf="@+id/sadButton"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.499"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contentButton" />
+            app:layout_constraintTop_toBottomOf="@+id/contentButton"
+            app:layout_constraintVertical_bias="0.387" />
 
         <TextView
             android:id="@+id/neutral"
@@ -111,8 +117,10 @@
             android:text="Neutral"
             app:layout_constraintBottom_toTopOf="@+id/angryButton"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toEndOf="@+id/content"
-            app:layout_constraintTop_toBottomOf="@+id/neutralButton" />
+            app:layout_constraintTop_toBottomOf="@+id/neutralButton"
+            app:layout_constraintVertical_bias="0.397" />
 
         <TextView
             android:id="@+id/upset"
@@ -121,10 +129,10 @@
             android:text="Upset"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/sad"
-            app:layout_constraintHorizontal_bias="0.447"
+            app:layout_constraintHorizontal_bias="0.449"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/upsetButton"
-            app:layout_constraintVertical_bias="0.084" />
+            app:layout_constraintVertical_bias="0.156" />
 
         <TextView
             android:id="@+id/sad"
@@ -133,9 +141,10 @@
             android:text="Sad"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.499"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sadButton"
-            app:layout_constraintVertical_bias="0.09" />
+            app:layout_constraintVertical_bias="0.156" />
 
         <TextView
             android:id="@+id/mad"
@@ -144,10 +153,10 @@
             android:text="Mad"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.539"
+            app:layout_constraintHorizontal_bias="0.536"
             app:layout_constraintStart_toEndOf="@+id/sad"
             app:layout_constraintTop_toBottomOf="@+id/angryButton"
-            app:layout_constraintVertical_bias="0.102" />
+            app:layout_constraintVertical_bias="0.165" />
 
         <Button
             android:id="@+id/under_influence"
@@ -158,7 +167,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sad"
-            app:layout_constraintVertical_bias="0.211" />
+            app:layout_constraintVertical_bias="0.329" />
 
         <TextView
             android:id="@+id/textView8"
