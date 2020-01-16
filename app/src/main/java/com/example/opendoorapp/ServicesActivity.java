@@ -121,7 +121,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     setBackgroundColor();
 
     if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
-      enableSpinners();
+      enableSpinners(); // think about how you can refactor this
 
     } else {
 
@@ -150,7 +150,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   }
 
   /**
-   * Disables a given spinner
+   * Disables a given spinner and greys out the spinner
    * @param currentSpinner-- the spinner to be disabled
    *
    * by Arnold
