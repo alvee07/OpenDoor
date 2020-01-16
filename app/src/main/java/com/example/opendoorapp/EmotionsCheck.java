@@ -20,6 +20,7 @@ public class EmotionsCheck extends AppCompatActivity {
   Button sadButton;
   Button angryButton;
   Button submitButton;
+  Button underInfluenceButton;
 
 
   @Override
@@ -35,6 +36,7 @@ public class EmotionsCheck extends AppCompatActivity {
     upsetButton = findViewById(R.id.upsetButton);
     sadButton = findViewById(R.id.sadButton);
     angryButton = findViewById(R.id.angryButton);
+    underInfluenceButton = findViewById(R.id.under_influence);
     submitButton = findViewById(R.id.emotionsCheckSubmit);
 
 
@@ -52,6 +54,7 @@ public class EmotionsCheck extends AppCompatActivity {
           upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
           sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
           angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
 
         }
 
@@ -72,6 +75,7 @@ public class EmotionsCheck extends AppCompatActivity {
           upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
           sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
           angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
 
         }
 
@@ -92,6 +96,7 @@ public class EmotionsCheck extends AppCompatActivity {
           upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
           sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
           angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
 
         }
 
@@ -112,6 +117,7 @@ public class EmotionsCheck extends AppCompatActivity {
           neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
           sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
           angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
         }
 
       }
@@ -131,6 +137,7 @@ public class EmotionsCheck extends AppCompatActivity {
           neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
           upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
           angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
 
         }
 
@@ -151,6 +158,29 @@ public class EmotionsCheck extends AppCompatActivity {
           neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
           upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
           sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+
+        }
+
+      }
+    });
+
+    underInfluenceButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        selectedEmotion = "Under Influence";
+
+        if (v == underInfluenceButton){
+
+          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji_selected));
+
+          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
 
         }
 

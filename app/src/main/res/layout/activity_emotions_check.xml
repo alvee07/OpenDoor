@@ -8,79 +8,167 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/emotionsHolderContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="556dp"
+        android:layout_height="377dp"
         app:layout_constraintBottom_toTopOf="@+id/emotionsCheckSubmit"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.647">
 
         <Button
             android:id="@+id/happyButton"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             android:background="@drawable/happy_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/contentButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/contentButton"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginEnd="30dp"
             android:background="@drawable/content_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/neutralButton"
-            app:layout_constraintStart_toEndOf="@+id/happyButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/sadButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/neutralButton"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginEnd="30dp"
             android:background="@drawable/neutral_button"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/upsetButton"
+            app:layout_constraintBottom_toTopOf="@+id/angryButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toEndOf="@+id/contentButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/upsetButton"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginTop="60dp"
             android:background="@drawable/upset_button"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/sadButton"
-            app:layout_constraintStart_toEndOf="@+id/neutralButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/happyButton" />
 
         <Button
             android:id="@+id/sadButton"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="144dp"
             android:background="@drawable/sad_emoji"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/angryButton"
-            app:layout_constraintStart_toEndOf="@+id/upsetButton"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.791" />
 
         <Button
             android:id="@+id/angryButton"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginTop="128dp"
             android:background="@drawable/angry_button"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/sadButton"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/happy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Happy"
+            app:layout_constraintBottom_toTopOf="@+id/upsetButton"
+            app:layout_constraintEnd_toStartOf="@+id/content"
+            app:layout_constraintHorizontal_bias="0.475"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/happyButton" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Content"
+            app:layout_constraintBottom_toTopOf="@+id/sadButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contentButton" />
+
+        <TextView
+            android:id="@+id/neutral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Neutral"
+            app:layout_constraintBottom_toTopOf="@+id/angryButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/content"
+            app:layout_constraintTop_toBottomOf="@+id/neutralButton" />
+
+        <TextView
+            android:id="@+id/upset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upset"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/sad"
+            app:layout_constraintHorizontal_bias="0.447"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upsetButton"
+            app:layout_constraintVertical_bias="0.084" />
+
+        <TextView
+            android:id="@+id/sad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sad"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sadButton"
+            app:layout_constraintVertical_bias="0.09" />
+
+        <TextView
+            android:id="@+id/mad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mad"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.539"
+            app:layout_constraintStart_toEndOf="@+id/sad"
+            app:layout_constraintTop_toBottomOf="@+id/angryButton"
+            app:layout_constraintVertical_bias="0.102" />
+
+        <Button
+            android:id="@+id/under_influence"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/woozy_emoji"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sad"
+            app:layout_constraintVertical_bias="0.211" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Under Influence"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/under_influence" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
