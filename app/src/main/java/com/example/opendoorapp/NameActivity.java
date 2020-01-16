@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class NameActivity extends AppCompatActivity {
@@ -36,10 +37,11 @@ public class NameActivity extends AppCompatActivity {
    *
    */
   public void whatDoINeedHelpBtnClicked(View view){
-    
+    Toast nameMessage = Toast.makeText(getApplicationContext(),"Please Enter Your Name", Toast.LENGTH_SHORT);
     EditText textInputFromUser = findViewById(R.id.userName);
     String userNameFromInput = textInputFromUser.getText().toString().trim();
     if (userNameFromInput.isEmpty()){
+      nameMessage.show();
       return;
     }
     User.userName = userNameFromInput;
