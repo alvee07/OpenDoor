@@ -38,16 +38,35 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   private User currentUser;
   private Boolean isSelectedService;
   private Boolean isSelectedWorker;
+  private Workers[] workerArray;
+  private Service[] serviceArray;
+  private Service yoooo;
+  private Service service2;
   private Spinner services;
   private Spinner worker;
   private boolean isSelectedOption;
   private GestureDetectorCompat mDetector;
+  public String hello;
+  public String[] test;
+
+  Service yo = new Service("arnold", true, null);
 
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_services);
+
+    serviceArray = new Service[]{yo};
+    hello = serviceArray[0].getName();
+
+    test = new String[]{hello,"yoo"};
+
+
+
+
+
+
 
     servicesSpinner();
     workerSpinner();
@@ -72,11 +91,14 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   public void servicesSpinner(){
     services =  findViewById(R.id.servicesSpinner);
     //container that hold the values and integrate them with the spinner
+//    ArrayAdapter<String> servicesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
+//            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
+
     ArrayAdapter<String> servicesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
-            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.services));
+            android.R.layout.simple_list_item_1, test);
 
     //Drop down list of services stored in .xml file
-    servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    //servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     services.setAdapter(servicesAdapter);
   } // end of servicesSpinner
 
