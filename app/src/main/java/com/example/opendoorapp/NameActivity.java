@@ -29,6 +29,8 @@ public class NameActivity extends AppCompatActivity {
     hideKeyboardAfterTypingName();
   
   
+  
+  
 
 
 
@@ -106,23 +108,20 @@ public class NameActivity extends AppCompatActivity {
   } // hideSoftKeyboard
   
   
+  /**
+   *
+   *
+   * https://stackoverflow.com/questions/2478517/how-to-display-a-yes-no-dialog-box-on-android
+   */
+  public void callAlertDialogBoxToInformUsersInactiveScreen(){
   
-  
-  
-  
-  
-  
-}
-/*
-
-
     AlertDialog.Builder builder = new AlertDialog.Builder(NameActivity.this);
   
     // Set a title for alert dialog
-    builder.setTitle("Select your answer.");
+    builder.setTitle("Inactive Screen");
   
     // Ask the final question
-    builder.setMessage("Are you sure to hide?");
+    builder.setMessage("Are you still with us?");
   
     // Set the alert dialog yes button click listener
     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -146,6 +145,10 @@ public class NameActivity extends AppCompatActivity {
     AlertDialog dialog = builder.create();
     // Display the alert dialog on interface
     dialog.show();
-
-
- */
+  } // callAlertDialogBoxToInformUsersInactiveScreen
+  
+  
+  
+  
+  
+} //
