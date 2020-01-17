@@ -242,4 +242,5 @@ public class ConfirmationActivity extends AppCompatActivity {
     return message;
   } //emailBodyCreation
   
+  
 } // ConfirmationActivity
