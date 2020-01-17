@@ -1,2 +1,2 @@
-include ':app', ':additionnal'
+include ':app'
 rootProject.name='OpenDoorApp'
