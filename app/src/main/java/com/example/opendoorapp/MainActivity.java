@@ -3,6 +3,7 @@ package com.example.opendoorapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +15,23 @@ import android.widget.EditText;
 public class  MainActivity extends AppCompatActivity {
 
   String password = "hello";
+  private Context context;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+
+//    JsonWorkerReader services = new JsonWorkerReader(this);
+//    services.workerReader();
+
+    Context currentContext = getApplicationContext();
+    Workers benjamin = new Workers("benjamin", "benjamin@wilsonsnet.ca");
+
+    JSON.saveJSON(currentContext, benjamin, "Benjamin.json");
+
+
+    System.out.println(JSON.loadJSON(currentContext, Workers.class, "Benjamin.json"));
 
 
     Button admin = (Button) findViewById(R.id.admin);

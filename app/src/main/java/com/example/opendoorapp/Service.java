@@ -1,5 +1,7 @@
 package com.example.opendoorapp;
 
+import java.util.Arrays;
+
 public class Service {
     private String name;
     private boolean isIsEmotion;
@@ -15,6 +17,8 @@ public class Service {
     }
 
     Service(Service[] servicesList){
+
+
         this(null,false,null, servicesList);
 
     }
@@ -25,6 +29,33 @@ public class Service {
 
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public boolean isIsEmotion() {
+        return isIsEmotion;
+    }
+
+    public Workers[] getWorkerList() {
+        return workerList;
+    }
+
+    public Service[] getServicesList() {
+        return servicesList;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Service{" +
+                "name='" + name + '\'' +
+                ", isIsEmotion=" + isIsEmotion +
+                ", workerList=" + Arrays.toString(workerList) +
+                ", servicesList=" + Arrays.toString(servicesList) +
+                '}';
+    }
 }
 
 
