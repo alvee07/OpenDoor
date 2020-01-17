@@ -15,7 +15,8 @@ public class WorkerJSON {
     }
     else{
 
-      currentWorkers = JSON.loadJSON(context, Workers.class, "Workerlist.json").getWorkerList();-
+      currentWorkers = JSON.loadJSON(context, Workers.class, "Workerlist.json").getWorkerList();
+
     }
   }
 
