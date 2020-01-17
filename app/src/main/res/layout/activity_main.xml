@@ -23,7 +23,7 @@
         android:id="@+id/checkIn"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:background="@color/openDoorYellowColor"
+        android:background="@drawable/button_shape"
         android:onClick="checkInBtnClicked"
         android:text="@string/checkIn"
         android:textColor="@color/textColor"

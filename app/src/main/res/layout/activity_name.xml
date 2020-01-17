@@ -23,7 +23,6 @@
         android:id="@+id/nameContinue"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:background="@color/openDoorYellowColor"
         android:layout_marginTop="150dp"
         android:background="@drawable/button_shape"
         android:onClick="whatDoINeedHelpBtnClicked"

@@ -84,27 +84,14 @@ android:id="@+id/entireScreen"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/or"
-            android:layout_width="433dp"
-            android:layout_height="35dp"
-            android:gravity="center"
-            android:text="-OR-"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/workerSpinner"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.511"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/servicesSpinner"
-            app:layout_constraintVertical_bias="0.284" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/servicesContinue"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:background="@color/openDoorYellowColor"
+        android:background="@drawable/button_shape"
         android:onClick="servicesContinueBtnClicked"
         android:text="@string/continueButton"
         android:textColor="@color/textColor"
