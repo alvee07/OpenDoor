@@ -8,7 +8,9 @@ public class WorkerJSON {
 
   public WorkerJSON(Context context) {
 
-    if(new String("" + JSON.loadJSON(context, Workers.class, "Workerlist.json")).equals(null)){
+    currentWorkers = JSON.loadJSON(context, Workers.class, "Workerlist.json").getWorkerList();
+
+  if(currentWorkers == null){
 
       currentWorkers = originalWorkerlist();
       JSON.saveJSON(context, currentWorkers, "Workerlist.json");
