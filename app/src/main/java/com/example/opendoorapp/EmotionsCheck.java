@@ -199,6 +199,7 @@ public class EmotionsCheck extends AppCompatActivity {
    *
    */
   public void submitBtnClicked(View view){
+    User.emotionName = selectedEmotion;
     Intent name = new Intent(EmotionsCheck.this, ConfirmationActivity.class);
     startActivity(name);
     finish();
