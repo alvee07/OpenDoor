@@ -37,7 +37,7 @@ public class Workers {
     return email;
   }
 
-  public Boolean getEmotion() {
+  public Boolean isIsEmotion() {
     return isEmotion;
   }
 

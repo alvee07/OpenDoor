@@ -20,18 +20,7 @@ public class  MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
 
-//    JsonWorkerReader services = new JsonWorkerReader(this);
-//    services.workerReader();
-
-    Context currentContext = getApplicationContext();
-    Workers benjamin = new Workers("benjamin", "benjamin@wilsonsnet.ca");
-
-    JSON.saveJSON(currentContext, benjamin, "Benjamin.json");
-
-
-    System.out.println(JSON.loadJSON(currentContext, Workers.class, "Benjamin.json"));
 
 
     Button admin = (Button) findViewById(R.id.admin);
