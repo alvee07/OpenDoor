@@ -200,7 +200,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   }
 
   /**
-   * Trigged when a view disaperars from the screen or when you have an empty adapter
+   * Triggered when a view disaperars from the screen or when you have an empty adapter
    *
    * @param parent -- it is an adapter view (with no selected item)
    *
