@@ -50,6 +50,9 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     servicesSpinner();
     workerSpinner();
 
+    isSelectedService = false;
+    isSelectedWorker = false;
+
     services.setOnItemSelectedListener(this);
     worker.setOnItemSelectedListener(this);
 
@@ -127,9 +130,11 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
       switch (parent.getId()) {
         case R.id.servicesSpinner:
+          isSelectedService = true;
           disableSpinner(worker);
           break;
         case R.id.workerSpinner:
+          isSelectedWorker = true;
           disableSpinner(services);
           break;
       }// end of switch
@@ -199,9 +204,17 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    */
   public void servicesContinueBtnClicked (View view){
 
+    Toast message = Toast.makeText(getApplicationContext(),"Please Select a Service or Staff member", Toast.LENGTH_SHORT);
     Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
-    startActivity(name);
-    finish();
+    if(isSelectedWorker == true || isSelectedService == true){
+      startActivity(name);
+      finish();
+      
+    }
+    else {
+      message.show();
+      return;
+    }
   } // servicesContinueBtnClicked
 
   /**

@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.Toast;
 
 public class EmotionsCheck extends AppCompatActivity {
 
   private String selectedEmotion;
+  private Boolean emotionSelected;
   
 
   Button happyButton;
@@ -29,6 +31,7 @@ public class EmotionsCheck extends AppCompatActivity {
     setContentView(R.layout.activity_emotions_check);
 
     selectedEmotion = "null";
+    emotionSelected = false;
 
     happyButton = findViewById(R.id.happyButton);
     contentButton = findViewById(R.id.contentButton);
@@ -44,6 +47,7 @@ public class EmotionsCheck extends AppCompatActivity {
       public void onClick(View v){
 
         selectedEmotion = "happy";
+        emojiSelected();
 
         if(v == happyButton){
 
@@ -65,6 +69,7 @@ public class EmotionsCheck extends AppCompatActivity {
       public void onClick(View v){
 
         selectedEmotion = "content";
+        emojiSelected();
 
         if(v == contentButton){
 
@@ -86,6 +91,7 @@ public class EmotionsCheck extends AppCompatActivity {
       public void onClick(View v){
 
         selectedEmotion = "neutral";
+        emojiSelected();
 
         if(v == neutralButton){
 
@@ -107,6 +113,7 @@ public class EmotionsCheck extends AppCompatActivity {
       public void onClick(View v){
 
         selectedEmotion = "upset";
+        emojiSelected();
 
         if(v == upsetButton){
 
@@ -127,6 +134,7 @@ public class EmotionsCheck extends AppCompatActivity {
       public void onClick(View v){
 
         selectedEmotion = "sad";
+        emojiSelected();
 
         if(v == sadButton){
 
@@ -148,6 +156,7 @@ public class EmotionsCheck extends AppCompatActivity {
       public void onClick(View v){
 
         selectedEmotion = "angry";
+        emojiSelected();
 
         if(v == angryButton){
 
@@ -170,6 +179,7 @@ public class EmotionsCheck extends AppCompatActivity {
       public void onClick(View v) {
 
         selectedEmotion = "Under Influence";
+        emojiSelected();
 
         if (v == underInfluenceButton){
 
@@ -191,6 +201,13 @@ public class EmotionsCheck extends AppCompatActivity {
     
   } // onCreate
 
+  /**
+   * Used if an emotion button is pressed
+   * by Alex
+   */
+  public void emojiSelected(){
+    emotionSelected = true;
+  }
 
   /**
    * Takes user to next Activity - 'Confirmation Activity'
@@ -201,8 +218,15 @@ public class EmotionsCheck extends AppCompatActivity {
   public void submitBtnClicked(View view){
     User.emotionName = selectedEmotion;
     Intent name = new Intent(EmotionsCheck.this, ConfirmationActivity.class);
-    startActivity(name);
-    finish();
-    System.out.println("Alveeeeeeeejddhchchhdhdhdh");
+    if (emotionSelected == false){
+      Toast message = Toast.makeText(getApplicationContext(),"Please Select an Emotion", Toast.LENGTH_SHORT);
+      message.show();
+      return;
+    }
+    else {
+      startActivity(name);
+      finish();
+      System.out.println("Alveeeeeeeejddhchchhdhdhdh");
+    }
   } // continueBtnClicked
 }
