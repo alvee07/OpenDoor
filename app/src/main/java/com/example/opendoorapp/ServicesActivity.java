@@ -11,7 +11,6 @@
  */
 
 package com.example.opendoorapp;
-import android.app.ProgressDialog;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,10 +30,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.opendoorapp.adapter.MyArrayAdapter;
 import com.example.opendoorapp.model.Service;
 import com.example.opendoorapp.parser.JSONParser;
-import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,7 +53,6 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   private GestureDetectorCompat mDetector;
   public String[] test;
   public static ArrayList<Service> list;
-  private MyArrayAdapter adapter;
   public URL url;
   Service service ;
 
@@ -74,7 +70,6 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     /**
      * Binding that List to Adapter
      */
-    adapter = new MyArrayAdapter(this, list);
 
     /**
      * Checking Internet Connection
@@ -389,7 +384,8 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                */
               JSONObject innerObject = array.getJSONObject(jIndex);
               String name = innerObject.getString(Keys.KEY_NAME);
-              String email = innerObject.getString(Keys.KEY_COUNTRY);
+              String email = innerObject.getString(Keys.KEY_EMAIL);
+              Boolean isEmotion = innerObject.getBoolean(Keys.KEY_ISEMOTION);
 
               /**
                * Getting Object from Object "phone"
@@ -419,15 +415,7 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
   @Override
   protected void onPostExecute(Void aVoid) {
     super.onPostExecute(aVoid);
-    /**
-     * Checking if List size if more than zero then
-     * Update ListView
-     */
-    if (ServicesActivity.getList().size() > 0) {
-      adapter.notifyDataSetChanged();
-    } else {
-      Snackbar.make(findViewById(R.id.parentLayout), "No Data Found", Snackbar.LENGTH_LONG).show();
-    }
+
   }
 }
 
