@@ -55,7 +55,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   private boolean isSelectedOption;
   private GestureDetectorCompat mDetector;
   public String[] test;
-  private ArrayList<Service> list;
+  public static ArrayList<Service> list;
   private MyArrayAdapter adapter;
   public URL url;
   Service service ;
@@ -302,17 +302,25 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     }, 10000);
   } // startMainActivity
 
-
+  public static ArrayList<Service> getList() {
+    return list;
+  }
 }// end of file
 
 // START OF NEW CLASS
+
+/**
+ * Code by admin from The Crazy Coders Club.
+ * followed their tutorial which is why there is a class within a class
+ * found from
+ * https://www.crazycodersclub.com/android/using-google-spread-sheet-as-database-for-android-application-part-1/
+ */
 
 /**
  * Creating Get Data Task for Getting Data From Web
  */
 class GetDataTask extends AsyncTask<Void, Void, Void> {
 
-  ProgressDialog dialog;
   int jIndex;
   int x;
 
@@ -323,17 +331,14 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
      * Progress Dialog for User Interaction
      */
 
-    x = list.size();
+    x = ServicesActivity.getList().size();
 
     if (x == 0)
       jIndex = 0;
     else
       jIndex = x;
 
-    dialog = new ProgressDialog(ServicesActivity.this);
-    dialog.setTitle("Hey Wait Please..." + x);
-    dialog.setMessage("I am getting your JSON");
-    dialog.show();
+
   }
 
   @Nullable
@@ -398,7 +403,7 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
               /**
                * Adding name and phone concatenation in List...
                */
-              list.add(model);
+              ServicesActivity.getList().add(model);
             }
           }
         }
@@ -414,12 +419,11 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
   @Override
   protected void onPostExecute(Void aVoid) {
     super.onPostExecute(aVoid);
-    dialog.dismiss();
     /**
      * Checking if List size if more than zero then
      * Update ListView
      */
-    if (list.size() > 0) {
+    if (ServicesActivity.getList().size() > 0) {
       adapter.notifyDataSetChanged();
     } else {
       Snackbar.make(findViewById(R.id.parentLayout), "No Data Found", Snackbar.LENGTH_LONG).show();

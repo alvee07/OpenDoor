@@ -29,6 +29,14 @@ public class Service {
 
     }//service constructor
 
+    public Service() {
+
+        this.name = "placeholder name";
+        this.email = "example@example.com";
+        this.isIsEmotion = false;
+        this.servicesList = null;
+    }
+
     public String getName() {
         return name;
     }
