@@ -18,33 +18,76 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 
 public class NameActivity extends AppCompatActivity {
   
+  Long currentTime;
+  Long lastCheckedTime;
+  Boolean isScreenBeingTouched = false;
+  private Integer DELAY_TIME_TO_SHOW_ALERT_BOX = 15000;
+  
+  
+  private Handler handler = new Handler();
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_name);
     hideKeyboardAfterTypingName();
+
+    currentTime = System.currentTimeMillis();
+    lastCheckedTime = System.currentTimeMillis();
+    // screenIsAboutToChange();
   
   
-  
-  
-
-
-
-
-
+    lastTimeTouchOnScreen();
     
+    screenMove.run();
+    
+
+  } // onCreate
+
+  private Runnable screenMove =
+      new Runnable() {
+
+        @Override
+        public void run() {
+          
+          if (isScreenBeingTouched) {
+            System.out.println("System had touch input---------------------");
+            isScreenBeingTouched = false;
+          }
+          else {
+
+            handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX);
+            System.out.println("first time--------- " + currentTime);
+            System.out.println("current time------- " + System.currentTimeMillis());
+            System.out.println("difference is ----- " + (System.currentTimeMillis() - currentTime));
+          } // else
+        } // run
+      }; // new Runnable
+
+  private void lastTimeTouchOnScreen() {
+    View myView = findViewById(R.id.nameActivityXML);
+    myView.setOnTouchListener(
+        new View.OnTouchListener() {
+          public boolean onTouch(View v, MotionEvent event) {
+            // ... Respond to touch events
+            
+            isScreenBeingTouched = true;
+            currentTime = System.currentTimeMillis();
+            System.out.println("Current time on System is "+currentTime);
+            
+            return true;
+          }
+        });
   }
-  
-  
-  
 
 
-  
-  
 // Alvee's Method
   /**
    * Checks the EditText input empty or not, then takes it value and stores it in the
@@ -148,7 +191,26 @@ public class NameActivity extends AppCompatActivity {
   } // callAlertDialogBoxToInformUsersInactiveScreen
   
   
-  
+  private Runnable lastTimeActiveScreenCheck =
+          new Runnable() {
+            
+            @Override
+            public void run() {
+              Toast.makeText(NameActivity.this, "This is a delayed toast", Toast.LENGTH_SHORT).show();
+              
+              handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX);
+              if ((System.currentTimeMillis() - DELAY_TIME_TO_SHOW_ALERT_BOX) > lastCheckedTime) {
+                System.out.println("System time is "+System.currentTimeMillis() +" last checked time is "+ lastCheckedTime);
+              }
+              if (isScreenBeingTouched) {
+                isScreenBeingTouched = false;
+              } else {
+                
+                System.out.println("Current time on System is " + System.currentTimeMillis());
+                System.out.println("You are about to go to another screen----------------------------");
+              }
+            }
+          };
   
   
 } //
