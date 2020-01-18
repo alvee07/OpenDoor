@@ -64,7 +64,7 @@
             android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:hint="@string/placeHolderName"
             android:focusedByDefault="true"
-            android:inputType="text"
+            android:inputType="textCapSentences|textPersonName"
             android:maxLength="29"
             android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"

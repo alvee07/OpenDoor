@@ -18,26 +18,25 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.security.DomainCombiner;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 
 public class NameActivity extends AppCompatActivity {
   
   Boolean isScreenBeingTouched;
-  Integer DELAY_TIME_TO_SHOW_ALERT_BOX = 15000;
+  Integer DELAY_TIME_TO_SHOW_ALERT_BOX = 20000;
   
   
   private Handler handler = new Handler();
+  View nameActivityXMLView;
+  EditText userNameInput;
+  
   
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_name);
-    
-    
+    nameActivityXMLView = findViewById(R.id.nameActivityXML);
+    userNameInput = findViewById(R.id.userName);
     
     isScreenBeingTouched = true;
   
@@ -53,6 +52,11 @@ public class NameActivity extends AppCompatActivity {
         @Override
         public void run() {
           if (isScreenBeingTouched) {
+            if (userNameInput.hasFocus()) {
+              System.out.println("has focus and is touched is true");
+              isScreenBeingTouched = false;
+              return;
+            }
 
             System.out.println("System had touch input---------------------");
             isScreenBeingTouched = false;
@@ -60,14 +64,11 @@ public class NameActivity extends AppCompatActivity {
             System.out.println("System had NOT touch input-----------------");
             handler.removeCallbacks(screenMove);
             callAlertDialogBoxToInformUsersInactiveScreen();
-            
           } // else
           handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX);
         } // run
       }; // new Runnable
-  
-  
-  
+
   private void lastTimeTouchOnScreen() {
     View myView = findViewById(R.id.nameActivityXML);
     myView.setOnTouchListener(
@@ -80,8 +81,6 @@ public class NameActivity extends AppCompatActivity {
         });
   } // lastTimeTouchOnScreen
 
-
-// Alvee's Method
   /**
    * Checks the EditText input empty or not, then takes it value and stores it in the
    * User class for using email purpose.
@@ -92,14 +91,12 @@ public class NameActivity extends AppCompatActivity {
    *
    */
   public void whatDoINeedHelpBtnClicked(View view){
-    Toast nameMessage = Toast.makeText(getApplicationContext(),"Please Enter Your Name", Toast.LENGTH_SHORT);
     EditText textInputFromUser = findViewById(R.id.userName);
     String userNameFromInput = textInputFromUser.getText().toString().trim();
     if (userNameFromInput.isEmpty()){
-      nameMessage.show();
+      Toast.makeText(getApplicationContext(), R.string.pleaseEnterYourName, Toast.LENGTH_SHORT).show();
       return;
-      //return;
-    }
+    } // if
     User.userName = userNameFromInput;
     Intent nextActivity = new Intent(NameActivity.this, ServicesActivity.class);
     startActivity(nextActivity);
@@ -112,14 +109,11 @@ public class NameActivity extends AppCompatActivity {
    * Hides Keyboard after user touches anywhere one the screen when EditText is on focus.
    */
   private void hideKeyboardAfterTypingName() {
-
-    View nameActivityXMLView = findViewById(R.id.nameActivityXML);
-    final EditText userNameInput = findViewById(R.id.userName);
-
     nameActivityXMLView.setOnTouchListener(new View.OnTouchListener() {
 
           public boolean onTouch(View v, MotionEvent event) {
             if (userNameInput.hasFocus()) {
+              
               handler.postDelayed(screenMove, DELAY_TIME_TO_SHOW_ALERT_BOX);
               hideSoftKeyboard(NameActivity.this);
               return true;
@@ -185,6 +179,9 @@ public class NameActivity extends AppCompatActivity {
     dialog.show();
   } // callAlertDialogBoxToInformUsersInactiveScreen
   
+  /**
+   * Goes to system screen to Main Activity screen
+   */
   private void changeActivityToMainActivity(){
     Intent goToMainActivity = new Intent(NameActivity.this, MainActivity.class);
     NameActivity.this.startActivity(goToMainActivity);
