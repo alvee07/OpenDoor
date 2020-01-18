@@ -12,15 +12,15 @@
 
 package com.example.opendoorapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 
-import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -31,25 +31,32 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.opendoorapp.model.Service;
+import com.google.android.material.snackbar.Snackbar;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.net.URL;
+import java.util.ArrayList;
+
 public class ServicesActivity extends AppCompatActivity implements OnItemSelectedListener {
 
   private String selectedServices;
   private String selectedWorker;
   private User currentUser;
-  private Boolean isSelectedService;
-  private Boolean isSelectedWorker;
   private Workers[] workerArray;
   private Service[] serviceArray;
-  private Service yoooo;
-  private Service service2;
   private Spinner services;
   private Spinner worker;
   private boolean isSelectedOption;
   private GestureDetectorCompat mDetector;
-  public String hello;
   public String[] test;
-
-  Service yo = new Service("arnold", true, null);
+  private ArrayList<Service> list;
+  private MyArrayAdapter adapter;
+  public URL url;
+  Service service ;
 
 
   @Override
@@ -57,25 +64,57 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_services);
 
-    serviceArray = new Service[]{yo};
-    hello = serviceArray[0].getName();
 
-    test = new String[]{hello,"yoo"};
+    /**
+     * Array List for Binding Data from JSON to this List
+     */
+    list = new ArrayList<>();
+    /**
+     * Binding that List to Adapter
+     */
+    adapter = new MyArrayAdapter(this, list);
+
+    /**
+     * Checking Internet Connection
+     */
+    if (InternetConnection.checkConnection(getApplicationContext())) {
+      new GetDataTask().execute();
+    } else {
+      //Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
+    }
 
 
 
 
 
-
-
+//========================================================
+    // SPINNERS
     servicesSpinner();
     workerSpinner();
 
     services.setOnItemSelectedListener(this);
     worker.setOnItemSelectedListener(this);
 
+    //======================= spinnners=========================
+
 
   } // end of onCreate
+
+  public String[] getServiceInformation(){
+
+    String[] stringArray = new String[serviceArray.length];
+    int position = 0;
+    while (position < serviceArray.length){
+      stringArray[position] = serviceArray[position].getName();
+      position ++;
+
+    }
+    return stringArray;
+  }
+
+//  public String[] getServiceFromJson(){
+//
+//  }
 
 
   /**
@@ -95,7 +134,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 //            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
 
     ArrayAdapter<String> servicesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
-            android.R.layout.simple_list_item_1, test);
+            android.R.layout.simple_list_item_1, getServiceInformation());
 
     //Drop down list of services stored in .xml file
     //servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -263,4 +302,127 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
 
 }// end of file
+
+// START OF NEW CLASS
+
+/**
+ * Creating Get Data Task for Getting Data From Web
+ */
+class GetDataTask extends AsyncTask<Void, Void, Void> {
+
+  ProgressDialog dialog;
+  int jIndex;
+  int x;
+
+  @Override
+  protected void onPreExecute() {
+    super.onPreExecute();
+    /**
+     * Progress Dialog for User Interaction
+     */
+
+    x = list.size();
+
+    if (x == 0)
+      jIndex = 0;
+    else
+      jIndex = x;
+
+    dialog = new ProgressDialog(MainActivity.this);
+    dialog.setTitle("Hey Wait Please..." + x);
+    dialog.setMessage("I am getting your JSON");
+    dialog.show();
+  }
+
+  @Nullable
+  @Override
+  protected Void doInBackground(Void... params) {
+
+    /**
+     * Getting JSON Object from Web Using okHttp
+     */
+    JSONObject jsonObject = JSONParser.getDataFromWeb();
+
+    try {
+      /**
+       * Check Whether Its NULL???
+       */
+      if (jsonObject != null) {
+        /**
+         * Check Length...
+         */
+        if (jsonObject.length() > 0) {
+          /**
+           * Getting Array named "contacts" From MAIN Json Object
+           */
+          JSONArray array = jsonObject.getJSONArray(Keys.KEY_CONTACTS);
+
+          /**
+           * Check Length of Array...
+           */
+
+
+          int lenArray = array.length();
+          if (lenArray > 0) {
+            for (; jIndex < lenArray; jIndex++) {
+
+              /**
+               * Creating Every time New Object
+               * and
+               * Adding into List
+               */
+              InternetConnection.MyDataModel model = new InternetConnection.MyDataModel();
+
+              /**
+               * Getting Inner Object from contacts array...
+               * and
+               * From that We will get Name of that Contact
+               *
+               */
+              JSONObject innerObject = array.getJSONObject(jIndex);
+              String name = innerObject.getString(Keys.KEY_NAME);
+              //String country = innerObject.getString(Keys.KEY_COUNTRY);
+
+              /**
+               * Getting Object from Object "phone"
+               */
+              //JSONObject phoneObject = innerObject.getJSONObject(Keys.KEY_PHONE);
+              //String phone = phoneObject.getString(Keys.KEY_MOBILE);
+
+              model.setName(name);
+              //model.setCountry(country);
+
+              /**
+               * Adding name and phone concatenation in List...
+               */
+              list.add(model);
+            }
+          }
+        }
+      } else {
+
+      }
+    } catch (JSONException je) {
+      Log.i(JSONParser.TAG, "" + je.getLocalizedMessage());
+    }
+    return null;
+  }
+
+  @Override
+  protected void onPostExecute(Void aVoid) {
+    super.onPostExecute(aVoid);
+    dialog.dismiss();
+    /**
+     * Checking if List size if more than zero then
+     * Update ListView
+     */
+    if (list.size() > 0) {
+      adapter.notifyDataSetChanged();
+    } else {
+      Snackbar.make(findViewById(R.id.parentLayout), "No Data Found", Snackbar.LENGTH_LONG).show();
+    }
+  }
+}
+
+}
 
