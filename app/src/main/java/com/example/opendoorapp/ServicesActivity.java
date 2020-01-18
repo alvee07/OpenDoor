@@ -395,6 +395,7 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
 
               model.getName();
               model.setEmail(email);
+              model.setIsEmotion(isEmotion);
 
               /**
                * Adding name and phone concatenation in List...
