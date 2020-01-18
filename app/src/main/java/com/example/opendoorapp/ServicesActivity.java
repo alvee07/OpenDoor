@@ -11,12 +11,12 @@
  */
 
 package com.example.opendoorapp;
+import android.app.ProgressDialog;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Handler;
@@ -31,7 +31,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.opendoorapp.adapter.MyArrayAdapter;
 import com.example.opendoorapp.model.Service;
+import com.example.opendoorapp.parser.JSONParser;
 import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
@@ -328,7 +330,7 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
     else
       jIndex = x;
 
-    dialog = new ProgressDialog(MainActivity.this);
+    dialog = new ProgressDialog(ServicesActivity.this);
     dialog.setTitle("Hey Wait Please..." + x);
     dialog.setMessage("I am getting your JSON");
     dialog.show();
@@ -371,7 +373,8 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                * and
                * Adding into List
                */
-              InternetConnection.MyDataModel model = new InternetConnection.MyDataModel();
+              // maybe add InternetConnection??????????
+              Service model = new Service();
 
               /**
                * Getting Inner Object from contacts array...
@@ -381,7 +384,7 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                */
               JSONObject innerObject = array.getJSONObject(jIndex);
               String name = innerObject.getString(Keys.KEY_NAME);
-              //String country = innerObject.getString(Keys.KEY_COUNTRY);
+              String email = innerObject.getString(Keys.KEY_COUNTRY);
 
               /**
                * Getting Object from Object "phone"
@@ -389,8 +392,8 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
               //JSONObject phoneObject = innerObject.getJSONObject(Keys.KEY_PHONE);
               //String phone = phoneObject.getString(Keys.KEY_MOBILE);
 
-              model.setName(name);
-              //model.setCountry(country);
+              model.getName();
+              model.setEmail(email);
 
               /**
                * Adding name and phone concatenation in List...
@@ -424,5 +427,5 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
   }
 }
 
-}
+
 
