@@ -8,7 +8,7 @@
  *
  * <p>Go to different activity after a certain amount of time code taken from - (modified by Alvee)
  * https://stackoverflow.com/questions/6304035/how-to-display-an-activity-automatically-after-5-seconds
- * Document was access on 10-Jan-2020
+ * Document access date is 10-Jan-2020
  *
  * Methods names are-
  *

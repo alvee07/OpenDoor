@@ -1,7 +1,4 @@
-/**
- * By Arnold Gihozo
- */
-
+/** By Arnold Gihozo */
 package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,60 +9,65 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
-
 public class NameActivity extends AppCompatActivity {
-  
-  Boolean isScreenBeingTouched;
-  Integer DELAY_TIME_TO_SHOW_ALERT_BOX = 20000;
-  
-  
+
+  private Boolean isScreenBeingTouched;
+  private Integer DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN = 15000;
+
   private Handler handler = new Handler();
-  View nameActivityXMLView;
-  EditText userNameInput;
-  
-  
+  private View nameActivityXMLView;
+  private EditText userNameInput;
+  long last_text_edit = 0;
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_name);
-    nameActivityXMLView = findViewById(R.id.nameActivityXML);
-    userNameInput = findViewById(R.id.userName);
-    
-    isScreenBeingTouched = true;
-  
-  
-    lastTimeTouchOnScreen();
-    
-    screenMove.run();
+    getNameActivityXMLViews();
 
+    editTextInputFieldTypingListening();
+
+    isScreenBeingTouched = true;
+
+    lastTimeTouchOnScreen();
+
+    inActiveScreenAlertForClass.run();
   } // onCreate
 
-  private Runnable screenMove =
+  private void getNameActivityXMLViews() {
+    nameActivityXMLView = findViewById(R.id.nameActivityXML);
+    userNameInput = findViewById(R.id.userName);
+  } // getNameActivityXMLViews
+
+  private Runnable inActiveScreenAlertForClass =
       new Runnable() {
         @Override
         public void run() {
           if (isScreenBeingTouched) {
+
             if (userNameInput.hasFocus()) {
               System.out.println("has focus and is touched is true");
-              isScreenBeingTouched = false;
+              isScreenBeingTouched = false; // F
+              handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
               return;
             }
-
             System.out.println("System had touch input---------------------");
             isScreenBeingTouched = false;
+            handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
           } else {
             System.out.println("System had NOT touch input-----------------");
-            handler.removeCallbacks(screenMove);
+            handler.removeCallbacks(inActiveScreenAlertForClass);
             callAlertDialogBoxToInformUsersInactiveScreen();
           } // else
-          handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX);
+          //handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
         } // run
       }; // new Runnable
 
@@ -82,19 +84,57 @@ public class NameActivity extends AppCompatActivity {
   } // lastTimeTouchOnScreen
 
   /**
-   * Checks the EditText input empty or not, then takes it value and stores it in the
-   * User class for using email purpose.
-   * Also Takes user to next Activity - 'Services Activity'
-   *
-   * @param view - View object - Button object in this scenario
-   * by Alvee
-   *
+   * Changes of string sizes (char) in EditText input field calls inActiveScreenAlertForClass method
+   * to show alert box and decides to stay on the screen or not Code is taken from - (Modified by
+   * Alvee)
+   * https://stackoverflow.com/questions/35224459/how-to-detect-if-users-stop-typing-in-edittext-android
+   * Document access date is 18-Jan-2020
    */
-  public void whatDoINeedHelpBtnClicked(View view){
+  private void editTextInputFieldTypingListening() {
+    userNameInput.addTextChangedListener(
+        new TextWatcher() {
+          @Override
+          public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            handler.postDelayed(
+                inActiveScreenAlertForClass,
+                DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
+          }
+
+          @Override
+          public void onTextChanged(final CharSequence s, int start, int before, int count) {
+            // You need to remove this to run only once
+            handler.removeCallbacks(inActiveScreenAlertForClass);
+          }
+
+          @Override
+          public void afterTextChanged(final Editable s) {
+            // avoid triggering event when text is empty
+            if (s.length() > 0) {
+              last_text_edit = System.currentTimeMillis();
+              handler.postDelayed(
+                  inActiveScreenAlertForClass,
+                  DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
+            } else {
+              handler.postDelayed(
+                  inActiveScreenAlertForClass,
+                  DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
+            }
+          }
+        });
+  } // editTextInputFieldTypingListening
+
+  /**
+   * Checks the EditText input empty or not, then takes it value and stores it in the User class for
+   * using email purpose. Also Takes user to next Activity - 'Services Activity'
+   *
+   * @param view - View object - Button object in this scenario by Alvee
+   */
+  public void whatDoINeedHelpBtnClicked(View view) {
     EditText textInputFromUser = findViewById(R.id.userName);
     String userNameFromInput = textInputFromUser.getText().toString().trim();
-    if (userNameFromInput.isEmpty()){
-      Toast.makeText(getApplicationContext(), R.string.pleaseEnterYourName, Toast.LENGTH_SHORT).show();
+    if (userNameFromInput.isEmpty()) {
+      Toast.makeText(getApplicationContext(), R.string.pleaseEnterYourName, Toast.LENGTH_SHORT)
+          .show();
       return;
     } // if
     User.userName = userNameFromInput;
@@ -103,18 +143,17 @@ public class NameActivity extends AppCompatActivity {
     finish();
   } // checkInBtnClicked
 
-
-
-  /**
-   * Hides Keyboard after user touches anywhere one the screen when EditText is on focus.
-   */
+  /** Hides Keyboard after user touches anywhere one the screen when EditText is on focus. */
   private void hideKeyboardAfterTypingName() {
-    nameActivityXMLView.setOnTouchListener(new View.OnTouchListener() {
+    nameActivityXMLView.setOnTouchListener(
+        new View.OnTouchListener() {
 
           public boolean onTouch(View v, MotionEvent event) {
             if (userNameInput.hasFocus()) {
-              
-              handler.postDelayed(screenMove, DELAY_TIME_TO_SHOW_ALERT_BOX);
+
+              handler.postDelayed(
+                  inActiveScreenAlertForClass,
+                  DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
               hideSoftKeyboard(NameActivity.this);
               return true;
             } else return false;
@@ -122,72 +161,74 @@ public class NameActivity extends AppCompatActivity {
         });
   }
 
-
   /**
    * Hides keyboard from the current screen
    *
-   * @param activity - where the method call happens
-   * Code is taken from https://stackoverflow.com/questions/1109022/close-hide-android-soft-keyboard
-   * Document was access on 15-Jan-2020
-   *
-   * by Alvee
+   * @param activity - where the method call happens Code is taken from
+   *     https://stackoverflow.com/questions/1109022/close-hide-android-soft-keyboard Document was
+   *     access on 15-Jan-2020
+   *     <p>by Alvee
    */
   private void hideSoftKeyboard(Activity activity) {
     InputMethodManager inputMethodManager =
-            (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
     inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
   } // hideSoftKeyboard
-  
-  
+
   /**
+   * Calls AlertBox to show on screen that page is being inactive, options given Yes, No. Yes to
+   * stay on the screen, No to send back to Main Activity screen
    *
-   *
+   * <p>Code is taken from - (Modified by Alvee)
    * https://stackoverflow.com/questions/2478517/how-to-display-a-yes-no-dialog-box-on-android
+   * Document access date is 18-Jan-2020
+   *
+   * <p>by Alvee
    */
-  public void callAlertDialogBoxToInformUsersInactiveScreen(){
-  
+  public void callAlertDialogBoxToInformUsersInactiveScreen() {
+
     AlertDialog.Builder builder = new AlertDialog.Builder(NameActivity.this);
-  
+
     // Set a title for alert dialog
     builder.setTitle("Inactive Screen");
-  
+
     // Ask the final question
     builder.setMessage("Are you still with us?");
-  
+
     // Set the alert dialog yes button click listener
-    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-      @Override
-      public void onClick(DialogInterface dialog, int which) {
-        // Do something when user clicked the Yes button
-        handler.postDelayed(screenMove, DELAY_TIME_TO_SHOW_ALERT_BOX);
-        
-      }
-    });
-  
-    // Set the alert dialog no button click listener
-    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-      @Override
-      public void onClick(DialogInterface dialog, int which) {
-        // Do something when No button clicked
-        handler.removeCallbacks(screenMove);
-        changeActivityToMainActivity();
-      }
-    });
-  
+    builder.setPositiveButton(
+        "      Yes      ",
+        new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            // Do something when user clicked the Yes button
+            handler.postDelayed(
+                inActiveScreenAlertForClass,
+                DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
+          }
+        });
+
+//    // Set the alert dialog no button click listener
+//    builder.setNegativeButton(
+//        "No",
+//        new DialogInterface.OnClickListener() {
+//          @Override
+//          public void onClick(DialogInterface dialog, int which) {
+//            // Do something when No button clicked
+//            handler.removeCallbacks(inActiveScreenAlertForClass);
+//            changeActivityToMainActivity();
+//          }
+//        });
+
     AlertDialog dialog = builder.create();
     // Display the alert dialog on interface
     dialog.show();
   } // callAlertDialogBoxToInformUsersInactiveScreen
-  
-  /**
-   * Goes to system screen to Main Activity screen
-   */
-  private void changeActivityToMainActivity(){
+
+  /** Goes to system screen to Main Activity screen */
+  private void changeActivityToMainActivity() {
     Intent goToMainActivity = new Intent(NameActivity.this, MainActivity.class);
     NameActivity.this.startActivity(goToMainActivity);
     NameActivity.this.finish();
-    
   } // changeActivityToMainActivity
-  
 } // NameActivity
-
