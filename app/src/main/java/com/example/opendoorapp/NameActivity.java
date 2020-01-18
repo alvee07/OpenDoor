@@ -18,6 +18,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.security.DomainCombiner;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -25,10 +26,8 @@ import java.util.concurrent.TimeUnit;
 
 public class NameActivity extends AppCompatActivity {
   
-  Long currentTime;
-  Long lastCheckedTime;
-  Boolean isScreenBeingTouched = false;
-  private Integer DELAY_TIME_TO_SHOW_ALERT_BOX = 15000;
+  Boolean isScreenBeingTouched;
+  Integer DELAY_TIME_TO_SHOW_ALERT_BOX = 15000;
   
   
   private Handler handler = new Handler();
@@ -37,55 +36,49 @@ public class NameActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_name);
-    hideKeyboardAfterTypingName();
-
-    currentTime = System.currentTimeMillis();
-    lastCheckedTime = System.currentTimeMillis();
-    // screenIsAboutToChange();
+    
+    
+    
+    isScreenBeingTouched = true;
   
   
     lastTimeTouchOnScreen();
     
     screenMove.run();
-    
 
   } // onCreate
 
   private Runnable screenMove =
       new Runnable() {
-
         @Override
         public void run() {
-          
           if (isScreenBeingTouched) {
+
             System.out.println("System had touch input---------------------");
             isScreenBeingTouched = false;
-          }
-          else {
-
-            handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX);
-            System.out.println("first time--------- " + currentTime);
-            System.out.println("current time------- " + System.currentTimeMillis());
-            System.out.println("difference is ----- " + (System.currentTimeMillis() - currentTime));
+          } else {
+            System.out.println("System had NOT touch input-----------------");
+            handler.removeCallbacks(screenMove);
+            callAlertDialogBoxToInformUsersInactiveScreen();
+            
           } // else
+          handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX);
         } // run
       }; // new Runnable
-
+  
+  
+  
   private void lastTimeTouchOnScreen() {
     View myView = findViewById(R.id.nameActivityXML);
     myView.setOnTouchListener(
         new View.OnTouchListener() {
           public boolean onTouch(View v, MotionEvent event) {
-            // ... Respond to touch events
-            
+            hideKeyboardAfterTypingName();
             isScreenBeingTouched = true;
-            currentTime = System.currentTimeMillis();
-            System.out.println("Current time on System is "+currentTime);
-            
             return true;
           }
         });
-  }
+  } // lastTimeTouchOnScreen
 
 
 // Alvee's Method
@@ -127,6 +120,7 @@ public class NameActivity extends AppCompatActivity {
 
           public boolean onTouch(View v, MotionEvent event) {
             if (userNameInput.hasFocus()) {
+              handler.postDelayed(screenMove, DELAY_TIME_TO_SHOW_ALERT_BOX);
               hideSoftKeyboard(NameActivity.this);
               return true;
             } else return false;
@@ -171,7 +165,8 @@ public class NameActivity extends AppCompatActivity {
       @Override
       public void onClick(DialogInterface dialog, int which) {
         // Do something when user clicked the Yes button
-        // Set the TextView visibility GONE
+        handler.postDelayed(screenMove, DELAY_TIME_TO_SHOW_ALERT_BOX);
+        
       }
     });
   
@@ -180,8 +175,8 @@ public class NameActivity extends AppCompatActivity {
       @Override
       public void onClick(DialogInterface dialog, int which) {
         // Do something when No button clicked
-        Toast.makeText(getApplicationContext(),
-                "No Button Clicked",Toast.LENGTH_SHORT).show();
+        handler.removeCallbacks(screenMove);
+        changeActivityToMainActivity();
       }
     });
   
@@ -190,27 +185,12 @@ public class NameActivity extends AppCompatActivity {
     dialog.show();
   } // callAlertDialogBoxToInformUsersInactiveScreen
   
+  private void changeActivityToMainActivity(){
+    Intent goToMainActivity = new Intent(NameActivity.this, MainActivity.class);
+    NameActivity.this.startActivity(goToMainActivity);
+    NameActivity.this.finish();
+    
+  } // changeActivityToMainActivity
   
-  private Runnable lastTimeActiveScreenCheck =
-          new Runnable() {
-            
-            @Override
-            public void run() {
-              Toast.makeText(NameActivity.this, "This is a delayed toast", Toast.LENGTH_SHORT).show();
-              
-              handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX);
-              if ((System.currentTimeMillis() - DELAY_TIME_TO_SHOW_ALERT_BOX) > lastCheckedTime) {
-                System.out.println("System time is "+System.currentTimeMillis() +" last checked time is "+ lastCheckedTime);
-              }
-              if (isScreenBeingTouched) {
-                isScreenBeingTouched = false;
-              } else {
-                
-                System.out.println("Current time on System is " + System.currentTimeMillis());
-                System.out.println("You are about to go to another screen----------------------------");
-              }
-            }
-          };
-  
-  
-} //
+} // NameActivity
+
