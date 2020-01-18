@@ -67,9 +67,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
      * Array List for Binding Data from JSON to this List
      */
     list = new ArrayList<>();
-    /**
-     * Binding that List to Adapter
-     */
+
 
     /**
      * Checking Internet Connection
@@ -84,8 +82,9 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
 
 
-//========================================================
+   //========================================================
     // SPINNERS
+
     servicesSpinner();
     workerSpinner();
 
@@ -99,10 +98,10 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
   public String[] getServiceInformation(){
 
-    String[] stringArray = new String[serviceArray.length];
+    String[] stringArray = new String[list.size()];
     int position = 0;
-    while (position < serviceArray.length){
-      stringArray[position] = serviceArray[position].getName();
+    while (position < list.size()){
+      stringArray[position] = String.valueOf(list.get(position));
       position ++;
 
     }
