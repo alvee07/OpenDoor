@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class JSONParser {
 
-    private static final String MAIN_URL = "https://script.googleusercontent.com/a/macros/ualberta.ca/echo?user_content_key=xEnKNL5jZcTUXoINqf5jEt-wguNx1opWz80JzkvmZ7fe_HCSjTASbejfAxMnpKGACUx55EcrzFC2mNo0FjIvAQaGxXReuRYCOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMi80zadyHLKAglIVEdYoEkp7ei4iVNOTz1X4897iSixbywob23dSxBctfhUxgCPwKvDfanQTKoL0SNl5M3_4VFPKLDKkgs-p-rWi7AHZdRU4hCDNYvd56PsAhh98Kdr6hECJPmeWG8-k7i9bsdtc5LRMIUgxK1xuXLPmk-GWZxoCoaGK_iiRLzKgIkpmQyeqzQzvQt_V_CZ4&lib=MnrE7b2I2PjfH799VodkCPiQjIVyBAxva";
+    private static final String MAIN_URL = "https://script.googleusercontent.com/a/macros/ualberta.ca/echo?user_content_key=yoc7ZdiarCPaAwRkuiaGOGnK0c2AZBrI3BEnHikxCEavkJNhBhzsL-TfBMMkdL4O-t_PSbOw7lFpPe5pWubcrZDj_8nz7_nUOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMi80zadyHLKAglIVEdYoEkp7ei4iVNOTz1X4897iSixbywob23dSxBctfhUxgCPwKvDfanQTKoL0SNl5M3_4VFPKLDKkgs-p-rWi7AHZdRU4hCDNYvd56PsAhh98Kdr6hECJPmeWG8-k7i9bsdtc5LRMIUgxK1xuXLPmk-GWZxoCoaGK_iiRLzKgIkpmQyeqzQzvQt_V_CZ4&lib=MnrE7b2I2PjfH799VodkCPiQjIVyBAxva";
 
     public static final String TAG = "TAG";
 

@@ -31,7 +31,7 @@ public class Service {
 
     public Service() {
 
-        this.name = "placeholder name";
+        this.name = "place holder";
         this.email = "example@example.com";
         this.isIsEmotion = false;
         this.servicesList = null;
@@ -53,12 +53,13 @@ public class Service {
         return servicesList;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public void setName(String name){
+        this.name = name;
     }
 
     public void setIsEmotion(boolean isEmotion) {
@@ -71,12 +72,7 @@ public class Service {
 
     @Override
     public String toString() {
-        return "Service{" +
-                "name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", isIsEmotion=" + isIsEmotion +
-                ", servicesList=" + Arrays.toString(servicesList) +
-                '}';
+        return name  ;
     }
 }
 

@@ -39,6 +39,7 @@ import org.json.JSONObject;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ServicesActivity extends AppCompatActivity implements OnItemSelectedListener {
 
@@ -63,6 +64,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     setContentView(R.layout.activity_services);
 
 
+
     /**
      * Array List for Binding Data from JSON to this List
      */
@@ -82,11 +84,15 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
 
 
+
    //========================================================
     // SPINNERS
-
+    //services =  findViewById(R.id.servicesSpinner);
     servicesSpinner();
     workerSpinner();
+    //ArrayAdapter<Service> adapter = new ArrayAdapter<Service>(this, R.layout.layout_spinner,R.id.txt, list);
+    //services.setAdapter(adapter);
+
 
     services.setOnItemSelectedListener(this);
     worker.setOnItemSelectedListener(this);
@@ -96,21 +102,19 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
   } // end of onCreate
 
-  public String[] getServiceInformation(){
+  public List<String> getServiceInformation(){
 
-    String[] stringArray = new String[list.size()];
-    int position = 0;
-    while (position < list.size()){
-      stringArray[position] = String.valueOf(list.get(position));
-      position ++;
-
+    List<String> stringArray = new ArrayList<>();
+    if (list != null) {
+      for (int i=0;i< list.size();i++){
+        stringArray.add(list.get(i).getName());
+      }
     }
+
     return stringArray;
+
   }
 
-//  public String[] getServiceFromJson(){
-//
-//  }
 
 
   /**
@@ -125,15 +129,11 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    */
   public void servicesSpinner(){
     services =  findViewById(R.id.servicesSpinner);
-    //container that hold the values and integrate them with the spinner
-//    ArrayAdapter<String> servicesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
-//            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
 
-    ArrayAdapter<String> servicesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
-            android.R.layout.simple_list_item_1, getServiceInformation());
 
-    //Drop down list of services stored in .xml file
-    //servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    ArrayAdapter<Service> servicesAdapter = new ArrayAdapter<Service>(getApplicationContext(),android.R.layout.simple_selectable_list_item, list);
+    servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    servicesAdapter.notifyDataSetChanged();
     services.setAdapter(servicesAdapter);
   } // end of servicesSpinner
 
@@ -196,7 +196,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
           disableSpinner(services);
           break;
       }// end of switch
-      getSelectedServices(parent, position);
+      //getSelectedServices(parent, position);
 
     }// end of else
 
@@ -208,7 +208,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    * by Arnold
    */
   public void setBackgroundColor(){
-    services.setPopupBackgroundResource(R.color.servicesSpinnerBackground);
+  //  services.setPopupBackgroundResource(R.color.servicesSpinnerBackground);
     worker.setPopupBackgroundResource(R.color.servicesSpinnerBackground);
   }
 
@@ -260,7 +260,14 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   /**
    * Takes user to next Activity - 'Emotions Activity' or, 'Confirmation Activity'
    * @param view - View object - Button object in this scenario
+   *
+   *
+   * Modified by Arnold to add the not continue
    * by Alvee
+   *
+   *
+   *             
+   *
    *
    */
   public void servicesContinueBtnClicked (View view){
@@ -383,8 +390,8 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                */
               JSONObject innerObject = array.getJSONObject(jIndex);
               String name = innerObject.getString(Keys.KEY_NAME);
-              String email = innerObject.getString(Keys.KEY_EMAIL);
-              Boolean isEmotion = innerObject.getBoolean(Keys.KEY_ISEMOTION);
+              //String email = innerObject.getString(Keys.KEY_EMAIL);
+              //Boolean isEmotion = innerObject.getBoolean(Keys.KEY_ISEMOTION);
 
               /**
                * Getting Object from Object "phone"
@@ -392,9 +399,10 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
               //JSONObject phoneObject = innerObject.getJSONObject(Keys.KEY_PHONE);
               //String phone = phoneObject.getString(Keys.KEY_MOBILE);
 
-              model.getName();
-              model.setEmail(email);
-              model.setIsEmotion(isEmotion);
+              model.getEmail();
+              model.setName(name);
+              //model.setEmail(email);
+              //model.setIsEmotion(isEmotion);
 
               /**
                * Adding name and phone concatenation in List...
