@@ -12,6 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class  MainActivity extends AppCompatActivity {
 
@@ -21,9 +24,22 @@ public class  MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    //checkInternetConnection();
 
+    
+    boolean conn = isValid(this);
+    TextView internetConnection = findViewById(R.id.internetConnection);
+  
+  
+    if (conn){
+      internetConnection.setText("Internet is here");
+    }
+    else internetConnection.setText("No internet connection here");
 
-    Button admin = (Button) findViewById(R.id.admin);
+    
+    
+    
+    Button admin = findViewById(R.id.admin);
 
     admin.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -41,7 +57,7 @@ public class  MainActivity extends AppCompatActivity {
   private void openAdminDialog(){
     LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
     View subView = inflater.inflate(R.layout.password, null);
-    final EditText subEditText = (EditText) subView.findViewById(R.id.dialogEditText);
+    final EditText subEditText = subView.findViewById(R.id.dialogEditText);
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setTitle("Admin Access");
@@ -100,6 +116,8 @@ public class  MainActivity extends AppCompatActivity {
     }
     return false;
   }
+  
+  
   
   
 }

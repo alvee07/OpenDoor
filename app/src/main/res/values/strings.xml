@@ -42,6 +42,7 @@
     // Name Activity
     <string name="textEnterName">Your Name:</string>
     <string name="placeHolderName">Enter Here . . .</string>
+    <string name="pleaseEnterYourName">Please Enter Your Name</string>
 
 
     // Services Activity
