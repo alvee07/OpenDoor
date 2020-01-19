@@ -3,8 +3,10 @@ package com.example.opendoorapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,6 +82,24 @@ public class  MainActivity extends AppCompatActivity {
     startActivity(name);
     finish();
   } // checkInBtnClicked
+  
+  
+  /**
+   *
+   * @param context
+   * @return Boolean Value - internet connection
+   */
+  public boolean isValid(Context context) {
+    try {
+      ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+      if (cm != null) {
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return false;
+  }
   
   
 }
