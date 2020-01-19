@@ -208,21 +208,22 @@ public class NameActivity extends AppCompatActivity {
           }
         });
 
-//    // Set the alert dialog no button click listener
-//    builder.setNegativeButton(
-//        "No",
-//        new DialogInterface.OnClickListener() {
-//          @Override
-//          public void onClick(DialogInterface dialog, int which) {
-//            // Do something when No button clicked
-//            handler.removeCallbacks(inActiveScreenAlertForClass);
-//            changeActivityToMainActivity();
-//          }
-//        });
-
-    AlertDialog dialog = builder.create();
+    final AlertDialog dialog = builder.create();
     // Display the alert dialog on interface
     dialog.show();
+    
+    Runnable closeAlertBox = new Runnable() {
+      @Override
+      public void run() {
+        if (dialog.isShowing()) {
+          dialog.dismiss();
+          changeActivityToMainActivity();
+        }
+      }
+    };
+    
+    handler.postDelayed(closeAlertBox, 5000);
+    
   } // callAlertDialogBoxToInformUsersInactiveScreen
 
   /** Goes to system screen to Main Activity screen */
