@@ -6,8 +6,24 @@
  *
  * <p>It also gives User a Feedback by thanking him/her on the screen.
  *
- * <p>Go to different activity after a certain amount of time code taken from -
+ * <p>Go to different activity after a certain amount of time code taken from - (modified by Alvee)
  * https://stackoverflow.com/questions/6304035/how-to-display-an-activity-automatically-after-5-seconds
+ * Document was access on 10-Jan-2020
+ *
+ * Methods names are-
+ *
+ * - onCreate(Bundle savedInstanceState)
+ *    Start of Activity
+ * - setUserCredentials()
+ *    Get user inputted values here
+ * - setThanksUser()
+ *    Set Thanks user to screen
+ * - setConfirmationMessage()
+ *    Set confirmation message that request has been accepted
+ * - buildThanksUserMessage(String userName)
+ *    Building String message from user name and resources String
+ * - startMainActivity()
+ *    After 10 seconds this activity will send user to Main Activity
  *
  * @author Alvee Hassan Akash
  * @version 1.0
@@ -20,9 +36,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.example.opendoorapp.Sending_GMail_Files.MailSender;
+
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ConfirmationActivity extends AppCompatActivity {
 
@@ -32,12 +54,17 @@ public class ConfirmationActivity extends AppCompatActivity {
    * <p>thanksUser - String value confirmationMessage - String value userName - String value - Store
    * user name services - String value - Store what type of services user chose workers - String
    * value - Store who they chose to talk emotions - String value - Store how they are feeling today
-   * localTime - LocalTime value - Store system current time
+   * localTime - LocalTime value - Store system current time delayTimeToStartActivity - Integer
+   * value - 10 seconds
    */
-  TextView thanksUser, confirmationMessage;
+  private TextView thanksUser, confirmationMessage, emailSendFailed;
 
-  String userName, services, workers, emotions;
-  LocalTime localTime;
+  private String userNameForEmail, servicesForEmail, workersForEmail, emotionsForEmail;
+  private LocalTime localTime;
+
+  private Integer delayTimeToStartActivity = 10000;
+
+  private Handler viewOnScreenDependsOnEmailSend = new Handler();
 
   /**
    * When the program starts. 1) Set up 'userName' variable to given name from 'Services/Emotion
@@ -50,7 +77,38 @@ public class ConfirmationActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_confirmation);
+    setUserCredentials();
+    
+    List<String> recipients = new ArrayList<>();
+    //    recipients.add("gihozo@ualberta.ca");
+    //    recipients.add("awtaylor@ualberta.ca");
+    //    recipients.add("benjamin@wilsonsnet.ca");
+    recipients.add("camopnethedoor@gmail.com");
+    
+    listOfEmailSendingOverTheNetwork(recipients);
 
+    
+  } // onCreate
+  
+  /**
+   * Sends Email to Appropriate Staff when User Check-In
+   *
+   * @param recipients - List (String) of Email addresses email needs to send
+   */
+  private void listOfEmailSendingOverTheNetwork(List<String> recipients) {
+    
+    String body = emailBodyCreation();
+    
+    for (String temp : recipients) {
+      sendGMailToStaffs(temp, body);
+    }
+  }
+  
+  
+  /**
+   * Higher Method of sub-methods what to show on the screen, if Email is sent
+   */
+  private void setEmailSendTextOnScreen() {
     // Set Thank User to the screen
     setThanksUser();
 
@@ -59,50 +117,63 @@ public class ConfirmationActivity extends AppCompatActivity {
 
     // Go back to Main Activity screen
     startMainActivity();
-  } // onCreate
+  } // emailSendingOverTheNetwork
 
   /** Sets userName, services, workers, emotions from User class */
   private void setUserCredentials() {
-    userName = User.userName;
-    services = User.serviceName;
-    workers = User.workerName;
-    emotions = User.emotionName;
+    userNameForEmail = User.userName;
+    servicesForEmail = User.serviceName;
+    workersForEmail = User.workerName;
+    emotionsForEmail = User.emotionName;
     localTime = User.localTime;
-  }
+  
+    userNameForEmail = "alvee"; servicesForEmail = "I am in Crisis";
+  } // setUserCredentials
 
   /**
-   * Gets thanksUser textView from XML Sets thanks user message with userName variable on the screen
+   * Gets thanksUser textView from XML, Sets thanks user message with userName variable on the
+   * screen
    */
   private void setThanksUser() {
     setUserCredentials();
     thanksUser = findViewById(R.id.thanksUser);
-    thanksUser.setText(buildThanksUserMessage(userName));
+    thanksUser.setText(buildThanksUserMessage(userNameForEmail));
   }
 
   /** Gets confirmationMessage textView from XML Sets confirmationMessage message on the screen */
   private void setConfirmationMessage() {
     confirmationMessage = findViewById(R.id.confirmationMessage);
     confirmationMessage.setText(R.string.confirmationMessage);
-  }
+  } // setConfirmationMessage
 
   /**
    * Takes the userName, adds userName to resource string with '!'
    *
    * @param userName - String value - user inputted name from Name Activity
-   * @return message - String value - Build a string in format of 'Thanks "Name" !'
+   * @return message - String value - Build a string in format of 'Thanks "Benjamin" !'
    */
-  public String buildThanksUserMessage(String userName) {
+  private String buildThanksUserMessage(String userName) {
     String confirmationMessage01 = getString(R.string.thanksUser);
     StringBuilder confirmationMessage = new StringBuilder(confirmationMessage01);
     confirmationMessage.append(userName);
     confirmationMessage.append(" !");
     String message = confirmationMessage.toString();
     return message;
-  }
+  } // buildThanksUserMessage
+  
+  /**
+   * Sets Thanks user and show 'Please Contact Front Desk', if email send is failed
+   */
+  private void setEmailSendFailedTextOnScreen() {
+    setThanksUser();
+    emailSendFailed = findViewById(R.id.emailSendFailed);
+    emailSendFailed.setText(R.string.emailSendFailed);
+    startMainActivity();
+  } // setEmailSendFailedTextOnScreen
 
-  /** Starts MainActivity class in 10 seconds after showing Confirmation screen */
-  public void startMainActivity() {
-
+  
+  /** Starts MainActivity class in 10 seconds after showing Confirmation class */
+  private void startMainActivity() {
     new Handler()
         .postDelayed(
             new Runnable() {
@@ -114,6 +185,62 @@ public class ConfirmationActivity extends AppCompatActivity {
                 ConfirmationActivity.this.finish();
               }
             },
-            10000);
+            delayTimeToStartActivity);
   } // startMainActivity
+  
+  
+  /**
+   * Runs a new thread, thread sends an email.
+   * If the email is sent, it will show 'Thanks user and Confirmation message'
+   * If the email is NOT sent, it will show 'Thanks user and Contact Front Desk'
+   *
+   * @param oneRecipients - String value - Email address of the person is getting the email
+   * @param emailBody - String value - Email's body what to show on the actual Email
+   */
+  private void sendGMailToStaffs(final String oneRecipients, final String emailBody) {
+    new Thread(new Runnable() {
+              @Override
+              public void run() {
+                try {
+                  MailSender sender = new MailSender();
+                  final Boolean isEmailSent =
+                      sender.sendMail(oneRecipients, emailBody, oneRecipients);
+                  whatToShowOnScreenBasedOnEmailSend(isEmailSent);
+                } catch (Exception e) {
+                  Log.e("SendMail", e.getMessage(), e);
+                }
+              } // run
+            }) // sendGMailToStaffs
+        .start();
+  } // sendGMailToStaffs
+  
+  /**
+   * Runs a thread that shows what to show on screen based on Email Sent or Not
+   *
+   * @param isEmailSentFromHigherMethod - Boolean Value - email sent true or false
+   */
+  private void whatToShowOnScreenBasedOnEmailSend(final Boolean isEmailSentFromHigherMethod) {
+    viewOnScreenDependsOnEmailSend.post(
+        new Runnable() {
+          @Override
+          public void run() {
+            if (isEmailSentFromHigherMethod) setEmailSendTextOnScreen();
+            else setEmailSendFailedTextOnScreen();
+          } // run
+        });// Runnable
+  } // whatToShowOnScreenBasedOnEmailSend
+  
+  /**
+   * Returns a String, Email Body which is formatted HTML, and contains all the info user inputted
+   *
+   * @return - String value - Email's body in HTML format
+   */
+  private String emailBodyCreation(){
+    String message = "<h3>" + userNameForEmail + " wants to see you.</h3></br>" +
+                      "<h4>Service needs " + servicesForEmail + "</h4></br>" +
+                      "Feeling " + emotionsForEmail + "</br>";
+    return message;
+  } //emailBodyCreation
+  
+  
 } // ConfirmationActivity

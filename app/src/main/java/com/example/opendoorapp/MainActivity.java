@@ -31,6 +31,11 @@ public class  MainActivity extends AppCompatActivity {
     });
   }
 
+  /**
+   * Method to open the admin login dialog box
+   * Takes in an entered password, and if the password is incorrect it will refresh the dialog box
+   * by Alex
+   */
   private void openAdminDialog(){
     LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
     View subView = inflater.inflate(R.layout.password, null);

@@ -31,7 +31,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class ServicesActivity extends AppCompatActivity implements OnItemSelectedListener {
-  
+
   private String selectedServices;
   private String selectedWorker;
   private User currentUser;
@@ -52,7 +52,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
     services.setOnItemSelectedListener(this);
     worker.setOnItemSelectedListener(this);
-    
+
 
   } // end of onCreate
 
@@ -100,7 +100,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     worker.setAdapter(workerAdapter);
 
   }// end of workerSpinner
-  
+
   /**
    * Checks the selections of the user. If user selects services, it disables the staff
    * lists and vice versa.
@@ -119,12 +119,12 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
 
     setBackgroundColor();
-    
+
     if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
       enableSpinners();
-      
+
     } else {
-      
+
       switch (parent.getId()) {
         case R.id.servicesSpinner:
           disableSpinner(worker);
@@ -136,7 +136,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
       getSelectedServices(parent, position);
 
     }// end of else
-    
+
   }// end of onItemSelected
 
   /**
@@ -190,7 +190,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     return selectedServices = parent.getItemAtPosition(position).toString();
 
   }
-  
+
   /**
    * Takes user to next Activity - 'Emotions Activity' or, 'Confirmation Activity'
    * @param view - View object - Button object in this scenario
@@ -198,12 +198,12 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    *
    */
   public void servicesContinueBtnClicked (View view){
-    
+
     Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
     startActivity(name);
     finish();
   } // servicesContinueBtnClicked
-  
+
   /**
    * Starts MainActivity class in 10 seconds
    *
@@ -219,7 +219,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
       }
     }, 10000);
   } // startMainActivity
-  
+
 
 }// end of file
 
