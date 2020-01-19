@@ -204,12 +204,13 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    */
   public void servicesContinueBtnClicked (View view){
 
-    Toast message = Toast.makeText(getApplicationContext(),"Please Select a Service or Staff member", Toast.LENGTH_SHORT);
+    Toast message = Toast.makeText(getApplicationContext(),
+            "Please Select a Service or Staff member", Toast.LENGTH_SHORT);
     Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
     if(isSelectedWorker == true || isSelectedService == true){
       startActivity(name);
       finish();
-      
+
     }
     else {
       message.show();

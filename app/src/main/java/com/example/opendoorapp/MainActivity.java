@@ -11,9 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class  MainActivity extends AppCompatActivity {
+public class   MainActivity extends AppCompatActivity {
 
-  String password = "hello";
+  private String password = "the0p3nD0or";
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,6 @@ public class  MainActivity extends AppCompatActivity {
     final EditText subEditText = (EditText) subView.findViewById(R.id.dialogEditText);
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setTitle("Admin Access");
     builder.setView(subView);
     AlertDialog adminDialog = builder.create();
 

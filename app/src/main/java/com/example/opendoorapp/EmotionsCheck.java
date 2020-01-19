@@ -174,6 +174,9 @@ public class EmotionsCheck extends AppCompatActivity {
       }
     });
 
+    /**
+     * Modified by Alex Taylor
+     */
     underInfluenceButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
