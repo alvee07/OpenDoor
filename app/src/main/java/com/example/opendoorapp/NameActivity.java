@@ -26,6 +26,8 @@ public class NameActivity extends AppCompatActivity {
   private View nameActivityXMLView;
   private EditText userNameInput;
   long last_text_edit = 0;
+  
+  AlertDialog dialog;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +42,25 @@ public class NameActivity extends AppCompatActivity {
     lastTimeTouchOnScreen();
 
     inActiveScreenAlertForClass.run();
+    
+    
+    
+    
+    
+    
   } // onCreate
-
+  
+  
+  @Override
+  protected void onDestroy() {
+    if (dialog != null && dialog.isShowing()) {
+      dialog.dismiss();
+      handler.removeCallbacks(inActiveScreenAlertForClass);
+      handler.removeCallbacks(closeAlertBox);
+    }
+    super.onDestroy();
+  }
+  
   private void getNameActivityXMLViews() {
     nameActivityXMLView = findViewById(R.id.nameActivityXML);
     userNameInput = findViewById(R.id.userName);
@@ -56,15 +75,19 @@ public class NameActivity extends AppCompatActivity {
             if (userNameInput.hasFocus()) {
               System.out.println("has focus and is touched is true");
               isScreenBeingTouched = false; // F
+              System.out.println("inside has focus --- is screen being touched "+isScreenBeingTouched);
+  
               handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
-              return;
+              //return;
             }
             System.out.println("System had touch input---------------------");
             isScreenBeingTouched = false;
+            System.out.println("after  ---  IFFFFFF ------ is screen being touched "+isScreenBeingTouched);
+  
             handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
           } else {
             System.out.println("System had NOT touch input-----------------");
-            handler.removeCallbacks(inActiveScreenAlertForClass);
+            //handler.postDelayed(inActiveScreenAlertForClass, DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
             callAlertDialogBoxToInformUsersInactiveScreen();
           } // else
           //handler.postDelayed(this, DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
@@ -78,6 +101,8 @@ public class NameActivity extends AppCompatActivity {
           public boolean onTouch(View v, MotionEvent event) {
             hideKeyboardAfterTypingName();
             isScreenBeingTouched = true;
+            System.out.println("Last time TOUCH ON screen ---   is screen being touched "+isScreenBeingTouched);
+  
             return true;
           }
         });
@@ -95,30 +120,36 @@ public class NameActivity extends AppCompatActivity {
         new TextWatcher() {
           @Override
           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            handler.postDelayed(
-                inActiveScreenAlertForClass,
-                DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
+            isScreenBeingTouched = true;
+            System.out.println("is screen being touched "+isScreenBeingTouched);
+  
+            //handler.postDelayed(inActiveScreenAlertForClass, DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
           }
 
           @Override
           public void onTextChanged(final CharSequence s, int start, int before, int count) {
             // You need to remove this to run only once
-            handler.removeCallbacks(inActiveScreenAlertForClass);
+            isScreenBeingTouched = true;
+            System.out.println("is screen being touched "+isScreenBeingTouched);
+  
+            //handler.postDelayed(inActiveScreenAlertForClass, DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
           }
 
           @Override
           public void afterTextChanged(final Editable s) {
             // avoid triggering event when text is empty
             if (s.length() > 0) {
-              last_text_edit = System.currentTimeMillis();
-              handler.postDelayed(
-                  inActiveScreenAlertForClass,
-                  DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
+              isScreenBeingTouched = true;
+              System.out.println("after text changed IF ---  is screen being touched "+isScreenBeingTouched);
+  
+              //handler.postDelayed(inActiveScreenAlertForClass, DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
             } else {
-              handler.postDelayed(
-                  inActiveScreenAlertForClass,
-                  DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
+              isScreenBeingTouched = true;
+              
+              System.out.println("after text changed ELSE --- is screen being touched "+isScreenBeingTouched);
+              //handler.postDelayed(inActiveScreenAlertForClass, DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
             }
+            //handler.postDelayed(inActiveScreenAlertForClass, DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
           }
         });
   } // editTextInputFieldTypingListening
@@ -130,6 +161,8 @@ public class NameActivity extends AppCompatActivity {
    * @param view - View object - Button object in this scenario by Alvee
    */
   public void whatDoINeedHelpBtnClicked(View view) {
+    handler.removeCallbacks(inActiveScreenAlertForClass);
+    handler.removeCallbacks(closeAlertBox);
     EditText textInputFromUser = findViewById(R.id.userName);
     String userNameFromInput = textInputFromUser.getText().toString().trim();
     if (userNameFromInput.isEmpty()) {
@@ -138,9 +171,10 @@ public class NameActivity extends AppCompatActivity {
       return;
     } // if
     User.userName = userNameFromInput;
-    Intent nextActivity = new Intent(NameActivity.this, ServicesActivity.class);
-    startActivity(nextActivity);
-    finish();
+  
+    Intent goToMainActivity = new Intent(NameActivity.this, ServicesActivity.class);
+    NameActivity.this.startActivity(goToMainActivity);
+    NameActivity.this.finish();
   } // checkInBtnClicked
 
   /** Hides Keyboard after user touches anywhere one the screen when EditText is on focus. */
@@ -202,32 +236,46 @@ public class NameActivity extends AppCompatActivity {
           @Override
           public void onClick(DialogInterface dialog, int which) {
             // Do something when user clicked the Yes button
+            System.out.println("ALERT BOX APPEARING --  is screen being touched "+isScreenBeingTouched);
+  
+            isScreenBeingTouched = true;
+            System.out.println("ALERT BOX DISAPPEARING ---  is screen being touched "+isScreenBeingTouched);
+  
             handler.postDelayed(
                 inActiveScreenAlertForClass,
                 DELAY_TIME_TO_SHOW_ALERT_BOX_AND_CHECK_INACTIVE_SCREEN);
+            handler.removeCallbacks(closeAlertBox);
+            
           }
         });
 
-    final AlertDialog dialog = builder.create();
+    dialog = builder.create();
     // Display the alert dialog on interface
     dialog.show();
-    
-    Runnable closeAlertBox = new Runnable() {
-      @Override
-      public void run() {
-        if (dialog.isShowing()) {
-          dialog.dismiss();
-          changeActivityToMainActivity();
-        }
-      }
-    };
-    
     handler.postDelayed(closeAlertBox, 5000);
     
   } // callAlertDialogBoxToInformUsersInactiveScreen
 
+  private Runnable closeAlertBox =
+      new Runnable() {
+        @Override
+        public void run() {
+
+          if (dialog.isShowing()) {
+            
+            System.out.println("INSIDE DIALOG SHOWING ---- is screen being touched "+isScreenBeingTouched);
+            
+            dialog.dismiss();
+            changeActivityToMainActivity();
+          }
+          handler.postDelayed(this, 5000);
+        }
+      };
+
   /** Goes to system screen to Main Activity screen */
   private void changeActivityToMainActivity() {
+    handler.removeCallbacks(closeAlertBox);
+    handler.removeCallbacks(inActiveScreenAlertForClass);
     Intent goToMainActivity = new Intent(NameActivity.this, MainActivity.class);
     NameActivity.this.startActivity(goToMainActivity);
     NameActivity.this.finish();
