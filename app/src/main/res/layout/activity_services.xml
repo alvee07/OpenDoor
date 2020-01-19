@@ -44,7 +44,7 @@ android:id="@+id/entireScreen"
             android:layout_width="450dp"
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/spinner_background"
+
             android:focusable="false"
             android:textSize="40sp"
             android:textColor="@color/textColor"

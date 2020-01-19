@@ -30,6 +30,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.opendoorapp.adapter.ServiceAdapter;
 import com.example.opendoorapp.model.Service;
 import com.example.opendoorapp.parser.JSONParser;
 
@@ -54,6 +55,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   private GestureDetectorCompat mDetector;
   public String[] test;
   public static ArrayList<Service> list;
+  private ServiceAdapter serviceAdapter;
+
   public URL url;
   Service service ;
 
@@ -65,10 +68,21 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
 
 
+
+
     /**
      * Array List for Binding Data from JSON to this List
      */
     list = new ArrayList<>();
+
+
+
+
+
+
+    /**
+     * Getting List and Setting List Adapter
+     */
 
 
     /**
@@ -80,6 +94,26 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
       //Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
     }
 
+    services =  findViewById(R.id.servicesSpinner);
+    serviceAdapter = new ServiceAdapter(this,list);
+    services.setAdapter(serviceAdapter);
+    services.setOnItemSelectedListener(new OnItemSelectedListener() {
+      @Override
+      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Service clickedItem = (Service) parent.getItemAtPosition(position);
+        String clickedCountryName = clickedItem.getName();
+        Toast.makeText(ServicesActivity.this, clickedCountryName + " selected", Toast.LENGTH_SHORT).show();
+      }
+
+      @Override
+      public void onNothingSelected(AdapterView<?> parent) {
+
+      }
+    });
+
+
+
+
 
 
 
@@ -88,8 +122,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    //========================================================
     // SPINNERS
     //services =  findViewById(R.id.servicesSpinner);
-    servicesSpinner();
-    workerSpinner();
+//    servicesSpinner();
+//    workerSpinner();
     //ArrayAdapter<Service> adapter = new ArrayAdapter<Service>(this, R.layout.layout_spinner,R.id.txt, list);
     //services.setAdapter(adapter);
 
@@ -128,12 +162,14 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    * Accessed on January 11, 2020
    */
   public void servicesSpinner(){
-    services =  findViewById(R.id.servicesSpinner);
 
 
-    ArrayAdapter<Service> servicesAdapter = new ArrayAdapter<Service>(getApplicationContext(),android.R.layout.simple_selectable_list_item, list);
+
+    ArrayAdapter<Service> servicesAdapter = new ArrayAdapter<Service>(ServicesActivity.this, android.R.layout.simple_list_item_1, getList());
+    //servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
     servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    servicesAdapter.notifyDataSetChanged();
+
     services.setAdapter(servicesAdapter);
   } // end of servicesSpinner
 
@@ -177,10 +213,9 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    */
   public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
 
-    setBackgroundColor();
 
     if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
-      enableSpinners();
+      //enableSpinners();
       isSelectedOption = false;
 
 
@@ -189,14 +224,21 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
       switch (parent.getId()) {
         case R.id.servicesSpinner:
           isSelectedOption = true;
-          disableSpinner(worker);
+          //disableSpinner(worker);
+          Context context = getApplicationContext();
+          CharSequence text = "Services selected!" + parent.getItemAtPosition(position).toString();
+          int duration = Toast.LENGTH_SHORT;
+          Toast toast = Toast.makeText(context, text, duration);
+          toast.show();
           break;
         case R.id.workerSpinner:
           isSelectedOption = true;
-          disableSpinner(services);
+          //disableSpinner(services);
+
+
           break;
       }// end of switch
-      //getSelectedServices(parent, position);
+      getSelectedServices(parent, position);
 
     }// end of else
 
@@ -208,7 +250,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    * by Arnold
    */
   public void setBackgroundColor(){
-  //  services.setPopupBackgroundResource(R.color.servicesSpinnerBackground);
+    services.setPopupBackgroundResource(R.color.servicesSpinnerBackground);
     worker.setPopupBackgroundResource(R.color.servicesSpinnerBackground);
   }
 
@@ -266,7 +308,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    * by Alvee
    *
    *
-   *             
+   *
    *
    *
    */
