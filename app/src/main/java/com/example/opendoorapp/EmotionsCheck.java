@@ -23,6 +23,8 @@ public class EmotionsCheck extends AppCompatActivity {
   Button angryButton;
   Button submitButton;
   Button underInfluenceButton;
+  Button overwhelmedButton;
+  Button depressedButton;
 
 
   @Override
@@ -40,6 +42,8 @@ public class EmotionsCheck extends AppCompatActivity {
     sadButton = findViewById(R.id.sadButton);
     angryButton = findViewById(R.id.angryButton);
     underInfluenceButton = findViewById(R.id.under_influence);
+    overwhelmedButton = findViewById(R.id.overwhelmedButton);
+    depressedButton = findViewById(R.id.depressedButton);
     submitButton = findViewById(R.id.emotionsCheckSubmit);
 
 
@@ -59,6 +63,8 @@ public class EmotionsCheck extends AppCompatActivity {
           sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
           angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
           underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
 
         }
 
@@ -81,7 +87,8 @@ public class EmotionsCheck extends AppCompatActivity {
           sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
           angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
           underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
-
+          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
         }
 
       }
@@ -103,6 +110,8 @@ public class EmotionsCheck extends AppCompatActivity {
           sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
           angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
           underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
 
         }
 
@@ -125,6 +134,8 @@ public class EmotionsCheck extends AppCompatActivity {
           sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
           angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
           underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
         }
 
       }
@@ -146,6 +157,8 @@ public class EmotionsCheck extends AppCompatActivity {
           upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
           angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
           underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
 
         }
 
@@ -168,6 +181,8 @@ public class EmotionsCheck extends AppCompatActivity {
           upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
           sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
           underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
 
         }
 
@@ -194,9 +209,59 @@ public class EmotionsCheck extends AppCompatActivity {
           upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
           sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
           angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
 
         }
 
+      }
+    });
+
+    depressedButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        selectedEmotion = "Depressed";
+        emojiSelected();
+
+        if (v == depressedButton){
+
+          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji_selected));
+
+          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+
+        }
+      }
+    });
+
+    overwhelmedButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        selectedEmotion = "Overwhelmed";
+        emojiSelected();
+
+        if(v == overwhelmedButton){
+
+          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji_selected));
+
+          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+
+        }
       }
     });
 
