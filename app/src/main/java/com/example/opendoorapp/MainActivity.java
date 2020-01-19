@@ -101,6 +101,11 @@ public class  MainActivity extends AppCompatActivity {
   } // checkInBtnClicked
   
   
+  /**
+   * 
+   * @param context
+   * @return Boolean Value - internet connection
+   */
   public boolean isValid(Context context) {
     try {
       ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
