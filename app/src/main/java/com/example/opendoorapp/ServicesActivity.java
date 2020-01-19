@@ -16,10 +16,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -27,8 +30,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class ServicesActivity extends AppCompatActivity implements OnItemSelectedListener {
 
@@ -49,6 +57,22 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
     servicesSpinner();
     workerSpinner();
+
+    List<String> serviceList =   Arrays.asList(getResources().getStringArray(R.array.services));
+    Spinner spinner = (Spinner) findViewById(R.id.servicesSpinner);
+
+
+//    TestAdapter innerClass = new TestAdapter(serviceList,this);
+//    innerClass.context.getResources();
+
+
+
+
+
+
+
+    spinner.setAdapter(new TestAdapter(serviceList , this));
+
 
     services.setOnItemSelectedListener(this);
     worker.setOnItemSelectedListener(this);
@@ -75,7 +99,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
     //Drop down list of services stored in .xml file
     servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    services.setAdapter(servicesAdapter);
+    //services.setAdapter(servicesAdapter);
   } // end of servicesSpinner
 
   /**
@@ -118,8 +142,16 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    */
   public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
 
-    setBackgroundColor();
-
+//    TextView textView = new TextView(getBaseContext());
+//
+//    textView.setText(getString(position));
+//
+//
+//    //here you can use position or string
+//    if(position == 1 ||getString(position).equals("I AM IN CRISIS")) {
+//      textView.setBackgroundColor(Color.YELLOW);
+//      services.setBackgroundColor(Color.YELLOW).;
+//    }
     if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
       enableSpinners();
 
@@ -221,5 +253,60 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   } // startMainActivity
 
 
+
 }// end of file
+
+
+
+
+
+class TestAdapter extends BaseAdapter {
+
+  List<String> strings;
+  Context context;
+
+  public TestAdapter(List<String> stringList, Context context) {
+    strings = stringList;
+    this.context = context;
+  }
+
+
+  @Override
+  public int getCount() {
+    return strings.size();
+  }
+
+  @Override
+  public String getItem(int position) {
+    return strings.get(position);
+  }
+
+  @Override
+  public long getItemId(int position) {
+    return position;
+  }
+
+  @Override
+  public View getView(int position, View convertView, ViewGroup parent) {
+    TextView textView = new TextView(context);
+
+    textView.setText(strings.get(position));
+
+    //here you can use position or string
+    if (position == 1 || strings.get(position).equals("I AM IN CRISIS")) {
+      textView.setBackgroundColor(Color.YELLOW);
+    }
+
+    return textView;
+  }
+
+}
+
+/**
+ * To work on:
+ *
+ * Cleaning up the view inside the drop down!
+ * Disabeling (when you have an item selected)
+ * Not continue onto the next activitiy
+ */
 
