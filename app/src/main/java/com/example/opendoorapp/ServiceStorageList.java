@@ -135,19 +135,19 @@ public class ServiceStorageList {
     someoneToTalkToEmail.add("outreach@camroseopendoor.com");
 
 
-    Service someoneToTalkTo = new Service("Someone To Talk To",
+    Service someoneToTalkTo = new Service("Someone to talk to",
                                                     someoneToTalkToEmail, true);
     serviceStorageList.add(someoneToTalkTo);
 
     /* ========================================================================================= */
 
-    ArrayList<String> helpWithHomeworkEmail = new ArrayList<>();
-    helpWithHomeworkEmail.add("outreach@camroseopendoor.com");
+    ArrayList<String> helpWithPaperworkEmail = new ArrayList<>();
+    helpWithPaperworkEmail.add("outreach@camroseopendoor.com");
 
 
-    Service helpWithHomework = new Service("Help With Homework",
-                                                helpWithHomeworkEmail, true);
-    serviceStorageList.add(helpWithHomework);
+    Service helpWithPaperwork = new Service("Help with paperwork",
+                                                helpWithPaperworkEmail, true);
+    serviceStorageList.add(helpWithPaperwork);
 
     /* ========================================================================================= */
 
@@ -159,6 +159,24 @@ public class ServiceStorageList {
                                           informationEmail, true);
     serviceStorageList.add(information);
 
+    /* ========================================================================================= */
+
+    //paste here
+
+    /* ========================================================================================= */
+
+    /*
+
+    ArrayList<String> EXAMPLEEmail = new ArrayList<>();
+    EXAMPLEEmail.add("exampleEmail@camroseopendoor.com");
+    EXAMPLEEmail.add("anotherexample@camroseopendoor.com");
+
+
+    Service EXAMPLE = new Service("EXAMPLE NAME", EXAMPLEEmail, true/false);
+    serviceStorageList.add(EXAMPLE);
+
+
+     */
     /* ========================================================================================= */
 
   }//constructor
