@@ -1,5 +1,7 @@
 package com.example.opendoorapp;
 
+import java.util.ArrayList;
+
 /**
  * Service object class. used to store the information of each Service
  *
@@ -8,7 +10,7 @@ package com.example.opendoorapp;
 public class Service {
 
   private String departmentName;
-  private String emailList;
+  private ArrayList<String> emailList;
   private boolean isEmotion;
 
   /**
@@ -17,7 +19,7 @@ public class Service {
    * @param emailList list of emails of people who help with service
    * @param isEmotion boolean on if the user must be checked for emotion
    */
-  public Service(String departmentName, String emailList, boolean isEmotion) {
+  public Service(String departmentName, ArrayList<String> emailList, boolean isEmotion) {
 
     this.departmentName = departmentName;
     this.emailList = emailList;
@@ -25,19 +27,13 @@ public class Service {
 
   }//service constructor
 
-  public Service() {
 
-    this.departmentName = "no name";
-    this.emailList = "No email";
-    this.isEmotion = false;
-
-  }//default contructor
 
   public void setDepartmentName(String departmentName) {
     this.departmentName = departmentName;
   }
 
-  public void setEmailList(String emailList) {
+  public void setEmailList(ArrayList<String> emailList) {
     this.emailList = emailList;
   }
 
@@ -49,7 +45,7 @@ public class Service {
     return departmentName;
   }
 
-  public String getEmailList() {
+  public ArrayList<String> getEmailList() {
     return emailList;
   }
 
@@ -61,7 +57,7 @@ public class Service {
   public String toString() {
     return "Service{" +
             "departmentName='" + departmentName + '\'' +
-            ", emailList='" + emailList + '\'' +
+            ", emailList=" + emailList +
             ", isEmotion=" + isEmotion +
             '}';
   }

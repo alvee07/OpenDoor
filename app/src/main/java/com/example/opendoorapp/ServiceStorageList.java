@@ -1,4 +1,80 @@
 package com.example.opendoorapp;
 
+import java.util.ArrayList;
+
 public class ServiceStorageList {
+
+  private ArrayList<Service> serviceStorageList;
+
+  public ServiceStorageList() {
+
+    serviceStorageList = new ArrayList<>();
+
+    /* ========================================================================================= */
+    ArrayList<String> iAmInCrisisEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("Brianne@camroseopendoor.com");
+    iAmInCrisisEmail.add("wayne@camroseopendoor.com");
+    iAmInCrisisEmail.add("mariah@camroseopendoor.com");
+    iAmInCrisisEmail.add("outreach@camroseopendoor.com");
+
+    Service iAmInCrisis = new Service("I AM IN CRISIS",
+                                            iAmInCrisisEmail, true);
+    serviceStorageList.add(iAmInCrisis);
+
+    /* ========================================================================================= */
+    ArrayList<String> outreachEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("outreach@camroseopendoor.com");
+
+    Service outreach = new Service("Outreach", outreachEmail, true);
+    serviceStorageList.add(outreach);
+
+    /* ========================================================================================= */
+
+    ArrayList<String> housingEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("mariah@camroseopendoor.com");
+    iAmInCrisisEmail.add("wayne@camroseopendoor.com");
+
+
+    Service housing = new Service("Housing", housingEmail, true);
+    serviceStorageList.add(housing);
+
+
+    /* ========================================================================================= */
+
+    ArrayList<String> fasdSupportsEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("Chelsea@camroseopendoor.com");
+
+
+    Service fasdSupport = new Service("FASD Supports", fasdSupportsEmail, true);
+    serviceStorageList.add(fasdSupport);
+
+    /* ========================================================================================= */
+
+    ArrayList<String> restorativeJusticeEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("silas@camroseopendoor.com");
+    iAmInCrisisEmail.add("Brianne@camroseopendoor.com");
+
+
+    Service restorativeJustive = new Service("Restorative Justice", restorativeJusticeEmail, true);
+    serviceStorageList.add(restorativeJustive);
+
+    /* ========================================================================================= */
+
+    ArrayList<String> communityHelpersEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("carson@camroseopendoor.com");
+
+
+    Service communityHelpers = new Service("Community Helpers", communityHelpersEmail, false);
+    serviceStorageList.add(communityHelpers);
+
+    /* ========================================================================================= */
+
+
+    ArrayList<String> communityHelpersEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("carson@camroseopendoor.com");
+
+
+    Service communityHelpers = new Service("Community Helpers", communityHelpersEmail, false);
+    serviceStorageList.add(communityHelpers);
+  }
 }
