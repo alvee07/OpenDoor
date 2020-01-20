@@ -5,8 +5,9 @@
  *
  *
  * This class will give the opportunity to the user to choose between either a service
- * or a worker. If a specific services is taken, it will then lead the user to choose
- * their emotion.
+ * or a worker.It will also connect the service activity to the emotion activitiy
+ *
+ *
  *
  */
 
@@ -14,29 +15,19 @@ package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
-
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Handler;
 import android.util.Log;
 import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.Arrays;
 import java.util.List;
+
 
 public class ServicesActivity extends AppCompatActivity implements OnItemSelectedListener {
 
@@ -55,21 +46,15 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_services);
 
-
+    // puts all the items in the from the strings.xml into the List strings
     List<String> serviceList =   Arrays.asList(getResources().getStringArray(R.array.services));
     List <String> workerList = Arrays.asList(getResources().getStringArray(R.array.names));
 
+    // Sets up the services and worker spinner
+    services =  findViewById(R.id.servicesSpinner);
+    worker = findViewById(R.id.workerSpinner);
 
-
-      services =  findViewById(R.id.servicesSpinner);
-      worker = findViewById(R.id.workerSpinner);
-
-
-
-
-
-
-
+    // sends the information into the SpinnerAdapter
     services.setAdapter(new SpinnerAdapter(serviceList , this));
     worker.setAdapter(new SpinnerAdapter(workerList, this));
 
@@ -111,15 +96,12 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         case R.id.servicesSpinner:
           disableSpinner(worker);
           getSelectedServices(parent, position);
-          isSelectedOption = true;
           break;
         case R.id.workerSpinner:
           disableSpinner(services);
-          isSelectedOption = true;
           break;
       }// end of switch
-
-
+        isSelectedOption = true;
 
     }// end of else
 
@@ -136,7 +118,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   }
 
   /**
-   * Disables a given spinner
+   * Disables a given spinner and greys out the given spinner
    * @param currentSpinner-- the spinner to be disabled
    *
    * by Arnold
@@ -148,7 +130,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   }
 
   /**
-   * Enables both the worker and staff spinner
+   * Enables both the worker and staff spinner and resets the alpha value
    * by Arnold
    */
   public void enableSpinners(){
@@ -200,8 +182,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
           Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
           startActivity(name);
           finish();
-      }
-
+      }// end of else
 
   } // servicesContinueBtnClicked
 
@@ -221,7 +202,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     }, 10000);
   } // startMainActivity
 
-}// end of file
+}// end of class
 
 
 
@@ -230,9 +211,4 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
 
 
-/**
- * To work on:
-
- * Getting the "Choose an Option" as position 0!
- */
 

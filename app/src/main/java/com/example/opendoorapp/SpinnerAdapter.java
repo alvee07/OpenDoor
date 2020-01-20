@@ -11,9 +11,9 @@
  * Accessed on January 18th 2020
  *
  * Modified version:
- *   - Modified the textsized
+ *   - Modified the text size
  *   - Modified the padding
- *   - moddifed the variable names
+ *   - Changed the variable names
  *   - Modified the displayed color
  */
 
@@ -31,23 +31,23 @@ import java.util.List;
 
 public class SpinnerAdapter extends BaseAdapter {
 
-    List<String> strings;
+    List<String> listOfItems;
     Context context;
 
     public SpinnerAdapter(List<String> stringList, Context context) {
-        strings = stringList;
+        listOfItems = stringList;
         this.context = context;
     }
 
 
     @Override
     public int getCount() {
-        return strings.size();
+        return listOfItems.size();
     }
 
     @Override
     public String getItem(int position) {
-        return strings.get(position);
+        return listOfItems.get(position);
     }
 
     @Override
@@ -59,16 +59,16 @@ public class SpinnerAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView viewText = new TextView(context);
 
-        viewText .setText(strings.get(position));
-        viewText .setTextSize(30);
-        viewText .setPadding(5, 7, 5, 7);
-        
+        viewText.setText(listOfItems.get(position));
+        viewText.setTextSize(30);
+        viewText.setPadding(5, 7, 5, 7);
+
         // sets the first variable in the middle
         if (position == 0)
             viewText .setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
 
-        //here you can use position or string
-        if (position == 1 && strings.get(position).equals("I AM IN CRISIS")) {
+        //puts a yellow background in the IM CRISIS option
+        if (position == 1 && listOfItems.get(position).equals("I AM IN CRISIS")) {
             viewText .setBackgroundColor(Color.YELLOW);
         }
 
