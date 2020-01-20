@@ -1,9 +1,11 @@
 package com.example.opendoorapp;
 
+import java.util.ArrayList;
+
 public class Workers {
   
   private String name;
-  private String email;
+  private ArrayList<String> email;
   private boolean isEmotion;
 
 
@@ -13,7 +15,7 @@ public class Workers {
    * @param email email of the staff member
    * @param isEmotion  boolean for if the staff requires the emotion of the user
    */
-  public Workers(String name, String email, boolean isEmotion) {
+  public Workers(String name, ArrayList<String> email, boolean isEmotion) {
     this.name = name;
     this.email = email;
     this.isEmotion = isEmotion;
@@ -25,25 +27,18 @@ public class Workers {
    */
   Workers(){
     name = "Worker";
-    email = "worker@email.com";
     isEmotion = false;
 
   }
 
   
-  public void setEmail(String email) {
-    this.email = email;
-  }
 
-  public void setEmotion(boolean emotion) {
-    isEmotion = emotion;
-  }
 
   public String getName() {
     return name;
   }
 
-  public String getEmail() {
+  public ArrayList<String> getEmail() {
     return email;
   }
 

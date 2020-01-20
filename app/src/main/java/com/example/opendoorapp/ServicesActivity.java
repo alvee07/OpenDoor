@@ -226,19 +226,63 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    */
   public void servicesContinueBtnClicked (View view){
 
+    ServiceStorageList serviceStorageList = new ServiceStorageList();
+    WorkerStorageList  workerStorageList = new WorkerStorageList();
+
+    ArrayList<Service> serviceList = serviceStorageList.getServiceStorageList();
+    ArrayList<Workers> workerList = workerStorageList.getWorkerStorageList();
+
+
     Toast message = Toast.makeText(getApplicationContext(),
             "Please Select a Service or Staff member", Toast.LENGTH_SHORT);
     Intent emotion = new Intent(ServicesActivity.this, EmotionsCheck.class);
     Intent name = new Intent(ServicesActivity.this, ConfirmationActivity.class);
     if(isSelectedWorker || isSelectedService ){
 
+
       if(selectedWorker.equals("not selected")){
 
-      }
-      startActivity(name);
-      finish();
+        //check to find what the user selected
+        for(int counter = 0; counter < serviceList.size(); counter++){
 
-    }
+          if(serviceList.get(counter).getDepartmentName().equals(selectedServices)){
+
+            selectedEmailList = serviceList.get(counter).getEmailList();
+
+            if(serviceList.get(counter).isEmotion()){
+              startActivity(emotion);
+              finish();
+            }//if is emotion
+            else{
+              startActivity(name);
+            }//go to confirmation
+
+          }//if statement
+
+        }//for loop
+      }//if selectedWorker
+
+      else{
+        for(int counter = 0; counter < workerList.size(); counter++){
+
+          if(workerList.get(counter).getName().equals(selectedWorker)){
+
+            selectedEmailList = workerList.get(counter).getEmail();
+
+            if(workerList.get(counter).isEmotion()){
+              startActivity(emotion);
+              finish();
+            }//if is emotion
+            else{
+              startActivity(name);
+            }//go to confirmation
+
+          }//if statement
+
+        }//for loop
+
+      }//else
+    }//if either worker or service selected
     else {
       message.show();
       return;

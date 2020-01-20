@@ -10,25 +10,39 @@ public class WorkerStorageList {
 
     workerStorageList = new ArrayList<>();
 
-    Workers brianne = new Workers("Brianne", "Brianne@camroseopendoor.com", true);
+    ArrayList<String> brianneEmail = new ArrayList<String>();
+    brianneEmail.add("Brianne@camroseopendoor.com");
+    Workers brianne = new Workers("Brianne", brianneEmail, true);
     workerStorageList.add(brianne);
 
-    Workers mariah = new Workers("Mariah", "mariah@camroseopendoor.com", true);
+    ArrayList<String> mariahEmail = new ArrayList<String>();
+    mariahEmail.add("mariah@camroseopendoor.com");
+    Workers mariah = new Workers("Mariah", mariahEmail, true);
     workerStorageList.add(mariah);
 
-    Workers chelsea = new Workers("Chelsea", "Chelsea@camroseopendoor.com", true);
+    ArrayList<String> chelseaEmail = new ArrayList<String>();
+    chelseaEmail.add("Chelsea@camroseopendoor.com");
+    Workers chelsea = new Workers("Chelsea",chelseaEmail , true);
     workerStorageList.add(chelsea);
 
-    Workers javan = new Workers("Javan", "Javan.stamp@camrosepcn.com", true);
+    ArrayList<String> javanEmail = new ArrayList<String>();
+    javanEmail.add("Javan.stamp@camrosepcn.com");
+    Workers javan = new Workers("Javan", javanEmail, true);
     workerStorageList.add(javan);
 
-    Workers silas = new Workers("Silas", "silas@camroseopendoor.com", false);
+    ArrayList<String> silasEmail = new ArrayList<String>();
+    silasEmail.add("silas@camroseopendoor.com");
+    Workers silas = new Workers("Silas", silasEmail, false);
     workerStorageList.add(silas);
 
-    Workers jessica = new Workers("Jessica", "Jessica@camroseopendoor.com", false);
+    ArrayList<String> jessicaEmail = new ArrayList<String>();
+    jessicaEmail.add("Jessica@camroseopendoor.com");
+    Workers jessica = new Workers("Jessica", jessicaEmail, false);
     workerStorageList.add(jessica);
 
-    Workers wayne = new Workers("Wayne", "Wayne@camroseopendoor.com", false);
+    ArrayList<String> wayneEmail = new ArrayList<String>();
+    wayneEmail.add("Wayne@camroseopendoor.com");
+    Workers wayne = new Workers("Wayne", wayneEmail, false);
     workerStorageList.add(wayne);
 
   }//constructor
