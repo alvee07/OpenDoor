@@ -40,6 +40,7 @@ import org.json.JSONObject;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ServicesActivity extends AppCompatActivity implements OnItemSelectedListener {
@@ -94,22 +95,18 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
       //Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
     }
 
+
+    List<String> strings = new ArrayList<>(list.size());
+    for (Service object : list) {
+      strings.add(list.toString(object,null));
+    }
+
     services =  findViewById(R.id.servicesSpinner);
-    serviceAdapter = new ServiceAdapter(this,list);
-    services.setAdapter(serviceAdapter);
-    services.setOnItemSelectedListener(new OnItemSelectedListener() {
-      @Override
-      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Service clickedItem = (Service) parent.getItemAtPosition(position);
-        String clickedCountryName = clickedItem.getName();
-        Toast.makeText(ServicesActivity.this, clickedCountryName + " selected", Toast.LENGTH_SHORT).show();
-      }
 
-      @Override
-      public void onNothingSelected(AdapterView<?> parent) {
+    services.setAdapter(new SpinnerAdapter(strings ,this));
 
-      }
-    });
+
+
 
 
 
@@ -122,8 +119,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    //========================================================
     // SPINNERS
     //services =  findViewById(R.id.servicesSpinner);
-//    servicesSpinner();
-//    workerSpinner();
+    //servicesSpinner();
+    workerSpinner();
     //ArrayAdapter<Service> adapter = new ArrayAdapter<Service>(this, R.layout.layout_spinner,R.id.txt, list);
     //services.setAdapter(adapter);
 
