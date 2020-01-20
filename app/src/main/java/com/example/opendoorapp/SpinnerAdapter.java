@@ -21,6 +21,7 @@ package com.example.opendoorapp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -56,18 +57,22 @@ public class SpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        TextView textView = new TextView(context);
+        TextView viewText = new TextView(context);
 
-        textView.setText(strings.get(position));
-        textView.setTextSize(30);
-        textView.setPadding(5, 7, 5, 7);
+        viewText .setText(strings.get(position));
+        viewText .setTextSize(30);
+        viewText .setPadding(5, 7, 5, 7);
+        
+        // sets the first variable in the middle
+        if (position == 0)
+            viewText .setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
 
         //here you can use position or string
         if (position == 1 && strings.get(position).equals("I AM IN CRISIS")) {
-            textView.setBackgroundColor(Color.YELLOW);
+            viewText .setBackgroundColor(Color.YELLOW);
         }
 
-        return textView;
+        return viewText ;
     }
 
 }

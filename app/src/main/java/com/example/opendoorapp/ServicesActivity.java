@@ -99,7 +99,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    * by Arnold
    */
   public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
-
+    setBackgroundColor();
 
     if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
       enableSpinners();
@@ -232,10 +232,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
 /**
  * To work on:
- *
- * Cleaning up the view inside the drop down!
- * Disabeling (when you have an item selected)
- * Not continue onto the next activitiy
+
  * Getting the "Choose an Option" as position 0!
  */
 

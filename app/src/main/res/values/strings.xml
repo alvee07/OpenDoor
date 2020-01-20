@@ -24,13 +24,13 @@
     </string-array>
 
     <string-array name="names">
-        <item>-- Choose an option --</item>
+        <item>                  --  Choose an option --</item>
         <item>Brianne</item>
-        <item>Mariah</item>
         <item>Chelsea</item>
         <item>Javan</item>
-        <item>Silas</item>
         <item>Jessica</item>
+        <item>Mariah</item>
+        <item>Silas</item>
         <item>Wayne</item>
     </string-array>
 
