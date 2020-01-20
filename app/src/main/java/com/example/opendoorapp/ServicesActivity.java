@@ -57,6 +57,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   public String[] test;
   public static ArrayList<Service> list;
   public static ServiceAdapter serviceAdapter;
+  public static SpinnerAdapter spinnerAdapter;
 
   public URL url;
   Service service ;
@@ -104,10 +105,11 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     services =  findViewById(R.id.servicesSpinner);
 
 
+
+
     serviceAdapter = new ServiceAdapter(ServicesActivity.this,list);
-    //ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,test);
     services.setAdapter(serviceAdapter);
-    serviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    //serviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
     //services.setAdapter(new SpinnerAdapter(list ,this));
 
