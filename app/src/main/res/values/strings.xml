@@ -37,6 +37,7 @@
     <string name="welcome">Welcome</string>
     <string name="checkIn">Check-In</string>
     <string name="howCanWeHelpYou">How Can We Help You Today?</string>
+    <string name="internetConnection">No Internet Connection</string>
 
 
     // Name Activity
