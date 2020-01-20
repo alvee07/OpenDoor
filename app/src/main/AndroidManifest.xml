@@ -25,7 +25,7 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".NameActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".ConfirmationActivity"

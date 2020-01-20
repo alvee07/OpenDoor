@@ -59,13 +59,13 @@
             android:id="@+id/welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="80dp"
             android:layout_marginBottom="16dp"
             android:gravity="center"
             android:text="@string/welcome"
+            android:textColor="@color/textColor"
             android:textSize="70sp"
             android:textStyle="bold"
-            android:textColor="@color/textColor"
             android:typeface="serif"
             app:layout_constraintBottom_toTopOf="@+id/Question"
             app:layout_constraintEnd_toEndOf="parent"
@@ -77,7 +77,9 @@
             android:id="@+id/Question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
             android:gravity="center"
             android:text="@string/howCanWeHelpYou"
             android:textColor="@color/textColor"
@@ -89,4 +91,14 @@
             app:layout_constraintTop_toBottomOf="@+id/welcome" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/internetConnection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/checkIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

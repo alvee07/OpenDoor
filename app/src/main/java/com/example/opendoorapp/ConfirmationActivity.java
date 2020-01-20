@@ -8,7 +8,7 @@
  *
  * <p>Go to different activity after a certain amount of time code taken from - (modified by Alvee)
  * https://stackoverflow.com/questions/6304035/how-to-display-an-activity-automatically-after-5-seconds
- * Document was access on 10-Jan-2020
+ * Document access date is 10-Jan-2020
  *
  * Methods names are-
  *
@@ -54,7 +54,7 @@ public class ConfirmationActivity extends AppCompatActivity {
    * <p>thanksUser - String value confirmationMessage - String value userName - String value - Store
    * user name services - String value - Store what type of services user chose workers - String
    * value - Store who they chose to talk emotions - String value - Store how they are feeling today
-   * localTime - LocalTime value - Store system current time delayTimeToStartActivity - Integer
+   * localTime - LocalTime value - Store system current time DELAY_TIME_TO_START_MAIN_ACTIVITY - Integer
    * value - 10 seconds
    */
   private TextView thanksUser, confirmationMessage, emailSendFailed;
@@ -62,7 +62,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   private String userNameForEmail, servicesForEmail, workersForEmail, emotionsForEmail;
   private LocalTime localTime;
 
-  private Integer delayTimeToStartActivity = 10000;
+  private Integer DELAY_TIME_TO_START_MAIN_ACTIVITY = 10000;
 
   private Handler viewOnScreenDependsOnEmailSend = new Handler();
 
@@ -185,7 +185,7 @@ public class ConfirmationActivity extends AppCompatActivity {
                 ConfirmationActivity.this.finish();
               }
             },
-            delayTimeToStartActivity);
+                DELAY_TIME_TO_START_MAIN_ACTIVITY);
   } // startMainActivity
   
   
