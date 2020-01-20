@@ -222,10 +222,13 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         //check to find what the user selected
         for(int counter = 0; counter < serviceList.size(); counter++){
 
+          System.out.println("COUNTER IS AT:" + counter);
+          System.out.println("service is: " +serviceList.get(counter));
           if(serviceList.get(counter).getDepartmentName().equals(selectedServices)){
 
             selectedEmailList = serviceList.get(counter).getEmailList();
 
+            System.out.println("selected emails are: " + selectedEmailList);
             if(serviceList.get(counter).isEmotion()){
               startActivity(emotion);
               finish();
@@ -246,6 +249,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         //check to find what the user selected
         for(int counter = 0; counter < workerList.size(); counter++){
 
+          System.out.println("counter is at: " +counter);
           if(workerList.get(counter).getName().equals(selectedWorker)){
 
             selectedEmailList = workerList.get(counter).getEmail();
