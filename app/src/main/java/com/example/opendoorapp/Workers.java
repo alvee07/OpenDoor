@@ -19,6 +19,10 @@ public class Workers {
     this.isEmotion = isEmotion;
   }
 
+  /**
+   * Default Constructor
+   * by Alex Taylor
+   */
   Workers(){
     name = "Worker";
     email = "worker@email.com";
@@ -26,10 +30,7 @@ public class Workers {
 
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
+  
   public void setEmail(String email) {
     this.email = email;
   }

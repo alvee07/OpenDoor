@@ -28,15 +28,15 @@ public class Admin extends AppCompatActivity {
         goToHome();
       }
     });
-//        startTimer();
+
   }
 
-//    public void onUserInteraction(){
-//        super.onUserInteraction();
-//        stopTimer();
-//        startTimer();
-//    }
-  
+
+  /**
+   * Method for setting a timer for the admin activity
+   * @param milliseconds amount of time the timer will run
+   * by Alex Taylor
+   */
   private void startTimer(int milliseconds) {
     timeout = new Timer();
     timeout.schedule(new TimerTask() {
@@ -47,11 +47,18 @@ public class Admin extends AppCompatActivity {
     }, milliseconds);
     
   }
-  
+
+  /**
+   * Stops the timer if required from finishing its run
+   * by Alex Taylor
+   */
   private void stopTimer() {
     timeout.cancel();
   }
-  
+
+  /**
+   * Method returns to the main page
+   */
   private void goToHome(){
     finish();
   }
