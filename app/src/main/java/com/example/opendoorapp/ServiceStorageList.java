@@ -70,11 +70,67 @@ public class ServiceStorageList {
     /* ========================================================================================= */
 
 
-    ArrayList<String> communityHelpersEmail = new ArrayList<>();
-    iAmInCrisisEmail.add("carson@camroseopendoor.com");
+    ArrayList<String> idEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("Brianne@camroseopendoor.com");
+    iAmInCrisisEmail.add("outreach@camroseopendoor.com");
 
 
-    Service communityHelpers = new Service("Community Helpers", communityHelpersEmail, false);
-    serviceStorageList.add(communityHelpers);
+    Service id = new Service("ID", idEmail, false);
+    serviceStorageList.add(id);
+
+    /* ========================================================================================= */
+
+    ArrayList<String> tenantEducationEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("Brianne@camroseopendoor.com");
+    iAmInCrisisEmail.add("outreach@camroseopendoor.com");
+
+
+    Service tenantEducation = new Service("Tenant Education", tenantEducationEmail, false);
+    serviceStorageList.add(tenantEducation);
+
+    /* ========================================================================================= */
+
+    ArrayList<String> counsellingEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("Brianne@camroseopendoor.com");
+
+
+    Service counselling = new Service("Counselling", counsellingEmail, false);
+    serviceStorageList.add(counselling);
+
+    /* ========================================================================================= */
+
+    ArrayList<String> foodEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("outreach@camroseopendoor.com");
+
+
+    Service food = new Service("Food", foodEmail, true);
+    serviceStorageList.add(food);
+
+    /* ========================================================================================= */
+
+    ArrayList<String> clothesEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("outreach@camroseopendoor.com");
+
+
+    Service clothes = new Service("Clothes", clothesEmail, true);
+    serviceStorageList.add(clothes);
+
+    /* ========================================================================================= */
+
+    ArrayList<String> rideEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("outreach@camroseopendoor.com");
+
+
+    Service ride = new Service("Ride", rideEmail, true);
+    serviceStorageList.add(ride);
+
+    /* ========================================================================================= */
+
+    ArrayList<String> someoneToTalkToEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("outreach@camroseopendoor.com");
+
+
+    Service ride = new Service("Ride", rideEmail, true);
+    serviceStorageList.add(ride);
   }
 }
