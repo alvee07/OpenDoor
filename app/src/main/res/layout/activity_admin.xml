@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".Admin">
 
+    <Button
+        android:id="@+id/editWorkers"
+        android:layout_width="237dp"
+        android:layout_height="96dp"
+        android:text="@string/staff"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editServices"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editServices"
+        app:layout_constraintTop_toBottomOf="@+id/editServices"
+        app:layout_constraintVertical_bias="0.309" />
+
     <TextView
         android:id="@+id/admin_title"
         android:layout_width="475dp"
@@ -31,5 +46,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.024" />
+
+    <Button
+        android:id="@+id/editServices"
+        android:layout_width="237dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="292dp"
+        android:text="@string/services"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
