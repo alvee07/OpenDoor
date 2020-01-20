@@ -1,3 +1,22 @@
+/**
+ * AUCSC 320
+ * Arnold Gihozo
+ *
+ * Class helps to change the background of a certain item within the spinner drop
+ * down menu.
+ *
+ * The code for this class has been found at the source bellow
+ * https://stackoverflow.com/questions/37217962/change-spinner-background-color-for-specific-item
+ *
+ * Accessed on January 18th 2020
+ *
+ * Modified version:
+ *   - Modified the textsized
+ *   - Modified the padding
+ *   - moddifed the variable names
+ *   - Modified the displayed color
+ */
+
 package com.example.opendoorapp;
 
 import android.content.Context;

@@ -56,8 +56,6 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     setContentView(R.layout.activity_services);
 
 
-
-
     List<String> serviceList =   Arrays.asList(getResources().getStringArray(R.array.services));
     List <String> workerList = Arrays.asList(getResources().getStringArray(R.array.names));
 
@@ -113,12 +111,14 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         case R.id.servicesSpinner:
           disableSpinner(worker);
           getSelectedServices(parent, position);
+          isSelectedOption = true;
           break;
         case R.id.workerSpinner:
           disableSpinner(services);
+          isSelectedOption = true;
           break;
       }// end of switch
-        isSelectedOption = true;
+
 
 
     }// end of else
@@ -143,6 +143,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    */
   public void disableSpinner(Spinner currentSpinner){
     currentSpinner.setEnabled(false);
+    currentSpinner.setAlpha(0.3f);
+
   }
 
   /**
@@ -152,6 +154,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   public void enableSpinners(){
     services.setEnabled(true);
     worker.setEnabled(true);
+    services.setAlpha(1f);
+    worker.setAlpha(1f);
   }
 
   /**
@@ -189,7 +193,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    */
   public void servicesContinueBtnClicked (View view){
 
-      if(isSelectedOption = false){
+      if(isSelectedOption == false){
           Toast.makeText(getApplicationContext(), R.string.pleaseChooseAnOption, Toast.LENGTH_SHORT)
                   .show();
       }else{
