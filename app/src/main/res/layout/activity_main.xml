@@ -96,11 +96,23 @@
         android:id="@+id/internetConnection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
+        android:layout_marginBottom="36dp"
 
+        android:textSize="50sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/needHelpFromHelpDesk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/needHelpFromHelpDesk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+
+        android:textSize="40sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/checkIn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/openDoorLogo" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

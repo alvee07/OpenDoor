@@ -1,3 +1,16 @@
+/**
+ * MainActivity.class
+ *
+ * The class starts the application interface, it also has access to admin activity alert box.
+ *
+ * It welcomes user and shows option to go to next activity to accept Camrose Open Door services.
+ *
+ * @author Alex. Unless otherwise specified, all code was written by Alex.
+ *
+ * @modified Alvee Hassan Akash. (Documentation and Specific methods)
+ * @since 2020-01-20
+ */
+
 package com.example.opendoorapp;
 
 import androidx.appcompat.app.AlertDialog;
@@ -14,13 +27,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
 
 
 public class   MainActivity extends AppCompatActivity {
-
+  
+  /**
+   * Variable list
+   *
+   * password - string value - this is a literal string for admin password
+   */
   private String password = "the0p3nD0or";
-
+  
+  /**
+   * When the program starts, 1) Checks if there is no internet connection to this application,
+   * it will show on the screen that there is no internet connection and disable user check-In Button.
+   * 2) Else, it will show all the functionality available on this screen.
+   * 3) Admin security activity page is also hidden here. (Jessica Hutton knows it, hidden on the door)
+   *
+   * @param savedInstanceState
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -79,9 +104,10 @@ public class   MainActivity extends AppCompatActivity {
   }
   /**
    * Takes user to next Activity - 'Name Activity'
-   * @param view - View object - Button object in this scenario
-   * by Alvee
    *
+   * @param view - View object - Button object in this scenario
+   *
+   * by Alvee
    */
   public void checkInBtnClicked(View view){
     Intent name = new Intent(MainActivity.this, NameActivity.class);
@@ -114,17 +140,29 @@ public class   MainActivity extends AppCompatActivity {
   
   /**
    * If there is no Internet Connection, it will not show on the screen the buttons to go forward
+   * It will disable and invisible views and show the 'Need Internet Connection' 'Contact front desk'
+   *
    * by Alvee
    */
   private void noInternetConnectionView(){
+    // this 'if' produces false statement = No internet connection
     if(!isThereAnyInternetConnection(this)){
+      // Need internet Connection showing here
       TextView internetConnection = findViewById(R.id.internetConnection);
       internetConnection.setText(R.string.internetConnection);
       internetConnection.setVisibility(View.VISIBLE);
+      
+      // Need Help from help-desk
+      TextView needHelpFromHelpDesk = findViewById(R.id.needHelpFromHelpDesk);
+      needHelpFromHelpDesk.setText(R.string.emailSendFailed);
+      needHelpFromHelpDesk.setVisibility(View.VISIBLE);
+      
+      // Disable checkIn button and how can we help you today Views
       TextView question = findViewById(R.id.Question);
       Button checkIn = findViewById(R.id.checkIn);
       question.setVisibility(View.INVISIBLE);
       checkIn.setVisibility(View.INVISIBLE);
+      checkIn.setEnabled(false);
     } // if
     
   } // noInternetConnectionView

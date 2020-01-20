@@ -84,8 +84,14 @@ public class ConfirmationActivity extends AppCompatActivity {
     
     // JUST NOT SENDING UNNECESSARY EMAILS TO CAMROSE OPEN DOOR PEOPLE
     //listOfEmailSendingOverTheNetwork(email);
+    
+    
+    List<String> rec = new ArrayList<>();
+    rec.add("camopnethedoor@gmail.com");
+    
+    //listOfEmailSendingOverTheNetwork(rec);
   
-  
+    // remove when uncomment list<>
     startMainActivity();
     
   } // onCreate
