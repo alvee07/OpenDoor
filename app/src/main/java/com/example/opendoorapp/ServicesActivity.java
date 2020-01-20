@@ -59,6 +59,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     workerSpinner();
 
     List<String> serviceList =   Arrays.asList(getResources().getStringArray(R.array.services));
+    List <String> workerList = Arrays.asList(getResources().getStringArray(R.array.names));
     Spinner spinner = (Spinner) findViewById(R.id.servicesSpinner);
 
 
@@ -71,7 +72,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
 
 
-    spinner.setAdapter(new TestAdapter(serviceList , this));
+    services.setAdapter(new TestAdapter(serviceList , this));
+    worker.setAdapter(new TestAdapter(workerList, this));
 
 
     services.setOnItemSelectedListener(this);
@@ -96,6 +98,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     //container that hold the values and integrate them with the spinner
     ArrayAdapter<String> servicesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
             android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.services));
+
 
     //Drop down list of services stored in .xml file
     servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -160,12 +163,13 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
       switch (parent.getId()) {
         case R.id.servicesSpinner:
           disableSpinner(worker);
+          getSelectedServices(parent, position);
           break;
         case R.id.workerSpinner:
           disableSpinner(services);
           break;
       }// end of switch
-      getSelectedServices(parent, position);
+
 
     }// end of else
 
@@ -291,9 +295,11 @@ class TestAdapter extends BaseAdapter {
     TextView textView = new TextView(context);
 
     textView.setText(strings.get(position));
+    textView.setTextSize(30);
+    textView.setPadding(5, 7,5,7);
 
     //here you can use position or string
-    if (position == 1 || strings.get(position).equals("I AM IN CRISIS")) {
+    if (position == 1 && strings.get(position).equals("I AM IN CRISIS")) {
       textView.setBackgroundColor(Color.YELLOW);
     }
 
@@ -308,5 +314,6 @@ class TestAdapter extends BaseAdapter {
  * Cleaning up the view inside the drop down!
  * Disabeling (when you have an item selected)
  * Not continue onto the next activitiy
+ * Getting the "Choose an Option" as position 0!
  */
 
