@@ -56,7 +56,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   private GestureDetectorCompat mDetector;
   public String[] test;
   public static ArrayList<Service> list;
-  private ServiceAdapter serviceAdapter;
+  public static ServiceAdapter serviceAdapter;
 
   public URL url;
   Service service ;
@@ -96,15 +96,32 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     }
 
 
-    List<String> strings = new ArrayList<>(list.size());
-    for (Service object : list) {
-      strings.add(list.toString(object,null));
-    }
+//    List<String> strings = new ArrayList<>(list.size());
+//    for (Service object : list) {
+//      strings.add(list.toString(object,null));
+//    }
 
     services =  findViewById(R.id.servicesSpinner);
 
-    services.setAdapter(new SpinnerAdapter(strings ,this));
 
+    serviceAdapter = new ServiceAdapter(ServicesActivity.this,list);
+    //ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,test);
+    services.setAdapter(serviceAdapter);
+    serviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+    //services.setAdapter(new SpinnerAdapter(list ,this));
+
+    services.setOnItemSelectedListener(new OnItemSelectedListener() {
+      @Override
+      public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(ServicesActivity.this,"Clicked",Toast.LENGTH_SHORT).show();
+      }
+
+      @Override
+      public void onNothingSelected(AdapterView<?> parent) {
+
+      }
+    });
 
 
 
@@ -222,15 +239,18 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         case R.id.servicesSpinner:
           isSelectedOption = true;
           //disableSpinner(worker);
-          Context context = getApplicationContext();
+
           CharSequence text = "Services selected!" + parent.getItemAtPosition(position).toString();
           int duration = Toast.LENGTH_SHORT;
-          Toast toast = Toast.makeText(context, text, duration);
+          Toast toast = Toast.makeText(this, text, duration);
           toast.show();
           break;
         case R.id.workerSpinner:
           isSelectedOption = true;
-          //disableSpinner(services);
+           Toast toast2 = Toast.makeText(this,parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT);
+           toast2.show();
+
+           //disableSpinner(services);
 
 
           break;
@@ -345,6 +365,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   public static ArrayList<Service> getList() {
     return list;
   }
+
+
 }// end of file
 
 // START OF NEW CLASS
@@ -462,6 +484,7 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
   @Override
   protected void onPostExecute(Void aVoid) {
     super.onPostExecute(aVoid);
+    ServicesActivity.serviceAdapter.notifyDataSetChanged();
 
   }
 }

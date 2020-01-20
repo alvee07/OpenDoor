@@ -36,10 +36,10 @@ import java.util.List;
 
 public class SpinnerAdapter extends BaseAdapter {
 
-    List<String> listOfItems;
+    List<Service> listOfItems;
     Context context;
 
-    public SpinnerAdapter(ArrayList<String> stringList, Context context) {
+    public SpinnerAdapter(ArrayList<Service> stringList, Context context) {
         listOfItems = stringList;
         this.context = context;
     }
@@ -67,6 +67,7 @@ public class SpinnerAdapter extends BaseAdapter {
         viewText.setText(listOfItems.get(position).toString());
         viewText.setTextSize(30);
         viewText.setPadding(5, 7, 5, 7);
+        viewText.setTextColor(Color.BLACK);
 
         // sets the first variable in the middle
         if (position == 0)
