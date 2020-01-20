@@ -135,7 +135,7 @@ public class ServiceStorageList {
     someoneToTalkToEmail.add("outreach@camroseopendoor.com");
 
 
-    Service someoneToTalkTo = new Service("Someone To Talk To",
+    Service someoneToTalkTo = new Service("Someone to talk to",
                                                     someoneToTalkToEmail, true);
     serviceStorageList.add(someoneToTalkTo);
 
