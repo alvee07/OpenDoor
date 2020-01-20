@@ -141,6 +141,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
           disableSpinner(services);
           getSelectedWorker(parent, position);
           selectedServices = null;
+
           break;
       }// end of switch
 
