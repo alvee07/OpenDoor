@@ -132,13 +132,17 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         case R.id.servicesSpinner:
           isSelectedService = true;
           disableSpinner(worker);
+          getSelectedServices(parent, position);
+          selectedWorker = null;
           break;
+
         case R.id.workerSpinner:
           isSelectedWorker = true;
           disableSpinner(services);
+          getSelectedWorker(parent, position);
+          selectedServices = null;
           break;
       }// end of switch
-      getSelectedServices(parent, position);
 
     }// end of else
 
@@ -193,6 +197,19 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    */
   public String getSelectedServices(AdapterView<?> parent, int position){
     return selectedServices = parent.getItemAtPosition(position).toString();
+
+  }
+  /**
+   * Gets the selected services
+   *
+   * @param parent -- adapter view of where the selection happens
+   * @param position -- position of the view
+   * @return -- returns the selected item
+   *
+   * by Arnold
+   */
+  public String getSelectedWorker(AdapterView<?> parent, int position){
+    return selectedWorker = parent.getItemAtPosition(position).toString();
 
   }
 

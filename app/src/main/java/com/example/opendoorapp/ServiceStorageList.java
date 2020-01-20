@@ -45,7 +45,8 @@ public class ServiceStorageList {
     iAmInCrisisEmail.add("Chelsea@camroseopendoor.com");
 
 
-    Service fasdSupport = new Service("FASD Supports", fasdSupportsEmail, true);
+    Service fasdSupport = new Service("FASD Supports",
+                                                fasdSupportsEmail, true);
     serviceStorageList.add(fasdSupport);
 
     /* ========================================================================================= */
@@ -55,7 +56,8 @@ public class ServiceStorageList {
     iAmInCrisisEmail.add("Brianne@camroseopendoor.com");
 
 
-    Service restorativeJustive = new Service("Restorative Justice", restorativeJusticeEmail, true);
+    Service restorativeJustive = new Service("Restorative Justice",
+                                                  restorativeJusticeEmail, true);
     serviceStorageList.add(restorativeJustive);
 
     /* ========================================================================================= */
@@ -64,7 +66,8 @@ public class ServiceStorageList {
     iAmInCrisisEmail.add("carson@camroseopendoor.com");
 
 
-    Service communityHelpers = new Service("Community Helpers", communityHelpersEmail, false);
+    Service communityHelpers = new Service("Community Helpers",
+                                              communityHelpersEmail, false);
     serviceStorageList.add(communityHelpers);
 
     /* ========================================================================================= */
@@ -85,7 +88,8 @@ public class ServiceStorageList {
     iAmInCrisisEmail.add("outreach@camroseopendoor.com");
 
 
-    Service tenantEducation = new Service("Tenant Education", tenantEducationEmail, false);
+    Service tenantEducation = new Service("Tenant Education",
+                                            tenantEducationEmail, false);
     serviceStorageList.add(tenantEducation);
 
     /* ========================================================================================= */
@@ -94,7 +98,8 @@ public class ServiceStorageList {
     iAmInCrisisEmail.add("Brianne@camroseopendoor.com");
 
 
-    Service counselling = new Service("Counselling", counsellingEmail, false);
+    Service counselling = new Service("Counselling",
+                                            counsellingEmail, false);
     serviceStorageList.add(counselling);
 
     /* ========================================================================================= */
@@ -130,7 +135,42 @@ public class ServiceStorageList {
     iAmInCrisisEmail.add("outreach@camroseopendoor.com");
 
 
-    Service ride = new Service("Ride", rideEmail, true);
-    serviceStorageList.add(ride);
+    Service someoneToTalkTo = new Service("Someone To Talk To",
+                                                    someoneToTalkToEmail, true);
+    serviceStorageList.add(someoneToTalkTo);
+
+    /* ========================================================================================= */
+
+    ArrayList<String> helpWithHomeworkEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("outreach@camroseopendoor.com");
+
+
+    Service helpWithHomework = new Service("Help With Homework",
+                                                helpWithHomeworkEmail, true);
+    serviceStorageList.add(helpWithHomework);
+
+    /* ========================================================================================= */
+
+    ArrayList<String> informationEmail = new ArrayList<>();
+    iAmInCrisisEmail.add("outreach@camroseopendoor.com");
+
+
+    Service information = new Service("Information",
+                                          informationEmail, true);
+    serviceStorageList.add(information);
+
+    /* ========================================================================================= */
+
+  }//constructor
+
+  public ArrayList<Service> getServiceStorageList() {
+    return serviceStorageList;
+  }
+
+  @Override
+  public String toString() {
+    return "ServiceStorageList{" +
+            "serviceStorageList=" + serviceStorageList +
+            '}';
   }
 }
