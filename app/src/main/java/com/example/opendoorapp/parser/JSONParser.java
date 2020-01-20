@@ -1,3 +1,19 @@
+/**
+ * AUCSC 320
+ * By Arnold Gihozo
+ *
+ * Add Description HERE
+ *
+ * Code by admin from The Crazy Coders Club.
+ * https://www.crazycodersclub.com/android/using-google-spread-sheet-as-database-for-android-application-part-1/
+ * Accessed on January 17th, 2019
+ *
+ * Modified component:
+ *   - Refactored variable names
+ *   - Added the Worker URL
+ *   - Added functions to support Worker retrieve of data
+ */
+
 package com.example.opendoorapp.parser;
 import android.util.Log;
 

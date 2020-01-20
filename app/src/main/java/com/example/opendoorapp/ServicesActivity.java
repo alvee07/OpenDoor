@@ -46,8 +46,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   private Spinner worker;
   private boolean isSelectedOption;
   private GestureDetectorCompat mDetector;
-  public String[] test;
-  public static ArrayList<Service> list;
+  public static ArrayList<Service> serviceList;
+  public static ArrayList<Service> staffList;
   public static ServiceAdapter serviceAdapter;
   public static SpinnerAdapter spinnerAdapter;
 
@@ -67,7 +67,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     /**
      * Array List for Binding Data from JSON to this List
      */
-    list = new ArrayList<>();
+    serviceList  = new ArrayList<>();
+    staffList = new ArrayList<>();
 
 
 
@@ -95,7 +96,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
 
 
-    serviceAdapter = new ServiceAdapter(ServicesActivity.this,list);
+    serviceAdapter = new ServiceAdapter(ServicesActivity.this,serviceList );
     services.setAdapter(serviceAdapter);
     //serviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -143,9 +144,9 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   public List<String> getServiceInformation(){
 
     List<String> stringArray = new ArrayList<>();
-    if (list != null) {
-      for (int i=0;i< list.size();i++){
-        stringArray.add(list.get(i).getName());
+    if (serviceList  != null) {
+      for (int i=0;i< serviceList .size();i++){
+        stringArray.add(serviceList .get(i).getName());
       }
     }
 
@@ -169,7 +170,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
 
 
-    ArrayAdapter<Service> servicesAdapter = new ArrayAdapter<Service>(ServicesActivity.this, android.R.layout.simple_list_item_1, getList());
+    ArrayAdapter<Service> servicesAdapter = new ArrayAdapter<Service>(ServicesActivity.this, android.R.layout.simple_list_item_1, getServiceList());
     //servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
     servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -352,8 +353,10 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     }, 10000);
   } // startMainActivity
 
-  public static ArrayList<Service> getList() {
-    return list;
+  public static ArrayList<Service> getServiceList() { return serviceList ; }
+
+  public static ArrayList<Service> getStaffList() {
+    return staffList ;
   }
 
 

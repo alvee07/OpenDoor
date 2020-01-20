@@ -44,7 +44,8 @@ import org.json.JSONObject;
 class GetDataTask extends AsyncTask<Void, Void, Void> {
 
     int jIndex;
-    int x;
+    int serviceListSize;
+    int staffListSize;
 
     @Override
     protected void onPreExecute() {
@@ -53,12 +54,19 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
          * Progress Dialog for User Interaction
          */
 
-        x = ServicesActivity.getList().size();
+        serviceListSize = ServicesActivity.getServiceList().size();
+        staffListSize = ServicesActivity.getStaffList().size();
 
-        if (x == 0)
+        if (serviceListSize == 0)
             jIndex = 0;
         else
-            jIndex = x;
+            jIndex = serviceListSize;
+
+
+        if (staffListSize == 0)
+            jIndex = 0;
+        else
+            jIndex = staffListSize;
 
 
     }
@@ -100,8 +108,9 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                              * and
                              * Adding into List
                              */
-                            // maybe add InternetConnection??????????
-                            Service model = new Service();
+
+                            Service serviceModel = new Service();
+                            Service staffModel = new Service();
 
                             /**
                              * Getting Inner Object from contacts array...
@@ -112,23 +121,18 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                             JSONObject innerObject = array.getJSONObject(jIndex);
                             String name = innerObject.getString(Keys.KEY_NAME);
                             String email = innerObject.getString(Keys.KEY_EMAIL);
-                            //Boolean isEmotion = innerObject.getBoolean(Keys.KEY_ISEMOTION);
+                            Boolean isEmotion = innerObject.getBoolean(Keys.KEY_ISEMOTION);
 
-                            /**
-                             * Getting Object from Object "phone"
-                             */
-                            //JSONObject phoneObject = innerObject.getJSONObject(Keys.KEY_PHONE);
-                            //String phone = phoneObject.getString(Keys.KEY_MOBILE);
-
-                            //model.getEmail();
-                            model.setName(name);
-                            model.setEmail(email);
-                            //model.setIsEmotion(isEmotion);
+                            staffModel.getEmail();
+                            serviceModel.setName(name);
+                            staffModel.setEmail(email);
+                            staffModel.setIsEmotion(isEmotion);
 
                             /**
                              * Adding name and phone concatenation in List...
                              */
-                            ServicesActivity.getList().add(model);
+                            ServicesActivity.getServiceList().add(serviceModel);
+                            ServicesActivity.getStaffList().add(staffModel);
                         }
                     }
                 }
