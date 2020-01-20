@@ -16,8 +16,7 @@ package com.example.opendoorapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 import android.os.Handler;
-import android.util.Log;
-import android.view.GestureDetector;
+import android.os.Looper;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.content.Intent;
@@ -43,9 +42,11 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   private Spinner services;
   private Spinner worker;
   private GestureDetectorCompat mDetector;
-
-
-
+  private final Integer DELAY_TIME_TO_START_MAIN_ACTIVITY = 60000;
+  private Handler MAIN_HANDLER = new Handler(Looper.getMainLooper());
+  
+  
+  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -69,7 +70,9 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
     services.setOnItemSelectedListener(this);
     worker.setOnItemSelectedListener(this);
-
+  
+    // If user stays more than one min on the screen, it will go to Main screen
+    changeActivityToMainActivity();
 
   } // end of onCreate
 
@@ -230,6 +233,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
             System.out.println("selected emails are: " + selectedEmailList);
             if(serviceList.get(counter).isEmotion()){
+              User.serviceName = selectedServices;
               startActivity(emotion);
               finish();
               break;
@@ -255,6 +259,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
             selectedEmailList = workerList.get(counter).getEmail();
 
             if(workerList.get(counter).isEmotion()){
+              User.workerName = selectedWorker;
               startActivity(emotion);
               finish();
               break;
@@ -275,22 +280,32 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
       return;
     }
   } // servicesContinueBtnClicked
-
+  
+  
   /**
-   * Starts MainActivity class in 10 seconds
+   * Goes back to Main Activity screen after an 1 min
+   * Assuming, mostly user can input their name in one min
    *
    * by Alvee
+   *
    */
-  public void startMainActivity(){
-    new Handler().postDelayed(new Runnable() {
+  private void changeActivityToMainActivity() {
+    MAIN_HANDLER.postDelayed(new Runnable() {
       @Override
       public void run() {
-        final Intent goBackToMainActivity = new Intent(ServicesActivity.this, MainActivity.class);
+        final Intent goBackToMainActivity =
+                new Intent(ServicesActivity.this, MainActivity.class);
         ServicesActivity.this.startActivity(goBackToMainActivity);
         ServicesActivity.this.finish();
       }
-    }, 10000);
-  } // startMainActivity
+    }, DELAY_TIME_TO_START_MAIN_ACTIVITY);
+  } // changeActivityToMainActivity
+  
+  @Override
+  protected void onDestroy() {
+    MAIN_HANDLER.removeCallbacksAndMessages(null);
+    super.onDestroy();
+  }
 
 }// end of class
 

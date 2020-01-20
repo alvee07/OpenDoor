@@ -86,7 +86,7 @@ public class   MainActivity extends AppCompatActivity {
   public void checkInBtnClicked(View view){
     Intent name = new Intent(MainActivity.this, NameActivity.class);
     startActivity(name);
-    finish();
+    //finish();
   } // checkInBtnClicked
   
   

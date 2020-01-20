@@ -36,12 +36,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.example.opendoorapp.Sending_GMail_Files.MailSender;
 
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,12 +59,12 @@ public class ConfirmationActivity extends AppCompatActivity {
    */
   private TextView thanksUser, confirmationMessage, emailSendFailed;
 
-  private String userNameForEmail, servicesForEmail, workersForEmail, emotionsForEmail;
-  private LocalTime localTime;
+  private String userNameForEmail, servicesForEmail, workerForEmail, emotionsForEmail;
+  //private LocalTime localTime; // future implementation
 
-  private Integer DELAY_TIME_TO_START_MAIN_ACTIVITY = 10000;
+  private final Integer DELAY_TIME_TO_START_MAIN_ACTIVITY_FROM_CONFIRMATION_PAGE = 10000;
 
-  private Handler viewOnScreenDependsOnEmailSend = new Handler();
+  private Handler MAIN_HANDLER_ON_THIS_ACTIVITY = new Handler(Looper.getMainLooper());
 
   /**
    * When the program starts. 1) Set up 'userName' variable to given name from 'Services/Emotion
@@ -78,15 +78,15 @@ public class ConfirmationActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_confirmation);
     setUserCredentials();
-    
-    List<String> recipients = new ArrayList<>();
-    //    recipients.add("gihozo@ualberta.ca");
-    //    recipients.add("awtaylor@ualberta.ca");
-    //    recipients.add("benjamin@wilsonsnet.ca");
-    recipients.add("camopnethedoor@gmail.com");
-    
-    listOfEmailSendingOverTheNetwork(recipients);
+  
 
+    List<String> email = new ArrayList<>(ServicesActivity.selectedEmailList);
+    
+    // JUST NOT SENDING UNNECESSARY EMAILS TO CAMROSE OPEN DOOR PEOPLE
+    //listOfEmailSendingOverTheNetwork(email);
+  
+  
+    startMainActivity();
     
   } // onCreate
   
@@ -97,10 +97,8 @@ public class ConfirmationActivity extends AppCompatActivity {
    */
   private void listOfEmailSendingOverTheNetwork(List<String> recipients) {
     
-    String body = emailBodyCreation();
-    
     for (String temp : recipients) {
-      sendGMailToStaffs(temp, body);
+      sendGMailToStaffs(temp, emailBodyCreation(), emailSubjectCreation());
     }
   }
   
@@ -123,11 +121,11 @@ public class ConfirmationActivity extends AppCompatActivity {
   private void setUserCredentials() {
     userNameForEmail = User.userName;
     servicesForEmail = User.serviceName;
-    workersForEmail = User.workerName;
+    workerForEmail = User.workerName;
     emotionsForEmail = User.emotionName;
-    localTime = User.localTime;
+    //localTime = User.localTime;
   
-    userNameForEmail = "alvee"; servicesForEmail = "I am in Crisis";
+    
   } // setUserCredentials
 
   /**
@@ -174,7 +172,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   
   /** Starts MainActivity class in 10 seconds after showing Confirmation class */
   private void startMainActivity() {
-    new Handler()
+    MAIN_HANDLER_ON_THIS_ACTIVITY
         .postDelayed(
             new Runnable() {
               @Override
@@ -185,8 +183,14 @@ public class ConfirmationActivity extends AppCompatActivity {
                 ConfirmationActivity.this.finish();
               }
             },
-                DELAY_TIME_TO_START_MAIN_ACTIVITY);
+                DELAY_TIME_TO_START_MAIN_ACTIVITY_FROM_CONFIRMATION_PAGE);
   } // startMainActivity
+  
+  @Override
+  protected void onDestroy() {
+    MAIN_HANDLER_ON_THIS_ACTIVITY.removeCallbacksAndMessages(null);
+    super.onDestroy();
+  }
   
   
   /**
@@ -197,14 +201,14 @@ public class ConfirmationActivity extends AppCompatActivity {
    * @param oneRecipients - String value - Email address of the person is getting the email
    * @param emailBody - String value - Email's body what to show on the actual Email
    */
-  private void sendGMailToStaffs(final String oneRecipients, final String emailBody) {
+  private void sendGMailToStaffs(final String oneRecipients, final String emailBody, final String emailSubject) {
     new Thread(new Runnable() {
               @Override
               public void run() {
                 try {
                   MailSender sender = new MailSender();
                   final Boolean isEmailSent =
-                      sender.sendMail(oneRecipients, emailBody, oneRecipients);
+                      sender.sendMail(emailSubject, emailBody, oneRecipients);
                   whatToShowOnScreenBasedOnEmailSend(isEmailSent);
                 } catch (Exception e) {
                   Log.e("SendMail", e.getMessage(), e);
@@ -220,7 +224,7 @@ public class ConfirmationActivity extends AppCompatActivity {
    * @param isEmailSentFromHigherMethod - Boolean Value - email sent true or false
    */
   private void whatToShowOnScreenBasedOnEmailSend(final Boolean isEmailSentFromHigherMethod) {
-    viewOnScreenDependsOnEmailSend.post(
+    MAIN_HANDLER_ON_THIS_ACTIVITY.post(
         new Runnable() {
           @Override
           public void run() {
@@ -236,11 +240,28 @@ public class ConfirmationActivity extends AppCompatActivity {
    * @return - String value - Email's body in HTML format
    */
   private String emailBodyCreation(){
-    String message = "<h3>" + userNameForEmail + " wants to see you.</h3></br>" +
-                      "<h4>Service needs " + servicesForEmail + "</h4></br>" +
-                      "Feeling " + emotionsForEmail + "</br>";
+    String message =
+          "<h>"
+              + userNameForEmail
+              + " is here.</h3></br>"
+              + "<h4>Service needs "
+              + servicesForEmail
+              + "</h4></br>"
+              + "Feeling "
+              + emotionsForEmail
+              + "</br>";
     return message;
   } //emailBodyCreation
+  
+  /**
+   * Returns a String, how the email subject is formatted.
+   *
+   * @return - String value - Email's subject
+   */
+  private String emailSubjectCreation() {
+    if (User.serviceName == null) return "Youth " + userNameForEmail + " has checked-in to see " + workerForEmail;
+    else return "Youth " + userNameForEmail + " has checked-in for " + User.serviceName;
+  } // emailSubjectCreation
   
   
 } // ConfirmationActivity

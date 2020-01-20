@@ -286,15 +286,14 @@ public class EmotionsCheck extends AppCompatActivity {
   public void submitBtnClicked(View view){
     User.emotionName = selectedEmotion;
     Intent name = new Intent(EmotionsCheck.this, ConfirmationActivity.class);
-    if (emotionSelected == false){
+    if (!emotionSelected){
       Toast message = Toast.makeText(getApplicationContext(),"Please Select an Emotion", Toast.LENGTH_SHORT);
       message.show();
       return;
     }
     else {
       startActivity(name);
-      finish();
-      System.out.println("Alveeeeeeeejddhchchhdhdhdh");
+      //finish();
     }
   } // continueBtnClicked
 }
