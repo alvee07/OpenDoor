@@ -252,9 +252,11 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
             if(serviceList.get(counter).isEmotion()){
               startActivity(emotion);
               finish();
+              break;
             }//if is emotion
             else{
               startActivity(name);
+              break;
             }//go to confirmation
 
           }//if statement
@@ -274,9 +276,11 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
             if(workerList.get(counter).isEmotion()){
               startActivity(emotion);
               finish();
+              break;
             }//if is emotion
             else{
               startActivity(name);
+              break;
             }//go to confirmation
 
           }//if statement
