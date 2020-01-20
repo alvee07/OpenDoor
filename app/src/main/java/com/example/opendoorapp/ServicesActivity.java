@@ -12,14 +12,11 @@
 
 package com.example.opendoorapp;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Handler;
-import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -32,15 +29,10 @@ import android.widget.Toast;
 
 import com.example.opendoorapp.adapter.ServiceAdapter;
 import com.example.opendoorapp.model.Service;
-import com.example.opendoorapp.parser.JSONParser;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.opendoorapp.model.Workers;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ServicesActivity extends AppCompatActivity implements OnItemSelectedListener {

@@ -1,4 +1,4 @@
-package com.example.opendoorapp;
+package com.example.opendoorapp.model;
 
 public class Workers {
   

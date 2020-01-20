@@ -20,48 +20,91 @@ import java.io.IOException;
 
 public class JSONParser {
 
-    private static final String MAIN_URL = "https://script.googleusercontent.com/a/macros/ualberta.ca/echo?user_content_key=yoc7ZdiarCPaAwRkuiaGOGnK0c2AZBrI3BEnHikxCEavkJNhBhzsL-TfBMMkdL4O-t_PSbOw7lFpPe5pWubcrZDj_8nz7_nUOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMi80zadyHLKAglIVEdYoEkp7ei4iVNOTz1X4897iSixbywob23dSxBctfhUxgCPwKvDfanQTKoL0SNl5M3_4VFPKLDKkgs-p-rWi7AHZdRU4hCDNYvd56PsAhh98Kdr6hECJPmeWG8-k7i9bsdtc5LRMIUgxK1xuXLPmk-GWZxoCoaGK_iiRLzKgIkpmQyeqzQzvQt_V_CZ4&lib=MnrE7b2I2PjfH799VodkCPiQjIVyBAxva";
+    private static final String SERVICE_URL = "https://script.googleusercontent.com/a/macros/ualberta.ca/echo?user_content_key=yoc7ZdiarCPaAwRkuiaGOGnK0c2AZBrI3BEnHikxCEavkJNhBhzsL-TfBMMkdL4O-t_PSbOw7lFpPe5pWubcrZDj_8nz7_nUOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMi80zadyHLKAglIVEdYoEkp7ei4iVNOTz1X4897iSixbywob23dSxBctfhUxgCPwKvDfanQTKoL0SNl5M3_4VFPKLDKkgs-p-rWi7AHZdRU4hCDNYvd56PsAhh98Kdr6hECJPmeWG8-k7i9bsdtc5LRMIUgxK1xuXLPmk-GWZxoCoaGK_iiRLzKgIkpmQyeqzQzvQt_V_CZ4&lib=MnrE7b2I2PjfH799VodkCPiQjIVyBAxva";
+    private static final String STAFF_URL = "https://script.googleusercontent.com/a/macros/ualberta.ca/echo?user_content_key=hm0HmMER6PGyL2bQOyzL5Y8ERXF6D1IpVxNbL3U6AurDYwy-a3rYfxA5SRdNbxDlS3oGlGbz1rpqOfsf2zlXysaBY8hQA5dEOJmA1Yb3SEsKFZqtv3DaNYcMrmhZHmUMi80zadyHLKAglIVEdYoEkp7ei4iVNOTz1X4897iSixbywob23dSxBctfhUxgCPwKvDfanQTKoL0SNl5M3_4VFPKLDKkgs-p-rWi7AHZdRU4hCDNYvd56PpHqnIIoQ2s0dzg5hmO2Kgs_n9TevpRwM56JC-vd-3H59E0W6PB5juJ271JQcTdI_6gIkpmQyeqzQzvQt_V_CZ4&lib=MnrE7b2I2PjfH799VodkCPiQjIVyBAxva";
 
     public static final String TAG = "TAG";
 
-    private static final String KEY_USER_ID = "user_id";
+    private static final String KEY_SERVICE_ID = "service_id";
+    private static final String KEY_STAFF_ID = "staff_id";
 
-    private static Response response;
+    private static Response serviceResponse;
+    private static Response staffResponse;
+
 
     public static JSONObject getDataFromWeb() {
         try {
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
-                    .url(MAIN_URL)
+                    .url(SERVICE_URL)
                     .build();
-            response = client.newCall(request).execute();
-            return new JSONObject(response.body().string());
+            serviceResponse = client.newCall(request).execute();
+            return new JSONObject(serviceResponse.body().string());
         } catch (@NonNull IOException | JSONException e) {
             Log.e(TAG, "" + e.getLocalizedMessage());
         }
         return null;
     }
 
-    public static JSONObject getDataById(int userId) {
+    public static JSONObject getDataFromWebStaff() {
+        try {
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(STAFF_URL)
+                    .build();
+            staffResponse = client.newCall(request).execute();
+            return new JSONObject(staffResponse.body().string());
+        } catch (@NonNull IOException | JSONException e) {
+            Log.e(TAG, "" + e.getLocalizedMessage());
+        }
+        return null;
+    }
+
+    public static JSONObject getDataByIdService(int userId) {
 
         try {
             OkHttpClient client = new OkHttpClient();
 
             RequestBody formBody = new FormEncodingBuilder()
-                    .add(KEY_USER_ID, Integer.toString(userId))
+                    .add(KEY_SERVICE_ID, Integer.toString(userId))
                     .build();
 
             Request request = new Request.Builder()
-                    .url(MAIN_URL)
+                    .url(SERVICE_URL)
                     .post(formBody)
                     .build();
 
-            response = client.newCall(request).execute();
-            return new JSONObject(response.body().string());
+            serviceResponse = client.newCall(request).execute();
+            return new JSONObject(serviceResponse.body().string());
 
         } catch (IOException | JSONException e) {
             Log.e(TAG, "" + e.getLocalizedMessage());
         }
         return null;
     }
+
+    public static JSONObject getDataByIdStaff(int staffId) {
+
+        try {
+            OkHttpClient client = new OkHttpClient();
+
+            RequestBody formBody = new FormEncodingBuilder()
+                    .add(KEY_STAFF_ID, Integer.toString(staffId))
+                    .build();
+
+            Request request = new Request.Builder()
+                    .url(STAFF_URL)
+                    .post(formBody)
+                    .build();
+
+            staffResponse = client.newCall(request).execute();
+            return new JSONObject(staffResponse.body().string());
+
+        } catch (IOException | JSONException e) {
+            Log.e(TAG, "" + e.getLocalizedMessage());
+        }
+        return null;
+    }
+
+
 }
