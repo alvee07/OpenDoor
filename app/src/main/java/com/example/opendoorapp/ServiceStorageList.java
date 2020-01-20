@@ -141,13 +141,13 @@ public class ServiceStorageList {
 
     /* ========================================================================================= */
 
-    ArrayList<String> helpWithHomeworkEmail = new ArrayList<>();
-    helpWithHomeworkEmail.add("outreach@camroseopendoor.com");
+    ArrayList<String> helpWithPaperworkEmail = new ArrayList<>();
+    helpWithPaperworkEmail.add("outreach@camroseopendoor.com");
 
 
-    Service helpWithHomework = new Service("Help With Homework",
-                                                helpWithHomeworkEmail, true);
-    serviceStorageList.add(helpWithHomework);
+    Service helpWithPaperwork = new Service("Help with paperwork",
+                                                helpWithPaperworkEmail, true);
+    serviceStorageList.add(helpWithPaperwork);
 
     /* ========================================================================================= */
 
