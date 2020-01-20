@@ -98,7 +98,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
     serviceAdapter = new ServiceAdapter(ServicesActivity.this,serviceList );
     services.setAdapter(serviceAdapter);
-    //serviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    serviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
     //services.setAdapter(new SpinnerAdapter(list ,this));
 
