@@ -30,11 +30,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class ServicesActivity extends AppCompatActivity implements OnItemSelectedListener {
 
   private String selectedServices;
   private String selectedWorker;
-  private User currentUser;
+  private ArrayList<String> selectedEmailList;
   private Boolean isSelectedService;
   private Boolean isSelectedWorker;
   private Spinner services;
@@ -133,14 +135,14 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
           isSelectedService = true;
           disableSpinner(worker);
           getSelectedServices(parent, position);
-          selectedWorker = null;
+          selectedWorker = "not selected";
           break;
 
         case R.id.workerSpinner:
           isSelectedWorker = true;
           disableSpinner(services);
           getSelectedWorker(parent, position);
-          selectedServices = null;
+          selectedServices = "not selected";
 
           break;
       }// end of switch
@@ -219,13 +221,20 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    * @param view - View object - Button object in this scenario
    * by Alvee
    *
+   * edited by benjamin to send select between emotion screen & confirmation screen
+   *
    */
   public void servicesContinueBtnClicked (View view){
 
     Toast message = Toast.makeText(getApplicationContext(),
             "Please Select a Service or Staff member", Toast.LENGTH_SHORT);
-    Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
-    if(isSelectedWorker == true || isSelectedService == true){
+    Intent emotion = new Intent(ServicesActivity.this, EmotionsCheck.class);
+    Intent name = new Intent(ServicesActivity.this, ConfirmationActivity.class);
+    if(isSelectedWorker || isSelectedService ){
+
+      if(selectedWorker.equals("not selected")){
+
+      }
       startActivity(name);
       finish();
 
