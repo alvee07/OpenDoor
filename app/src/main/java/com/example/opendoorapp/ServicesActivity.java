@@ -35,7 +35,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
   private String selectedServices;
   private String selectedWorker;
-  public ArrayList<String> selectedEmailList;
+  public static  ArrayList<String> selectedEmailList;
   private Boolean isSelectedService;
   private Boolean isSelectedWorker;
   private User currentUser;
