@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+
 public class   MainActivity extends AppCompatActivity {
 
   private String password = "the0p3nD0or";
@@ -24,20 +25,8 @@ public class   MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    //checkInternetConnection();
-
     
-    boolean conn = isValid(this);
-    TextView internetConnection = findViewById(R.id.internetConnection);
-  
-  
-    if (conn){
-      internetConnection.setText("Internet is here");
-    }
-    else internetConnection.setText("No internet connection here");
-
-    
-    
+    noInternetConnectionView();
     
     Button admin = findViewById(R.id.admin);
 
@@ -47,7 +36,9 @@ public class   MainActivity extends AppCompatActivity {
         openAdminDialog();
       }
     });
-  }
+  } // onCreate
+  
+
 
   /**
    * Method to open the admin login dialog box
@@ -100,11 +91,16 @@ public class   MainActivity extends AppCompatActivity {
   
   
   /**
+   * Takes the context to notify that if there is an internet connection
    *
-   * @param context
-   * @return Boolean Value - internet connection
+   * @param context - activity
+   * @return Boolean Value - internet connection true or false
+   * Code is taken from -
+   * https://developer.android.com/training/basics/network-ops/managing
+   *
+   * Modified by Alvee
    */
-  public boolean isValid(Context context) {
+  public boolean isThereAnyInternetConnection(Context context) {
     try {
       ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
       if (cm != null) {
@@ -114,9 +110,24 @@ public class   MainActivity extends AppCompatActivity {
       e.printStackTrace();
     }
     return false;
-  }
+  } // isThereAnyInternetConnection
+  
+  /**
+   * If there is no Internet Connection, it will not show on the screen the buttons to go forward
+   * by Alvee
+   */
+  private void noInternetConnectionView(){
+    if(!isThereAnyInternetConnection(this)){
+      TextView internetConnection = findViewById(R.id.internetConnection);
+      internetConnection.setText(R.string.internetConnection);
+      internetConnection.setVisibility(View.VISIBLE);
+      TextView question = findViewById(R.id.Question);
+      Button checkIn = findViewById(R.id.checkIn);
+      question.setVisibility(View.INVISIBLE);
+      checkIn.setVisibility(View.INVISIBLE);
+    } // if
+    
+  } // noInternetConnectionView
   
   
-  
-  
-}
+} // MainActivity

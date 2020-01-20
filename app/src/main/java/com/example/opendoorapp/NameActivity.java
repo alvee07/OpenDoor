@@ -25,7 +25,6 @@ public class NameActivity extends AppCompatActivity {
   private Handler handler = new Handler();
   private View nameActivityXMLView;
   private EditText userNameInput;
-  long last_text_edit = 0;
   
   AlertDialog dialog;
 
