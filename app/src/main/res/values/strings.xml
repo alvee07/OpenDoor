@@ -7,19 +7,20 @@
     <string-array name="services">
         <item>-- Choose an option --</item>
         <item>I AM IN CRISIS</item>
-        <item>Outreaching</item>
-        <item>FASD Support</item>
-        <item>Restorative Justice</item>
-        <item>Community Helpers</item>
-        <item>ID</item>
-        <item>Tenant Education</item>
-        <item>Counselling</item>
-        <item>Food</item>
         <item>Clothes</item>
-        <item>A ride</item>
-        <item>Someone to talk to</item>
-        <item>Information</item>
+        <item>Community Helpers</item>
+        <item>Counselling</item>
+        <item>FASD Support</item>
+        <item>Food</item>
         <item>Help with paperwork</item>
+        <item>Housing</item>
+        <item>ID</item>
+        <item>Outreaching</item>
+        <item>Restorative Justice</item>
+        <item>Ride</item>
+        <item>Someone to talk to</item>
+        <item>Tenant Education</item>
+        <item>Information</item>
     </string-array>
 
     <string-array name="names">
@@ -52,6 +53,7 @@
     <string name="workers">Staff</string>
     <string name="staff">Staff</string>
     <string name="or">Or</string>
+    <string name="pleaseChooseAnOption">Please Choose an Option</string>
 
 
     // Emotions Activity

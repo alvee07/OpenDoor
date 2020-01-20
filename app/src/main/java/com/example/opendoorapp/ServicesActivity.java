@@ -43,11 +43,11 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   private String selectedServices;
   private String selectedWorker;
   private User currentUser;
-  private Boolean isSelectedService;
-  private Boolean isSelectedWorker;
+  private Boolean isSelectedOption;
   private Spinner services;
   private Spinner worker;
   private GestureDetectorCompat mDetector;
+
 
 
   @Override
@@ -55,25 +55,25 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_services);
 
-    servicesSpinner();
-    workerSpinner();
+
+
 
     List<String> serviceList =   Arrays.asList(getResources().getStringArray(R.array.services));
     List <String> workerList = Arrays.asList(getResources().getStringArray(R.array.names));
-    Spinner spinner = (Spinner) findViewById(R.id.servicesSpinner);
-
-
-//    TestAdapter innerClass = new TestAdapter(serviceList,this);
-//    innerClass.context.getResources();
 
 
 
+      services =  findViewById(R.id.servicesSpinner);
+      worker = findViewById(R.id.workerSpinner);
 
 
 
 
-    services.setAdapter(new TestAdapter(serviceList , this));
-    worker.setAdapter(new TestAdapter(workerList, this));
+
+
+
+    services.setAdapter(new SpinnerAdapter(serviceList , this));
+    worker.setAdapter(new SpinnerAdapter(workerList, this));
 
 
     services.setOnItemSelectedListener(this);
@@ -83,50 +83,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   } // end of onCreate
 
 
-  /**
-   * Sets up the services spinner (with the items from the string.xml file) and sets up
-   * the drop down menu
-   *
-   * by Arnold
-   *
-   * Initial setup of this has been inspired from this source
-   * https://developer.android.com/guide/topics/ui/controls/spinner.
-   * Accessed on January 11, 2020
-   */
-  public void servicesSpinner(){
-    services =  findViewById(R.id.servicesSpinner);
-    //container that hold the values and integrate them with the spinner
-    ArrayAdapter<String> servicesAdapter = new ArrayAdapter<String>(ServicesActivity.this,
-            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.services));
 
-
-    //Drop down list of services stored in .xml file
-    servicesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    //services.setAdapter(servicesAdapter);
-  } // end of servicesSpinner
-
-  /**
-   * Sets up the worker spinner (with the items from the string.xml file) and sets up
-   * the drop down menu
-   *
-   * by Arnold
-   *
-   * Initial setup of this has been inspired from this source
-   * https://developer.android.com/guide/topics/ui/controls/spinner.
-   * Accessed on January 11, 2020
-   */
-  public void workerSpinner(){
-    //Workers
-    //==============================================================================
-    worker = findViewById(R.id.workerSpinner);
-    // Container that hold the values and integrate them with the spinner
-    ArrayAdapter<String> workerAdapter = new ArrayAdapter<String>(ServicesActivity.this,
-            android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.names));
-
-    workerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    worker.setAdapter(workerAdapter);
-
-  }// end of workerSpinner
 
   /**
    * Checks the selections of the user. If user selects services, it disables the staff
@@ -145,18 +102,10 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    */
   public void onItemSelected (AdapterView<?> parent, View view, int position, long id) {
 
-//    TextView textView = new TextView(getBaseContext());
-//
-//    textView.setText(getString(position));
-//
-//
-//    //here you can use position or string
-//    if(position == 1 ||getString(position).equals("I AM IN CRISIS")) {
-//      textView.setBackgroundColor(Color.YELLOW);
-//      services.setBackgroundColor(Color.YELLOW).;
-//    }
+
     if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
       enableSpinners();
+      isSelectedOption = false;
 
     } else {
 
@@ -169,6 +118,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
           disableSpinner(services);
           break;
       }// end of switch
+        isSelectedOption = true;
 
 
     }// end of else
@@ -230,14 +180,25 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   /**
    * Takes user to next Activity - 'Emotions Activity' or, 'Confirmation Activity'
    * @param view - View object - Button object in this scenario
+   *
+   * Modified by Arnold (added the isSelectedOption in oder to not change activity
+   * without selecting the service
+   *
    * by Alvee
    *
    */
   public void servicesContinueBtnClicked (View view){
 
-    Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
-    startActivity(name);
-    finish();
+      if(isSelectedOption = false){
+          Toast.makeText(getApplicationContext(), R.string.pleaseChooseAnOption, Toast.LENGTH_SHORT)
+                  .show();
+      }else{
+          Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
+          startActivity(name);
+          finish();
+      }
+
+
   } // servicesContinueBtnClicked
 
   /**
@@ -256,57 +217,14 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     }, 10000);
   } // startMainActivity
 
-
-
 }// end of file
 
 
 
 
 
-class TestAdapter extends BaseAdapter {
-
-  List<String> strings;
-  Context context;
-
-  public TestAdapter(List<String> stringList, Context context) {
-    strings = stringList;
-    this.context = context;
-  }
 
 
-  @Override
-  public int getCount() {
-    return strings.size();
-  }
-
-  @Override
-  public String getItem(int position) {
-    return strings.get(position);
-  }
-
-  @Override
-  public long getItemId(int position) {
-    return position;
-  }
-
-  @Override
-  public View getView(int position, View convertView, ViewGroup parent) {
-    TextView textView = new TextView(context);
-
-    textView.setText(strings.get(position));
-    textView.setTextSize(30);
-    textView.setPadding(5, 7,5,7);
-
-    //here you can use position or string
-    if (position == 1 && strings.get(position).equals("I AM IN CRISIS")) {
-      textView.setBackgroundColor(Color.YELLOW);
-    }
-
-    return textView;
-  }
-
-}
 
 /**
  * To work on:
