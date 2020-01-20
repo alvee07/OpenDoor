@@ -36,7 +36,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
   private String selectedServices;
   private String selectedWorker;
-  private ArrayList<String> selectedEmailList;
+  public ArrayList<String> selectedEmailList;
   private Boolean isSelectedService;
   private Boolean isSelectedWorker;
   private Spinner services;
@@ -221,7 +221,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    * @param view - View object - Button object in this scenario
    * by Alvee
    *
-   * edited by benjamin to send select between emotion screen & confirmation screen
+   * edited by benjamin to send user between emotion screen & confirmation screen
    *
    */
   public void servicesContinueBtnClicked (View view){
@@ -263,6 +263,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
       }//if selectedWorker
 
       else{
+
+        //check to find what the user selected
         for(int counter = 0; counter < workerList.size(); counter++){
 
           if(workerList.get(counter).getName().equals(selectedWorker)){
