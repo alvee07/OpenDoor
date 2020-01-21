@@ -15,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Handler;
@@ -26,6 +28,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -58,6 +61,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     public static ArrayList<Service> workerlist;
     public static ServiceAdapter serviceAdapter;
     public static ServiceAdapter workerAdapter;
+    //public static ProgressBar progressbar;
+    public static LoadingDialog loadingDialog;
 
     public URL url;
     Service service;
@@ -67,6 +72,13 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
+
+        loadingDialog = new LoadingDialog(ServicesActivity.this );
+
+
+
+
+
 
 
         /**
@@ -85,10 +97,16 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
          * Checking Internet Connection
          */
         if (InternetConnection.checkConnection(getApplicationContext())) {
+
             new GetDataTask().execute();
+            //loadingDialog.startLoadingDialog();
+
         } else {
             //Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
         }
+
+        //loadingDialog.dismissDialog();
+
 
 
 //    List<String> strings = new ArrayList<>(list.size());
@@ -232,8 +250,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
      */
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-
-        if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
+        enableSpinners();
+        if (parent.getItemAtPosition(position).toString().equals("-- Choose an option --")) {
             enableSpinners();
             isSelectedOption = false;
 
@@ -242,21 +260,32 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
             switch (parent.getId()) {
                 case R.id.servicesSpinner:
-                    isSelectedOption = true;
-                    //disableSpinner(worker);
+                    if (parent.getItemAtPosition(position).toString().equals("-- Choose an option --")) {
+                        //worker.setEnabled(true);
+                        //enableSpinners();
 
-                    CharSequence text = "Services selected!" + parent.getItemAtPosition(position).toString();
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(this, text, duration);
-                    toast.show();
+                    }else {
+                        isSelectedOption = true;
+                        CharSequence text = "Services selected!" + parent.getItemAtPosition(position).toString();
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(this, text, duration);
+                        toast.show();
+                        disableSpinner(worker);
+
+                    }
                     break;
                 case R.id.workerSpinner:
-                    isSelectedOption = true;
-                    Toast toast2 = Toast.makeText(this, parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT);
-                    toast2.show();
 
-                    //disableSpinner(services);
+                    if (!parent.getItemAtPosition(position).equals("-- Choose an option --")) {
+                        //services.setEnabled(true);
+                        //enableSpinners();
+                    }else {
+                        isSelectedOption = true;
+                        Toast toast2 = Toast.makeText(this, parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT);
+                        toast2.show();
+                        disableSpinner(services);
 
+                    }
 
                     break;
             }// end of switch
@@ -397,6 +426,9 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
     int workerIndex;
     int x;
     int worker;
+    LoadingDialog loading;
+
+
 
     @Override
     protected void onPreExecute() {
@@ -417,10 +449,20 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
             workerIndex = 0;
         else
             workerIndex = worker;
+        loading = ServicesActivity.loadingDialog;
+
+
+       loading.startLoadingDialog();
+
+
+
+
+
 
 
     }
 
+    @SuppressLint("WrongThread")
     @Nullable
     @Override
     protected Void doInBackground(Void... params) {
@@ -491,6 +533,8 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                              * Adding name and phone concatenation in List...
                              */
                             ServicesActivity.getList().add(model);
+
+
                         }
                     }
 
@@ -534,6 +578,7 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                         }
                     }
                 }
+
             } else {
 
             }
@@ -547,7 +592,10 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
+
+        loading.dismissDialog();
+
+
         ServicesActivity.serviceAdapter.notifyDataSetChanged();
         ServicesActivity.workerAdapter.notifyDataSetChanged();
 
