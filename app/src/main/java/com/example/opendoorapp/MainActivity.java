@@ -25,19 +25,19 @@ public class   MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    
+
     noInternetConnectionView();
-    
+
     Button admin = findViewById(R.id.admin);
 
     admin.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        openAdminDialog();
+        //openAdminDialog();
       }
     });
   } // onCreate
-  
+
 
 
   /**
@@ -111,7 +111,7 @@ public class   MainActivity extends AppCompatActivity {
     }
     return false;
   } // isThereAnyInternetConnection
-  
+
   /**
    * If there is no Internet Connection, it will not show on the screen the buttons to go forward
    * by Alvee
@@ -126,8 +126,8 @@ public class   MainActivity extends AppCompatActivity {
       question.setVisibility(View.INVISIBLE);
       checkIn.setVisibility(View.INVISIBLE);
     } // if
-    
+
   } // noInternetConnectionView
-  
-  
+
+
 } // MainActivity

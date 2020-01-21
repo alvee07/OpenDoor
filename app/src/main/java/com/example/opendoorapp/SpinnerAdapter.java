@@ -1,3 +1,5 @@
+
+
 /**
  * AUCSC 320
  * Arnold Gihozo
@@ -27,14 +29,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.opendoorapp.model.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpinnerAdapter extends BaseAdapter {
 
-    List<String> listOfItems;
+    List<Service> listOfItems;
     Context context;
 
-    public SpinnerAdapter(List<String> stringList, Context context) {
+    public SpinnerAdapter(ArrayList<Service> stringList, Context context) {
         listOfItems = stringList;
         this.context = context;
     }
@@ -47,7 +52,7 @@ public class SpinnerAdapter extends BaseAdapter {
 
     @Override
     public String getItem(int position) {
-        return listOfItems.get(position);
+        return listOfItems.get(position).toString();
     }
 
     @Override
@@ -59,9 +64,10 @@ public class SpinnerAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView viewText = new TextView(context);
 
-        viewText.setText(listOfItems.get(position));
+        viewText.setText(listOfItems.get(position).toString());
         viewText.setTextSize(30);
         viewText.setPadding(5, 7, 5, 7);
+        viewText.setTextColor(Color.BLACK);
 
         // sets the first variable in the middle
         if (position == 0)

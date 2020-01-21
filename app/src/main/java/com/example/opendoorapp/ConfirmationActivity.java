@@ -78,31 +78,31 @@ public class ConfirmationActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_confirmation);
     setUserCredentials();
-  
+
 
     List<String> email = new ArrayList<>(ServicesActivity.selectedEmailList);
-    
+
     // JUST NOT SENDING UNNECESSARY EMAILS TO CAMROSE OPEN DOOR PEOPLE
     //listOfEmailSendingOverTheNetwork(email);
-  
-  
+
+
     startMainActivity();
-    
+
   } // onCreate
-  
+
   /**
    * Sends Email to Appropriate Staff when User Check-In
    *
    * @param recipients - List (String) of Email addresses email needs to send
    */
   private void listOfEmailSendingOverTheNetwork(List<String> recipients) {
-    
+
     for (String temp : recipients) {
       sendGMailToStaffs(temp, emailBodyCreation(), emailSubjectCreation());
     }
   }
-  
-  
+
+
   /**
    * Higher Method of sub-methods what to show on the screen, if Email is sent
    */
@@ -124,8 +124,8 @@ public class ConfirmationActivity extends AppCompatActivity {
     workerForEmail = User.workerName;
     emotionsForEmail = User.emotionName;
     //localTime = User.localTime;
-  
-    
+
+
   } // setUserCredentials
 
   /**
@@ -158,7 +158,7 @@ public class ConfirmationActivity extends AppCompatActivity {
     String message = confirmationMessage.toString();
     return message;
   } // buildThanksUserMessage
-  
+
   /**
    * Sets Thanks user and show 'Please Contact Front Desk', if email send is failed
    */
@@ -169,7 +169,7 @@ public class ConfirmationActivity extends AppCompatActivity {
     startMainActivity();
   } // setEmailSendFailedTextOnScreen
 
-  
+
   /** Starts MainActivity class in 10 seconds after showing Confirmation class */
   private void startMainActivity() {
     MAIN_HANDLER_ON_THIS_ACTIVITY
@@ -185,14 +185,14 @@ public class ConfirmationActivity extends AppCompatActivity {
             },
                 DELAY_TIME_TO_START_MAIN_ACTIVITY_FROM_CONFIRMATION_PAGE);
   } // startMainActivity
-  
+
   @Override
   protected void onDestroy() {
     MAIN_HANDLER_ON_THIS_ACTIVITY.removeCallbacksAndMessages(null);
     super.onDestroy();
   }
-  
-  
+
+
   /**
    * Runs a new thread, thread sends an email.
    * If the email is sent, it will show 'Thanks user and Confirmation message'
@@ -217,7 +217,7 @@ public class ConfirmationActivity extends AppCompatActivity {
             }) // sendGMailToStaffs
         .start();
   } // sendGMailToStaffs
-  
+
   /**
    * Runs a thread that shows what to show on screen based on Email Sent or Not
    *
@@ -233,7 +233,7 @@ public class ConfirmationActivity extends AppCompatActivity {
           } // run
         });// Runnable
   } // whatToShowOnScreenBasedOnEmailSend
-  
+
   /**
    * Returns a String, Email Body which is formatted HTML, and contains all the info user inputted
    *
@@ -252,7 +252,7 @@ public class ConfirmationActivity extends AppCompatActivity {
               + "</br>";
     return message;
   } //emailBodyCreation
-  
+
   /**
    * Returns a String, how the email subject is formatted.
    *
@@ -262,6 +262,6 @@ public class ConfirmationActivity extends AppCompatActivity {
     if (User.serviceName == null) return "Youth " + userNameForEmail + " has checked-in to see " + workerForEmail;
     else return "Youth " + userNameForEmail + " has checked-in for " + User.serviceName;
   } // emailSubjectCreation
-  
-  
+
+
 } // ConfirmationActivity
