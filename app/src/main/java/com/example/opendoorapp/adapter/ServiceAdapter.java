@@ -40,22 +40,6 @@ public class ServiceAdapter extends ArrayAdapter<Service> {
 
 
     private View initView(int position, View convertView, ViewGroup parent) {
-        /*if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.layout_spinner, parent, false
-            );
-        }
-
-
-        TextView textViewName = convertView.findViewById(R.id.text_view_name);
-
-        Service currentItem = getItem(position);
-
-        if (currentItem != null) {
-            textViewName.setText(currentItem.getName());
-        }
-
-        return convertView;*/
         TextView viewText = new TextView(con);
 
         viewText.setText(getItem(position).getName());
