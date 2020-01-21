@@ -301,10 +301,21 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     }, DELAY_TIME_TO_START_MAIN_ACTIVITY);
   } // changeActivityToMainActivity
   
+  /**
+   * Last task of this activity to happen before destroying it fully
+   */
   @Override
   protected void onDestroy() {
     MAIN_HANDLER.removeCallbacksAndMessages(null);
     super.onDestroy();
+  }
+  
+  /**
+   * Disabling the back button, so user can not go back to Main Screen just by clicking it
+   */
+  @Override
+  public void onBackPressed() {
+    // disable the android app back button
   }
 
 }// end of class

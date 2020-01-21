@@ -6,8 +6,8 @@
  * <p>It welcomes user and shows option to go to next activity to accept Camrose Open Door services.
  *
  * @author Alex. Unless otherwise specified, all code was written by Alex.
- *     <p>Modified by Alvee Hassan Akash. (Documentation and Specific methods)
  * @since 2020-01-20
+ *     <p>Modified by Alvee Hassan Akash. (Documentation and Specific methods)
  */
 package com.example.opendoorapp;
 
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
   public void checkInBtnClicked(View view) {
     Intent name = new Intent(MainActivity.this, NameActivity.class);
     startActivity(name);
-    // finish();
+    finish();
   } // checkInBtnClicked
 
   /**
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
    * @param context - activity
    * @return Boolean Value - internet connection true or false Code is taken from -
    *     https://developer.android.com/training/basics/network-ops/managing
-   *     <p>Modified by Alvee
+   *     <p>Modified by Alvee Hassan Akash
    */
   public boolean isThereAnyInternetConnection(Context context) {
     try {
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
    * If there is no Internet Connection, it will not show on the screen the buttons to go forward It
    * will disable and invisible views and show the 'Need Internet Connection' 'Contact front desk'
    *
-   * <p>by Alvee
+   * <p>by Alvee Hassan Akash
    */
   private void noInternetConnectionView() {
     // this 'if' produces false statement = No internet connection

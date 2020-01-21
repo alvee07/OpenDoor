@@ -65,7 +65,7 @@
             android:hint="@string/placeHolderName"
             android:focusedByDefault="true"
             android:inputType="textCapSentences"
-            android:maxLength="29"
+            android:maxLength="20"
             android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

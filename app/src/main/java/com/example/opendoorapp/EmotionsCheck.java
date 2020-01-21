@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
@@ -13,7 +15,6 @@ public class EmotionsCheck extends AppCompatActivity {
 
   private String selectedEmotion;
   private Boolean emotionSelected;
-  
 
   Button happyButton;
   Button contentButton;
@@ -25,7 +26,8 @@ public class EmotionsCheck extends AppCompatActivity {
   Button underInfluenceButton;
   Button overwhelmedButton;
   Button depressedButton;
-
+  private final Integer DELAY_TIME_TO_START_MAIN_ACTIVITY = 60000;
+  private Handler MAIN_HANDLER = new Handler(Looper.getMainLooper());
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -46,254 +48,275 @@ public class EmotionsCheck extends AppCompatActivity {
     depressedButton = findViewById(R.id.depressedButton);
     submitButton = findViewById(R.id.emotionsCheckSubmit);
 
+    happyButton.setOnClickListener(
+        new View.OnClickListener() {
+          public void onClick(View v) {
 
-    happyButton.setOnClickListener(new View.OnClickListener(){
-      public void onClick(View v){
+            selectedEmotion = "happy";
+            emojiSelected();
 
-        selectedEmotion = "happy";
-        emojiSelected();
+            if (v == happyButton) {
 
-        if(v == happyButton){
+              happyButton.setBackground(getDrawable(R.drawable.happy_emoji_selected));
 
-          happyButton.setBackground(getDrawable(R.drawable.happy_emoji_selected));
+              contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+              neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+              upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+              sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+              angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+              underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+              depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+              overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+            }
+          }
+        });
 
-          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
-          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
-          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
-          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
-          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
-          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
-          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
-          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+    contentButton.setOnClickListener(
+        new View.OnClickListener() {
+          public void onClick(View v) {
 
-        }
+            selectedEmotion = "content";
+            emojiSelected();
 
-      }
-    });
+            if (v == contentButton) {
 
-    contentButton.setOnClickListener(new View.OnClickListener(){
-      public void onClick(View v){
+              contentButton.setBackground(getDrawable(R.drawable.content_emoji_selected));
 
-        selectedEmotion = "content";
-        emojiSelected();
+              happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+              neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+              upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+              sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+              angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+              underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+              depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+              overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+            }
+          }
+        });
 
-        if(v == contentButton){
+    neutralButton.setOnClickListener(
+        new View.OnClickListener() {
+          public void onClick(View v) {
 
-          contentButton.setBackground(getDrawable(R.drawable.content_emoji_selected));
+            selectedEmotion = "neutral";
+            emojiSelected();
 
-          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
-          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
-          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
-          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
-          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
-          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
-          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
-          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
-        }
+            if (v == neutralButton) {
 
-      }
-    });
+              neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji_selected));
 
-    neutralButton.setOnClickListener(new View.OnClickListener(){
-      public void onClick(View v){
+              happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+              contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+              upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+              sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+              angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+              underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+              depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+              overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+            }
+          }
+        });
 
-        selectedEmotion = "neutral";
-        emojiSelected();
+    upsetButton.setOnClickListener(
+        new View.OnClickListener() {
+          public void onClick(View v) {
 
-        if(v == neutralButton){
+            selectedEmotion = "upset";
+            emojiSelected();
 
-          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji_selected));
+            if (v == upsetButton) {
 
-          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
-          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
-          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
-          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
-          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
-          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
-          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
-          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+              upsetButton.setBackground(getDrawable(R.drawable.upset_emoji_selected));
 
-        }
+              happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+              contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+              neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+              sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+              angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+              underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+              depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+              overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+            }
+          }
+        });
 
-      }
-    });
+    sadButton.setOnClickListener(
+        new View.OnClickListener() {
+          public void onClick(View v) {
 
-    upsetButton.setOnClickListener(new View.OnClickListener(){
-      public void onClick(View v){
+            selectedEmotion = "sad";
+            emojiSelected();
 
-        selectedEmotion = "upset";
-        emojiSelected();
+            if (v == sadButton) {
 
-        if(v == upsetButton){
+              sadButton.setBackground(getDrawable(R.drawable.sad_emoji_selected));
 
-          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji_selected));
+              happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+              contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+              neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+              upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+              angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+              underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+              depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+              overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+            }
+          }
+        });
 
-          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
-          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
-          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
-          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
-          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
-          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
-          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
-          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
-        }
+    angryButton.setOnClickListener(
+        new View.OnClickListener() {
+          public void onClick(View v) {
 
-      }
-    });
+            selectedEmotion = "angry";
+            emojiSelected();
 
-    sadButton.setOnClickListener(new View.OnClickListener(){
-      public void onClick(View v){
+            if (v == angryButton) {
 
-        selectedEmotion = "sad";
-        emojiSelected();
+              angryButton.setBackground(getDrawable(R.drawable.angry_emoji_selected));
 
-        if(v == sadButton){
+              happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+              contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+              neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+              upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+              sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+              underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+              depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+              overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+            }
+          }
+        });
 
-          sadButton.setBackground(getDrawable(R.drawable.sad_emoji_selected));
+    /** Modified by Alex Taylor */
+    underInfluenceButton.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
 
-          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
-          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
-          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
-          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
-          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
-          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
-          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
-          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+            selectedEmotion = "Under Influence";
+            emojiSelected();
 
-        }
+            if (v == underInfluenceButton) {
 
-      }
-    });
+              underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji_selected));
 
-    angryButton.setOnClickListener(new View.OnClickListener(){
-      public void onClick(View v){
+              happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+              contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+              neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+              upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+              sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+              angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+              depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+              overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+            }
+          }
+        });
 
-        selectedEmotion = "angry";
-        emojiSelected();
+    depressedButton.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
 
-        if(v == angryButton){
+            selectedEmotion = "Depressed";
+            emojiSelected();
 
-          angryButton.setBackground(getDrawable(R.drawable.angry_emoji_selected));
+            if (v == depressedButton) {
 
-          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
-          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
-          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
-          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
-          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
-          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
-          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
-          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+              depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji_selected));
 
-        }
+              happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+              contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+              neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+              upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+              sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+              angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+              underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+              overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
+            }
+          }
+        });
 
-      }
-    });
+    overwhelmedButton.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
 
-    /**
-     * Modified by Alex Taylor
-     */
-    underInfluenceButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
+            selectedEmotion = "Overwhelmed";
+            emojiSelected();
 
-        selectedEmotion = "Under Influence";
-        emojiSelected();
+            if (v == overwhelmedButton) {
 
-        if (v == underInfluenceButton){
+              overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji_selected));
 
-          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji_selected));
+              happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
+              contentButton.setBackground(getDrawable(R.drawable.content_emoji));
+              neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
+              upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
+              sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
+              angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
+              underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
+              depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
+            }
+          }
+        });
 
-          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
-          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
-          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
-          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
-          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
-          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
-          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
-          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
-
-        }
-
-      }
-    });
-
-    depressedButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-
-        selectedEmotion = "Depressed";
-        emojiSelected();
-
-        if (v == depressedButton){
-
-          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji_selected));
-
-          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
-          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
-          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
-          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
-          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
-          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
-          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
-          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji));
-
-        }
-      }
-    });
-
-    overwhelmedButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-
-        selectedEmotion = "Overwhelmed";
-        emojiSelected();
-
-        if(v == overwhelmedButton){
-
-          overwhelmedButton.setBackground(getDrawable(R.drawable.overwhelmed_emoji_selected));
-
-          happyButton.setBackground(getDrawable(R.drawable.happy_emoji));
-          contentButton.setBackground(getDrawable(R.drawable.content_emoji));
-          neutralButton.setBackground(getDrawable(R.drawable.neutral_emoji));
-          upsetButton.setBackground(getDrawable(R.drawable.upset_emoji));
-          sadButton.setBackground(getDrawable(R.drawable.sad_emoji));
-          angryButton.setBackground(getDrawable(R.drawable.angry_emoji));
-          underInfluenceButton.setBackground(getDrawable(R.drawable.woozy_emoji));
-          depressedButton.setBackground(getDrawable(R.drawable.depressed_emoji));
-
-        }
-      }
-    });
-
-
-    
+    changeActivityToMainActivity();
   } // onCreate
 
-  /**
-   * Used if an emotion button is pressed
-   * by Alex
-   */
-  public void emojiSelected(){
+  /** Used if an emotion button is pressed by Alex */
+  public void emojiSelected() {
     emotionSelected = true;
   }
 
+  
+  /** Starting here, everything is written by Alvee Hassan Akash */
+
+  
   /**
    * Takes user to next Activity - 'Confirmation Activity'
-   * @param view - View object - Button object in this scenario
-   * by Alvee
    *
+   * @param view - View object - Button object in this scenario by Alvee Hassan Akash
    */
-  public void submitBtnClicked(View view){
+  public void submitBtnClicked(View view) {
     User.emotionName = selectedEmotion;
     Intent name = new Intent(EmotionsCheck.this, ConfirmationActivity.class);
-    if (!emotionSelected){
-      Toast message = Toast.makeText(getApplicationContext(),"Please Select an Emotion", Toast.LENGTH_SHORT);
-      message.show();
+    if (!emotionSelected) {
+      Toast.makeText(getApplicationContext(), "Please Select an Emotion", Toast.LENGTH_SHORT).show();
       return;
-    }
-    else {
+    } else {
       startActivity(name);
-      //finish();
+      // finish();
     }
   } // continueBtnClicked
+
+  /**
+   * Goes back to Main Activity screen after 1 min Assuming, mostly user can input their name in one
+   * min
+   *
+   * <p>by Alvee Hassan Akash
+   */
+  private void changeActivityToMainActivity() {
+    MAIN_HANDLER.postDelayed(
+        new Runnable() {
+          @Override
+          public void run() {
+            final Intent goBackToMainActivity = new Intent(EmotionsCheck.this, MainActivity.class);
+            EmotionsCheck.this.startActivity(goBackToMainActivity);
+            EmotionsCheck.this.finish();
+          } // run
+        },
+        DELAY_TIME_TO_START_MAIN_ACTIVITY);
+  } // changeActivityToMainActivity
+
+  /** Last task of this activity to happen before destroying it fully */
+  @Override
+  protected void onDestroy() {
+    MAIN_HANDLER.removeCallbacksAndMessages(null);
+    super.onDestroy();
+  } // onDestroy
+
+  /** Disabling the back button, so user can not go back to Main Screen just by clicking it */
+  @Override
+  public void onBackPressed() {
+    // disable the android app back button
+  } // onBackPressed
 }

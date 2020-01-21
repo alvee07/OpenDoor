@@ -128,7 +128,7 @@ public class ConfirmationActivity extends AppCompatActivity {
     listOfEmailSendingOverTheNetwork(rec);
 
     // remove when uncomment list<>
-    startMainActivity();
+    //startMainActivity();
   } // onCreate
 
   /**
@@ -177,6 +177,7 @@ public class ConfirmationActivity extends AppCompatActivity {
     setUserCredentials();
     thanksUser = findViewById(R.id.thanksUser);
     thanksUser.setText(buildThanksUserMessage(userNameForEmail));
+    thanksUser.setPadding(30,10,30,10);
   }
 
   /** Gets confirmationMessage textView from XML Sets confirmationMessage message on the screen */
@@ -235,6 +236,12 @@ public class ConfirmationActivity extends AppCompatActivity {
     clearStaticVariables();
     super.onDestroy();
   } // onDestroy
+  
+  /** Disabling the back button, so user can not go back to Main Screen just by clicking it */
+  @Override
+  public void onBackPressed() {
+    // disable the android app back button
+  } // onBackPressed
 
   /**
    * Runs a new thread, thread sends an email. If the email is sent, it will show 'Thanks user and
@@ -252,7 +259,7 @@ public class ConfirmationActivity extends AppCompatActivity {
               public void run() {
                 try {
                   MailSender sender = new MailSender();
-                  final Boolean isEmailSent =
+                  Boolean isEmailSent =
                       sender.sendMail(emailSubject, emailBody, oneRecipients);
                   whatToShowOnScreenBasedOnEmailSend(isEmailSent);
                 } catch (Exception e) {
@@ -316,8 +323,8 @@ public class ConfirmationActivity extends AppCompatActivity {
    */
   private String secondLineOfEmailBody() {
     if (servicesForEmail == null) {
-      return "<h3>" + userNameForEmail + " wants to see " + workerForEmail + "</h3></br>";
-    } else return "<h3>" + userNameForEmail + " is looking for " + servicesForEmail + "</h3></br>";
+      return "<h3>" + userNameForEmail + " wants to see <u>" + workerForEmail + ".</u></h3></br>";
+    } else return "<h3>" + userNameForEmail + " is looking for <u>" + servicesForEmail + ".</u></h3></br>";
   } // thirdLineOfEmailBody
 
   /**
@@ -329,7 +336,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   private String thirdLineOfEmailBody() {
     if (emotionsForEmail == null) {
       return "";
-    } else return "<h4>Feeling " + emotionsForEmail + "</h4></br>";
+    } else return "<h3>"+ userNameForEmail +" is feeling <u>" + emotionsForEmail + ".</u></h3></br>";
   } // thirdLineOfEmailBody
 
   /**
