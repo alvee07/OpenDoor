@@ -98,7 +98,7 @@ public class NameActivity extends AppCompatActivity {
   } // hideSoftKeyboard
 
   /**
-   * Goes back to Main Activity screen after an 1 min
+   * Goes back to Main Activity screen after 1 min
    * Assuming, mostly user can input their name in one min
    *
    * by Alvee
