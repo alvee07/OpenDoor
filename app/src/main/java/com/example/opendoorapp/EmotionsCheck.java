@@ -52,7 +52,7 @@ public class EmotionsCheck extends AppCompatActivity {
         new View.OnClickListener() {
           public void onClick(View v) {
 
-            selectedEmotion = "happy";
+            selectedEmotion = "happy &#128522;";
             emojiSelected();
 
             if (v == happyButton) {
@@ -75,7 +75,7 @@ public class EmotionsCheck extends AppCompatActivity {
         new View.OnClickListener() {
           public void onClick(View v) {
 
-            selectedEmotion = "content";
+            selectedEmotion = "content &#128578;";
             emojiSelected();
 
             if (v == contentButton) {
@@ -98,7 +98,7 @@ public class EmotionsCheck extends AppCompatActivity {
         new View.OnClickListener() {
           public void onClick(View v) {
 
-            selectedEmotion = "neutral";
+            selectedEmotion = "neutral &#128528;";
             emojiSelected();
 
             if (v == neutralButton) {
@@ -121,7 +121,7 @@ public class EmotionsCheck extends AppCompatActivity {
         new View.OnClickListener() {
           public void onClick(View v) {
 
-            selectedEmotion = "upset";
+            selectedEmotion = "upset &#9785;";
             emojiSelected();
 
             if (v == upsetButton) {
@@ -144,7 +144,7 @@ public class EmotionsCheck extends AppCompatActivity {
         new View.OnClickListener() {
           public void onClick(View v) {
 
-            selectedEmotion = "sad";
+            selectedEmotion = "sad &#128546;";
             emojiSelected();
 
             if (v == sadButton) {
@@ -167,7 +167,7 @@ public class EmotionsCheck extends AppCompatActivity {
         new View.OnClickListener() {
           public void onClick(View v) {
 
-            selectedEmotion = "angry";
+            selectedEmotion = "angry &#128544;";
             emojiSelected();
 
             if (v == angryButton) {
@@ -192,7 +192,7 @@ public class EmotionsCheck extends AppCompatActivity {
           @Override
           public void onClick(View v) {
 
-            selectedEmotion = "Under Influence";
+            selectedEmotion = "Under Influence &#129396;";
             emojiSelected();
 
             if (v == underInfluenceButton) {
@@ -216,7 +216,7 @@ public class EmotionsCheck extends AppCompatActivity {
           @Override
           public void onClick(View v) {
 
-            selectedEmotion = "Depressed";
+            selectedEmotion = "Depressed &#128549;";
             emojiSelected();
 
             if (v == depressedButton) {
@@ -240,7 +240,7 @@ public class EmotionsCheck extends AppCompatActivity {
           @Override
           public void onClick(View v) {
 
-            selectedEmotion = "Overwhelmed";
+            selectedEmotion = "Overwhelmed &#128555;";
             emojiSelected();
 
             if (v == overwhelmedButton) {

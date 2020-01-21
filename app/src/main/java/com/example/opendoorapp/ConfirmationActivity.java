@@ -336,7 +336,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   private String thirdLineOfEmailBody() {
     if (emotionsForEmail == null) {
       return "";
-    } else return "<h3>"+ userNameForEmail +" is feeling <u>" + emotionsForEmail + ".</u></h3></br>";
+    } else return "<h3>"+ userNameForEmail +" is feeling " + emotionsForEmail + "</h3></br>";
   } // thirdLineOfEmailBody
 
   /**
