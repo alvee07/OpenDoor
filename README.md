@@ -20,12 +20,20 @@ Known Bugs:
 - Rapid tapping on buttons that control movement from between activities can cause opening of the same page multiple times
 
 Possible Updates to application:
-- Implementation of feature that allow client to update or remove services and employee list from the admin page of the application
+- Implementation of feature that allow client to update or remove services and employee list from the admin page of the                application. This can be done through Google Excel that is converted through JSON. The set-up for this is already             implemented on the branch serviceExpansion. Further work needs to be done on the design component.
 - Proper inactivity timer for activities
 - Feature to determine whether staff member is currently in office
 
 Developers:
-Alvee Akash
-Arnold Gihozo
-Alex Taylor
-Benjamin Wilson
+Alvee Akash: Worked on email system
+Contact:
+
+Arnold Gihozo: Worked on file system (getting Excel data into JSON) and Service Activity
+Contact:
+
+Alex Taylor: Worked on Admin activity and Emotion Activity
+Contact: arno.mugabo@gmail.com OR gihozo@ualberta.ca
+
+Benjamin Wilson: Worked on data being transmitted from one activity to another. Focused also into getting a service to 
+                 send information at a specific email.
+Contact:
