@@ -1,3 +1,21 @@
+/**
+ * EmotionsCheck.java
+ *
+ * <p>This activity contains the Emotions check page on the screen.
+ *
+ * <p>User only comes to see this page when their previous input needs emotions check.
+ *
+ * <p>From this page, it also stores the data into User class static variable to send the
+ * information to Confirmation page, where it will send the email to appropriate worker.
+ *
+ * @author Benjamin Wilson
+ * @author Alex Taylor
+ * @version 1.0
+ * @since 2020-01-10 Unless otherwise specified, all code was written by Benjamin Wilson & Alex
+ *     Taylor
+ *     <p>Modified by Alvee Hassan Akash (Documentation and Specific methods and EMOJI Unicode to
+ *     the string)
+ */
 package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +26,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Switch;
 import android.widget.Toast;
 
 public class EmotionsCheck extends AppCompatActivity {
@@ -268,9 +285,13 @@ public class EmotionsCheck extends AppCompatActivity {
   }
 
   
+  
+  
+  
+  
+  
   /** Starting here, everything is written by Alvee Hassan Akash */
 
-  
   /**
    * Takes user to next Activity - 'Confirmation Activity'
    *
@@ -280,7 +301,8 @@ public class EmotionsCheck extends AppCompatActivity {
     User.emotionName = selectedEmotion;
     Intent name = new Intent(EmotionsCheck.this, ConfirmationActivity.class);
     if (!emotionSelected) {
-      Toast.makeText(getApplicationContext(), "Please Select an Emotion", Toast.LENGTH_SHORT).show();
+      Toast.makeText(getApplicationContext(), "Please Select an Emotion", Toast.LENGTH_SHORT)
+          .show();
       return;
     } else {
       startActivity(name);
@@ -319,4 +341,4 @@ public class EmotionsCheck extends AppCompatActivity {
   public void onBackPressed() {
     // disable the android app back button
   } // onBackPressed
-}
+} // EmotionsCheck

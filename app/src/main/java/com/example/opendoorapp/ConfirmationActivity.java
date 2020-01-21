@@ -48,7 +48,7 @@
  *
  * <p>- thirdLineOfEmailBody() Third line of the email's body
  *
- * <p>- clearStaticVariables() Re-initializing the static variables to NULL to re-use
+ * <p>- clearStaticVariables() Re-initializing the static variables to NULL to re-use for next input
  *
  * @author Alvee Hassan Akash
  * @version 1.0

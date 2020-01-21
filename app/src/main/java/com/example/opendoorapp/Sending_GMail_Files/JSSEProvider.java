@@ -1,3 +1,15 @@
+/**
+ * This file is taken from a web page. Nothing is modified in this file.
+ *
+ * <p>Code is taken from -
+ *
+ * <p>https://pepipost.com/tutorials/send-email-in-android-using-javamail-api/
+ *
+ * <p>Document was accessed on 2020-10-01
+ *
+ * <p>Collected by Alvee Hassan Akash
+ */
+
 package com.example.opendoorapp.Sending_GMail_Files;
 
 /* * Licensed to the Apache Software Foundation (ASF) under one or more

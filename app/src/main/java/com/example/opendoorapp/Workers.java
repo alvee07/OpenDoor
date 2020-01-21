@@ -1,3 +1,16 @@
+/**
+ * Workers.java
+ *
+ * This class contains the worker information to store in an instant object of Worker.
+ *
+ * In future, this can be a model of putting data into database.
+ *
+ * @author Alex Taylor
+ * @version 1.0
+ * @since 2020-01-10 Unless otherwise specified, all code was written by Alex Taylor.
+ *     <p>Modified by Alvee Hassan Akash (Documentation)
+ */
+
 package com.example.opendoorapp;
 
 import java.util.ArrayList;
