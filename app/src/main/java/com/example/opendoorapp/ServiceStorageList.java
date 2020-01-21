@@ -45,7 +45,7 @@ public class ServiceStorageList {
     fasdSupportsEmail.add("Chelsea@camroseopendoor.com");
 
 
-    Service fasdSupport = new Service("FASD Supports",
+    Service fasdSupport = new Service("FASD Support",
                                                 fasdSupportsEmail, true);
     serviceStorageList.add(fasdSupport);
 
@@ -56,9 +56,9 @@ public class ServiceStorageList {
     restorativeJusticeEmail.add("Brianne@camroseopendoor.com");
 
 
-    Service restorativeJustive = new Service("Restorative Justice",
+    Service restorativeJustice = new Service("Restorative Justice",
                                                   restorativeJusticeEmail, true);
-    serviceStorageList.add(restorativeJustive);
+    serviceStorageList.add(restorativeJustice);
 
     /* ========================================================================================= */
 
@@ -135,19 +135,19 @@ public class ServiceStorageList {
     someoneToTalkToEmail.add("outreach@camroseopendoor.com");
 
 
-    Service someoneToTalkTo = new Service("Someone To Talk To",
+    Service someoneToTalkTo = new Service("Someone to talk to",
                                                     someoneToTalkToEmail, true);
     serviceStorageList.add(someoneToTalkTo);
 
     /* ========================================================================================= */
 
-    ArrayList<String> helpWithHomeworkEmail = new ArrayList<>();
-    helpWithHomeworkEmail.add("outreach@camroseopendoor.com");
+    ArrayList<String> helpWithPaperworkEmail = new ArrayList<>();
+    helpWithPaperworkEmail.add("outreach@camroseopendoor.com");
 
 
-    Service helpWithHomework = new Service("Help With Homework",
-                                                helpWithHomeworkEmail, true);
-    serviceStorageList.add(helpWithHomework);
+    Service helpWithPaperwork = new Service("Help with paperwork",
+                                                helpWithPaperworkEmail, true);
+    serviceStorageList.add(helpWithPaperwork);
 
     /* ========================================================================================= */
 
