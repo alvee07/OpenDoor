@@ -27,17 +27,25 @@ Possible Updates to application:
 
 Developers:
 Alvee Akash: Computing Science student from the University of Alberta.
+
 Role: User Interface, Email system, Overall Project Management.
+
 Contact: Feel free to contact any time, alvee@ualberta.ca
 
 Arnold Gihozo: Computing Science stduent from the University of Alberta
+
 Role: Worked on file system (getting Excel data into JSON) and Service Activity
+
 Contact: arno.mugabo@gmail.com OR gihozo@ualberta.ca
 
 Alex Taylor: Computing Science Student from  the University of Alberta
+
 Role: Main Page, Admin activity, Emotion Activity, and design formatting
+
 Contact: awtaylor@ualberta.ca
 
 Benjamin Wilson: Computing Science Studetn from the University of Alberta
+
 Role: Worked on data being transmitted from one activity to another. Focused also into getting a service to send information at a specific email.
+
 Contact:
