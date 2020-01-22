@@ -80,6 +80,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
     if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
       enableSpinners();
+      isSelectedService = false;
+      isSelectedWorker = false;
 
     } else {
 
