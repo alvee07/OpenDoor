@@ -36,7 +36,8 @@
             android:layout_marginBottom="16dp"
             android:padding="20dp"
             android:textAlignment="center"
-            android:textSize="60sp"
+            android:textSize="50sp"
+            android:textStyle="bold"
 
             app:layout_constraintBottom_toTopOf="@+id/confirmationMessage"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +70,7 @@
             android:gravity="center"
             android:padding="20dp"
             android:textSize="40sp"
+            android:lineSpacingExtra="10dp"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

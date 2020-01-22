@@ -119,8 +119,8 @@ public class NameActivity extends AppCompatActivity {
     } // if
     User.userName = userNameFromInput;
 
-    Intent goToMainActivity = new Intent(NameActivity.this, ServicesActivity.class);
-    NameActivity.this.startActivity(goToMainActivity);
+    Intent goToNextActivity = new Intent(NameActivity.this, ServicesActivity.class);
+    NameActivity.this.startActivity(goToNextActivity);
     NameActivity.this.finish();
   } // checkInBtnClicked
 
@@ -182,6 +182,7 @@ public class NameActivity extends AppCompatActivity {
   @Override
   protected void onDestroy() {
     MAIN_HANDLER.removeCallbacksAndMessages(null);
+    System.out.println("Name Activity is done forever-----------no handler");
     super.onDestroy();
   } // onDestroy
   

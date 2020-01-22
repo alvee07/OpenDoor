@@ -234,6 +234,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   protected void onDestroy() {
     MAIN_HANDLER_ON_THIS_ACTIVITY.removeCallbacksAndMessages(null);
     clearStaticVariables();
+    System.out.println("Confirmation Activity is done forever-----------no handler");
     super.onDestroy();
   } // onDestroy
   
