@@ -14,10 +14,12 @@ Current Features:
 - Emotion check page will be used depending on service or staff member selected
 
 Known Bugs:
-- User has to go through the check-in process or wait for a 60 sec timer to finish in order to return to the main page
-- 60 sec timer is not present in Emotions check activity
+- User has to go through the check-in process or wait for a 60 sec timer to finish in order to return to the main page.
+- No feedback to users when it goes back to Main Activity.
 - Unable to add/remove services and/or workers list manually from the application
 - Rapid tapping on buttons that control movement from between activities can cause opening of the same page multiple times
+- If the app stays for a long period of time not being used, it needs restart to send email, (SMTP connection lost somehow).
+- 
 
 Possible Updates to application:
 - Implementation of feature that allow client to update or remove services and employee list from the admin page of the                application. This can be done through Google Excel that is converted through JSON. The set-up for this is already             implemented on the branch serviceExpansion. Further work needs to be done on the design component.
@@ -25,8 +27,9 @@ Possible Updates to application:
 - Feature to determine whether staff member is currently in office
 
 Developers:
-Alvee Akash: Worked on email system
-Contact:
+Alvee Akash: Computing Scientist from University of Alberta.
+Role: User Interface, Email system, Overall Project Management.
+Contact: Feel free to contact any time, alvee@ualberta.ca
 
 Arnold Gihozo: Worked on file system (getting Excel data into JSON) and Service Activity
 Contact:
