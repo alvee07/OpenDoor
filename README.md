@@ -40,4 +40,4 @@ Contact: awtaylor@ualberta.ca
 
 Benjamin Wilson: Computing Science Studetn from the University of Alberta<br/>
 Role: Worked on data being transmitted from one activity to another. Focused also into getting a service to send information at a specific email.<br/>
-Contact:
+Contact: bwilson1@ualberta.ca
