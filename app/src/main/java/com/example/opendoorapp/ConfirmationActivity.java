@@ -344,7 +344,7 @@ public class ConfirmationActivity extends AppCompatActivity {
    * After using the static variables to send email, it will re-initialize them as null to re-use it
    * again for the next coming user's inputs.
    */
-  private void clearStaticVariables() {
+  public static void clearStaticVariables() {
     User.userName = null;
     User.serviceName = null;
     User.workerName = null;
