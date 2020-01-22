@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/open_door_logo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,11 +31,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
 
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="16dp"
+            android:padding="20dp"
             android:textAlignment="center"
-            android:textSize="60sp"
+            android:textSize="50sp"
+            android:textStyle="bold"
+
             app:layout_constraintBottom_toTopOf="@+id/confirmationMessage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,12 +62,16 @@
             android:id="@+id/confirmationMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
 
+            android:layout_marginStart="100dp"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="100dp"
             android:layout_marginBottom="32dp"
+            android:gravity="center"
+            android:padding="20dp"
             android:textSize="40sp"
+            android:lineSpacingExtra="10dp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

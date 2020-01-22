@@ -7,7 +7,6 @@
 package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GestureDetectorCompat;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.AdapterView;
@@ -130,7 +129,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     worker.setEnabled(true);
     services.setAlpha(1f);
     worker.setAlpha(1f);
-  }
+  } // enableSpinners
 
   /**
    * Trigged when a view disaperars from the screen or when you have an empty adapter
@@ -169,7 +168,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    * @param view - View object - Button object in this scenario
    *     <p>Modified by Arnold (added the isSelectedOption in oder to not change activity without
    *     selecting the service
-   *     <p>by Alvee
+   *     <p>by Alvee Hassan Akash
    *     <p>edited by benjamin to send user between emotion screen & confirmation screen
    */
   public void servicesContinueBtnClicked(View view) {
@@ -202,6 +201,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
             } // if is emotion
             else {
               startActivity(name);
+              finish();
               break;
             } // go to confirmation
           } // if statement
@@ -221,6 +221,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
             } // if is emotion
             else {
               startActivity(name);
+              finish();
               break;
             } // go to confirmation
           } // if statement
@@ -237,7 +238,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
    * Goes back to Main Activity screen after an 1 min Assuming, mostly user can input their name in
    * one min
    *
-   * <p>by Alvee
+   * <p>by Alvee Hassan Akash
    */
   private void changeActivityToMainActivity() {
     MAIN_HANDLER.postDelayed(
@@ -257,6 +258,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
   @Override
   protected void onDestroy() {
     MAIN_HANDLER.removeCallbacksAndMessages(null);
+    System.out.println("Services Activity is done forever-----------no handler");
     super.onDestroy();
   }
 

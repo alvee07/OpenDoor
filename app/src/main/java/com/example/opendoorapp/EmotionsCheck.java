@@ -284,29 +284,25 @@ public class EmotionsCheck extends AppCompatActivity {
     emotionSelected = true;
   }
 
-  
-  
-  
-  
-  
-  
   /** Starting here, everything is written by Alvee Hassan Akash */
 
   /**
    * Takes user to next Activity - 'Confirmation Activity'
    *
-   * @param view - View object - Button object in this scenario by Alvee Hassan Akash
+   * @param view - View object - Button object in this scenario
+   *
+   * <p>by Alvee Hassan Akash
    */
   public void submitBtnClicked(View view) {
     User.emotionName = selectedEmotion;
-    Intent name = new Intent(EmotionsCheck.this, ConfirmationActivity.class);
+    Intent goToNextActivity = new Intent(EmotionsCheck.this, ConfirmationActivity.class);
     if (!emotionSelected) {
       Toast.makeText(getApplicationContext(), "Please Select an Emotion", Toast.LENGTH_SHORT)
           .show();
       return;
     } else {
-      startActivity(name);
-      // finish();
+      startActivity(goToNextActivity);
+      finish();
     }
   } // continueBtnClicked
 
@@ -333,6 +329,7 @@ public class EmotionsCheck extends AppCompatActivity {
   @Override
   protected void onDestroy() {
     MAIN_HANDLER.removeCallbacksAndMessages(null);
+    System.out.println("Emotions Activity is done forever-----------no handler");
     super.onDestroy();
   } // onDestroy
 

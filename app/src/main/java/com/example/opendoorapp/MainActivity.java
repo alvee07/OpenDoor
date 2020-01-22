@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
    *     <p>by Alvee
    */
   public void checkInBtnClicked(View view) {
-    Intent name = new Intent(MainActivity.this, NameActivity.class);
-    startActivity(name);
+    Intent goToNextActivity = new Intent(MainActivity.this, NameActivity.class);
+    startActivity(goToNextActivity);
     finish();
   } // checkInBtnClicked
 
@@ -159,4 +159,10 @@ public class MainActivity extends AppCompatActivity {
       checkIn.setEnabled(false);
     } // if
   } // noInternetConnectionView
+  
+  /** Disabling the back button, so user can not go back to Main Screen just by clicking it */
+  @Override
+  public void onBackPressed() {
+    // disable the android app back button
+  } // onBackPressed
 } // MainActivity
