@@ -96,7 +96,7 @@ public class ConfirmationActivity extends AppCompatActivity {
   private String userNameForEmail, servicesForEmail, workerForEmail, emotionsForEmail;
   // private LocalTime localTime; // future implementation
 
-  private final Integer DELAY_TIME_TO_START_MAIN_ACTIVITY_FROM_CONFIRMATION_PAGE = 15000;
+  private final Integer DELAY_TIME_TO_START_MAIN_ACTIVITY_FROM_CONFIRMATION_PAGE = 10000;
 
   private Handler MAIN_HANDLER_ON_THIS_ACTIVITY = new Handler(Looper.getMainLooper());
 
