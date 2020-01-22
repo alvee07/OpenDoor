@@ -7,29 +7,30 @@
     <string-array name="services">
         <item>-- Choose an option --</item>
         <item>I AM IN CRISIS</item>
-        <item>Outreaching</item>
-        <item>FASD Support</item>
-        <item>Restorative Justice</item>
-        <item>Community Helpers</item>
-        <item>ID</item>
-        <item>Tenant Education</item>
-        <item>Counselling</item>
-        <item>Food</item>
         <item>Clothes</item>
-        <item>A ride</item>
-        <item>Someone to talk to</item>
-        <item>Information</item>
+        <item>Community Helpers</item>
+        <item>Counselling</item>
+        <item>FASD Support</item>
+        <item>Food</item>
         <item>Help with paperwork</item>
+        <item>Housing</item>
+        <item>ID</item>
+        <item>Outreaching</item>
+        <item>Restorative Justice</item>
+        <item>Ride</item>
+        <item>Someone to talk to</item>
+        <item>Tenant Education</item>
+        <item>Information</item>
     </string-array>
 
     <string-array name="names">
-        <item>-- Choose an option --</item>
+        <item>                  --  Choose an option --</item>
         <item>Brianne</item>
-        <item>Mariah</item>
         <item>Chelsea</item>
         <item>Javan</item>
-        <item>Silas</item>
         <item>Jessica</item>
+        <item>Mariah</item>
+        <item>Silas</item>
         <item>Wayne</item>
     </string-array>
 
@@ -37,18 +38,23 @@
     <string name="welcome">Welcome</string>
     <string name="checkIn">Check-In</string>
     <string name="howCanWeHelpYou">How Can We Help You Today?</string>
+    <string name="internetConnection">No Internet Connection</string>
 
 
     // Name Activity
     <string name="textEnterName">Your Name:</string>
     <string name="placeHolderName">Enter Here . . .</string>
+    <string name="pleaseEnterYourName">Please Enter Your Name</string>
 
 
     // Services Activity
     <string name="servicesHowCanWeHelp">How Can We Help You?</string>
     <string name="workersWhoDoYouWantToSee">Who Do You Want To Visit Today?</string>
     <string name="services">Services</string>
-    <string name="workers">Workers</string>
+    <string name="workers">Staff</string>
+    <string name="staff">Staff</string>
+    <string name="or">Or</string>
+    <string name="pleaseChooseAnOption">Please Choose an Option</string>
 
 
     // Emotions Activity
@@ -59,6 +65,7 @@
 
     // Confirmation Activity
     <string name="thanksUser">Thanks\&#160;</string>
-    <string name="confirmationMessage">Someone Will Help You Shortly.</string>
+    <string name="confirmationMessage">Someone Will Be With You Shortly.</string>
+    <string name="emailSendFailed">Please Contact Front Desk</string>
 
 </resources>
