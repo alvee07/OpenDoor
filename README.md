@@ -25,7 +25,7 @@ Possible Updates to application:
 - Proper inactivity timer for activities
 - Feature to determine whether staff member is currently in office
 
-Developers:
+Developers:<br/>
 Alvee Akash: Computing Science student from the University of Alberta.<br/>
 Role: User Interface, Email system, Overall Project Management.<br/>
 Contact: Feel free to contact any time, alvee@ualberta.ca
