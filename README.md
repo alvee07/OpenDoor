@@ -26,26 +26,18 @@ Possible Updates to application:
 - Feature to determine whether staff member is currently in office
 
 Developers:
-Alvee Akash: Computing Science student from the University of Alberta.
-
-Role: User Interface, Email system, Overall Project Management.
-
+Alvee Akash: Computing Science student from the University of Alberta.<br/>
+Role: User Interface, Email system, Overall Project Management.<br/>
 Contact: Feel free to contact any time, alvee@ualberta.ca
 
-Arnold Gihozo: Computing Science stduent from the University of Alberta
-
-Role: Worked on file system (getting Excel data into JSON) and Service Activity
-
+Arnold Gihozo: Computing Science stduent from the University of Alberta<br/>
+Role: Worked on file system (getting Excel data into JSON) and Service Activity<br/>
 Contact: arno.mugabo@gmail.com OR gihozo@ualberta.ca
 
-Alex Taylor: Computing Science Student from  the University of Alberta
-
-Role: Main Page, Admin activity, Emotion Activity, and design formatting
-
+Alex Taylor: Computing Science Student from  the University of Alberta<br/>
+Role: Main Page, Admin activity, Emotion Activity, and design formatting<br/>
 Contact: awtaylor@ualberta.ca
 
-Benjamin Wilson: Computing Science Studetn from the University of Alberta
-
-Role: Worked on data being transmitted from one activity to another. Focused also into getting a service to send information at a specific email.
-
+Benjamin Wilson: Computing Science Studetn from the University of Alberta<br/>
+Role: Worked on data being transmitted from one activity to another. Focused also into getting a service to send information at a specific email.<br/>
 Contact:
