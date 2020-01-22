@@ -50,19 +50,18 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     private String selectedServices;
     private String selectedWorker;
     private User currentUser;
-    private Workers[] workerArray;
-    private Service[] serviceArray;
     private Spinner services;
     private Spinner worker;
     private boolean isSelectedOption;
+    private boolean isServiceSelected;
     private GestureDetectorCompat mDetector;
-    public String[] test;
     public static ArrayList<Service> list;
     public static ArrayList<Service> workerlist;
     public static ServiceAdapter serviceAdapter;
     public static ServiceAdapter workerAdapter;
     //public static ProgressBar progressbar;
     public static LoadingDialog loadingDialog;
+    public static ArrayList<String> selectedEmailList;
 
     public URL url;
     Service service;
@@ -254,38 +253,36 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         if (parent.getItemAtPosition(position).toString().equals("-- Choose an option --")) {
             enableSpinners();
             isSelectedOption = false;
+            selectedServices = null;
+            selectedWorker = null;
 
 
         } else {
 
             switch (parent.getId()) {
                 case R.id.servicesSpinner:
-                    if (parent.getItemAtPosition(position).toString().equals("-- Choose an option --")) {
-                        //worker.setEnabled(true);
-                        //enableSpinners();
 
-                    }else {
                         isSelectedOption = true;
+                        isServiceSelected = true;
                         CharSequence text = "Services selected!" + parent.getItemAtPosition(position).toString();
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(this, text, duration);
                         toast.show();
-                        disableSpinner(worker);
+                        //disableSpinner(worker);
+                        selectedServices = parent.getItemAtPosition(position).toString();
 
-                    }
+
                     break;
                 case R.id.workerSpinner:
 
-                    if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
-                        //services.setEnabled(true);
-                        //enableSpinners();
-                    }else {
                         isSelectedOption = true;
+                        isServiceSelected = false;
                         Toast toast2 = Toast.makeText(this, parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT);
                         toast2.show();
+                        selectedWorker = parent.getItemAtPosition(position).toString();
                         disableSpinner(services);
 
-                    }
+
 
                     break;
             }// end of switch
@@ -366,10 +363,64 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
      */
     public void servicesContinueBtnClicked(View view) {
 
+
+
         if (isSelectedOption) {
-            Intent name = new Intent(ServicesActivity.this, EmotionsCheck.class);
-            startActivity(name);
-            finish();
+            Intent emotionIntent = new Intent(ServicesActivity.this, EmotionsCheck.class);
+            Intent confirmationIntent = new Intent(ServicesActivity.this, ConfirmationActivity.class);
+            String[] emailArray;
+
+            if(isServiceSelected){
+
+                for(int i = 0; i < list.size(); i++){
+
+                    if(list.get(i).getName().equals(selectedServices)){
+
+                        emailArray = list.get(i).getEmail().split(":");
+
+                        if(list.get(i).isEmotion()){
+
+                            startActivity(emotionIntent);
+                            finish();
+
+                        }//if requires emotion check
+
+                        else{
+
+                            startActivity(confirmationIntent);
+                            finish();
+
+                        }//no emotion check
+
+                    }//if the name is the same
+                }//for loop
+            }//if Service is selected
+
+            else{
+
+                for(int i = 0; i < workerlist.size(); i++){
+                    if(workerlist.get(i).getName().equals(selectedServices)){
+
+                        emailArray = workerlist.get(i).getEmail().split(":");
+
+                        if(workerlist.get(i).isEmotion()){
+
+                            startActivity(emotionIntent);
+                            finish();
+
+                        }//if requires emotion check
+
+                        else{
+
+                            startActivity(confirmationIntent);
+                            finish();
+
+                        }//no emotion check
+
+                    }//if the name is the same
+                }//for loop
+            }//if its a worker selected
+
         } else {
             Context context = getApplicationContext();
             CharSequence text = "Please select a service or a staff to see!";

@@ -156,7 +156,7 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                              * Adding into List
                              */
                             // maybe add InternetConnection??????????
-                            Service model = new Service();
+                            Service modelW = new Service();
 
                             /**
                              * Getting Inner Object from contacts array...
@@ -166,8 +166,8 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                              */
                             JSONObject innerObject = workerarray.getJSONObject(workerIndex);
                             String name = innerObject.getString(Keys.KEY_NAME);
-                            //String email = innerObject.getString(Keys.KEY_EMAIL);
-                            //Boolean isEmotion = innerObject.getBoolean(Keys.KEY_ISEMOTION);
+                            String email = innerObject.getString(Keys.KEY_EMAIL);
+                            Boolean isEmotion = innerObject.getBoolean(Keys.KEY_ISEMOTION);
 
                             /**
                              * Getting Object from Object "phone"
@@ -175,15 +175,14 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                             //JSONObject phoneObject = innerObject.getJSONObject(Keys.KEY_PHONE);
                             //String phone = phoneObject.getString(Keys.KEY_MOBILE);
 
-                            //model.getEmail();
-                            model.setName(name);
-                            //model.setEmail(email);
-                            //model.setIsEmotion(isEmotion);
+                           modelW.getName();
+                           modelW.setName(name);
+
 
                             /**
                              * Adding name and phone concatenation in List...
                              */
-                            ServicesActivity.getWorkerlistList().add(model);
+                            ServicesActivity.getWorkerlistList().add(modelW);
                         }
                     }
                 }
@@ -203,6 +202,7 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
 
         loading.dismissDialog();
+        System.out.println(ServicesActivity.getWorkerlistList());
 
 
         ServicesActivity.serviceAdapter.notifyDataSetChanged();

@@ -2,10 +2,8 @@ package com.example.opendoorapp;
 
 import java.util.ArrayList;
 
-import static com.example.opendoorapp.User.workerName;
-
 public class Workers {
-  
+
   private String name;
   private ArrayList<String> email;
   private boolean isEmotion;
@@ -21,62 +19,31 @@ public class Workers {
     this.name = name;
     this.email = email;
     this.isEmotion = isEmotion;
-  private String email;
-  private Boolean isEmotion;
-  private Workers[] workerList;
-
-  Workers(String workerName, String workerEmail, Boolean isEmotion, Workers[] workerList){
-    name = workerName;
-    email = workerEmail;
-    this.isEmotion = isEmotion;
-    this.workerList = workerList;
   }
 
-  public Workers(String name, String email, Boolean isEmotion) {
-    this.name = name;
-    this.email = email;
-    this.isEmotion = isEmotion;
-  }
-
-  public Workers(Workers[] workerList) {
-    this.workerList = workerList;
-  }
-
+  /**
+   * Default Constructor
+   * by Alex Taylor
+   */
   Workers(){
     name = "Worker";
-    email = "worker@email.com";
+    isEmotion = false;
+
   }
+
+
+
 
   public String getName() {
     return name;
   }
 
-  public String getEmail() {
+  public ArrayList<String> getEmail() {
     return email;
   }
 
-  public Boolean isIsEmotion() {
+  public boolean isEmotion() {
     return isEmotion;
-  }
-
-  public Workers[] getWorkerList() {
-    return workerList;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public void setEmotion(Boolean emotion) {
-    isEmotion = emotion;
-  }
-
-  public void setWorkerList(Workers[] workerList) {
-    this.workerList = workerList;
   }
 
   @Override
@@ -84,6 +51,7 @@ public class Workers {
     return "Workers{" +
             "name='" + name + '\'' +
             ", email='" + email + '\'' +
+            ", isEmotion=" + isEmotion +
             '}';
   }
 }
