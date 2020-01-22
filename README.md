@@ -30,8 +30,8 @@ Alvee Akash: Computing Science student from the University of Alberta.<br/>
 Role: User Interface, Email system, Overall Project Management.<br/>
 Contact: Feel free to contact any time, alvee@ualberta.ca
 
-Arnold Gihozo: Computing Science stduent from the University of Alberta<br/>
-Role: Worked on file system (getting Excel data into JSON) and Service Activity<br/>
+Arnold Gihozo: Computing Science Stdudent from the University of Alberta<br/>
+Role: Team Lead. Worked on file system (getting Excel data into JSON) and Service Activity<br/>
 Contact: arno.mugabo@gmail.com OR gihozo@ualberta.ca
 
 Alex Taylor: Computing Science Student from  the University of Alberta<br/>
