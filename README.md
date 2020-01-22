@@ -21,7 +21,7 @@ Known Bugs:
 - If the app stays for a long period of time not being used, it needs restart to send email, (SMTP connection lost somehow).
 
 Possible Updates to application:
-- Implementation of feature that allow client to update or remove services and employee list from the admin page of the                application. This can be done through Google Excel that is converted through JSON. The set-up for this is already             implemented on the branch serviceExpansion. Further work needs to be done on the design component.
+- Implementation of feature that allow client to update or remove services and employee list from the admin page of the                application. This can be done through Google Excel that is converted through JSON. The set-up for this is already             implemented on the branch serviceExpansionNew. Further work needs to be done on the design component.
 - Proper inactivity timer for activities
 - Feature to determine whether staff member is currently in office
 
