@@ -21,7 +21,7 @@ Known Bugs:
 - If the app stays for a long period of time not being used, it needs restart to send email, (SMTP connection lost somehow).
 
 Possible Updates to application:
-- Implementation of feature that allow client to update or remove services and employee list from the admin page of the                application. This can be done through Google Excel that is converted through JSON. The set-up for this is already             implemented on the branch serviceExpansionNew. Further work needs to be done on the design component.
+- Implementation of feature that allow client to update or remove services and employee list from the admin page of the                application. This can be done through Google Excel that is converted through JSON. The set-up for this is already             implemented on the branch serviceExpansionNew. Within this branch, we were able to display the information from the google sheets. Any changes made on them, would be displayed on the sheets. Further work willl be put within the next few days to connect this feature to the final product. 
 - Proper inactivity timer for activities
 - Feature to determine whether staff member is currently in office
 
@@ -41,3 +41,6 @@ Contact: awtaylor@ualberta.ca
 Benjamin Wilson: Computing Science Studetn from the University of Alberta<br/>
 Role: Worked on data being transmitted from one activity to another. Focused also into getting a service to send information at a specific email.<br/>
 Contact: bwilson1@ualberta.ca
+
+Link to Services Google sheet: https://docs.google.com/spreadsheets/d/1qtm34jzzFJAOtcNo7k_GBQpZNLPYb18x5r2azlAlKEs/edit#gid=0
+Link to Staff Google sheet: https://docs.google.com/spreadsheets/d/1YvHTxeaE1PlWLvOHkBCi3cZqbvhIv2vlFX1OaoRG5sA/edit#gid=0
