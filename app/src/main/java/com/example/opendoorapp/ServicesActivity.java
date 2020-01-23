@@ -7,14 +7,12 @@
  * This class will give the opportunity to the user to choose between either a service
  * or a worker. If a specific services is taken, it will then lead the user to choose
  * their emotion.
- *
- *
+ * <p>
+ * <p>
  * -- NOTE --
- *   - Please note that this class is still in development in order to get the execel to work in
- *     the application. Therefore, you may find commented out code as the class is still in
- *     testing. Everything will be cleaned up before the final release of the application
- *
- *
+ * - Please note that this class is still in development in order to get the execel to work in
+ * the application. Therefore, you may find commented out code as the class is still in
+ * testing. Everything will be cleaned up before the final release of the application
  */
 
 package com.example.opendoorapp;
@@ -81,21 +79,17 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services);
 
-        loadingDialog = new LoadingDialog(ServicesActivity.this );
+        loadingDialog = new LoadingDialog(ServicesActivity.this);
 
         // Array List for Binding Data from JSON to this List
         serviceList = new ArrayList<>();
         workerlist = new ArrayList<>();
 
 
-
         // checking internet connect
         if (InternetConnection.checkConnection(getApplicationContext())) {
             new GetDataTask().execute();
         }
-
-
-
 
 
         services = findViewById(R.id.servicesSpinner);
@@ -140,18 +134,15 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         worker.setOnItemSelectedListener(this);
 
 
-
-
     } // end of onCreate
-
 
 
     /**
      * Sets up the services spinner (with the items from the string.xml file) and sets up
      * the drop down menu
-     *
+     * <p>
      * by Arnold
-     *
+     * <p>
      * Initial setup of this has been inspired from this source
      * https://developer.android.com/guide/topics/ui/controls/spinner.
      * Accessed on January 11, 2020
@@ -170,9 +161,9 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     /**
      * Sets up the worker spinner (with the items from the string.xml file) and sets up
      * the drop down menu
-     *
+     * <p>
      * by Arnold
-     *
+     * <p>
      * Initial setup of this has been inspired from this source
      * https://developer.android.com/guide/topics/ui/controls/spinner.
      * Accessed on January 11, 2020
@@ -194,16 +185,16 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
      * Checks the selections of the user. If user selects services, it disables the staff
      * lists and vice versa.
      *
-     * @param parent -- adapter view of where the selection has happened
-     * @param view -- the view that was selected
+     * @param parent   -- adapter view of where the selection has happened
+     * @param view     -- the view that was selected
      * @param position -- position of the view
-     * @param id -- the id of the item selected
-     *
-     * To excecute this section, I looked over the code on StackOver flow on Saturday January 11, 2020
-     * https://stackoverflow.com/questions/4476379/spinner-switch-case-problem
-     * Changes have been made to fit this project and refactoring the code
-     *
-     * by Arnold
+     * @param id       -- the id of the item selected
+     *                 <p>
+     *                 To excecute this section, I looked over the code on StackOver flow on Saturday January 11, 2020
+     *                 https://stackoverflow.com/questions/4476379/spinner-switch-case-problem
+     *                 Changes have been made to fit this project and refactoring the code
+     *                 <p>
+     *                 by Arnold
      */
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -221,7 +212,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
                         //worker.setEnabled(true);
                         //enableSpinners();
 
-                    }else {
+                    } else {
                         isSelectedOption = true;
                         CharSequence text = "Services selected!" + parent.getItemAtPosition(position).toString();
                         int duration = Toast.LENGTH_SHORT;
@@ -236,7 +227,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
                     if (parent.getItemAtPosition(position).equals("-- Choose an option --")) {
                         //services.setEnabled(true);
                         //enableSpinners();
-                    }else {
+                    } else {
                         isSelectedOption = true;
                         Toast toast2 = Toast.makeText(this, parent.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT);
                         toast2.show();
@@ -254,7 +245,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
     /**
      * Sets the background of the drop down menu to white (for both the works and staff)
-     *
+     * <p>
      * by Arnold
      */
     public void setBackgroundColor() {
@@ -264,9 +255,10 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
     /**
      * Disables a given spinner and greys out the spinner
-     * @param currentSpinner-- the spinner to be disabled
      *
-     * by Arnold
+     * @param currentSpinner-- the spinner to be disabled
+     *                         <p>
+     *                         by Arnold
      */
     public void disableSpinner(Spinner currentSpinner) {
         currentSpinner.setEnabled(false);
@@ -288,8 +280,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
      * Triggered when a view disaperars from the screen or when you have an empty adapter
      *
      * @param parent -- it is an adapter view (with no selected item)
-     *
-     * by Arnold
+     *               <p>
+     *               by Arnold
      */
     public void onNothingSelected(AdapterView<?> parent) {
     }
@@ -297,10 +289,10 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     /**
      * Gets the selected services
      *
-     * @param parent -- adapter view of where the selection happens
+     * @param parent   -- adapter view of where the selection happens
      * @param position -- position of the view
      * @return -- returns the selected item
-     *
+     * <p>
      * by Arnold
      */
     public String getSelectedServices(AdapterView<?> parent, int position) {
@@ -310,16 +302,12 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
     /**
      * Takes user to next Activity - 'Emotions Activity' or, 'Confirmation Activity'
+     *
      * @param view - View object - Button object in this scenario
-     *
-     *
-     * Modified by Arnold to add the not continue
-     * by Alvee
-     *
-     *
-     *
-     *
-     *
+     *             <p>
+     *             <p>
+     *             Modified by Arnold to add the not continue
+     *             by Alvee
      */
     public void servicesContinueBtnClicked(View view) {
 
@@ -340,7 +328,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
     /**
      * Starts MainActivity class in 10 seconds
-     *
+     * <p>
      * by Alvee
      */
     public void startMainActivity() {

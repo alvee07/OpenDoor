@@ -1,21 +1,20 @@
 /**
  * GetDataTask.java
  * By Arnold Gihozo
- *
+ * <p>
  * Code by admin from The Crazy Coders Club.
  * followed their tutorial which is why there is a class within a class
  * found from
  * https://www.crazycodersclub.com/android/using-google-spread-sheet-as-database-for-android-application-part-1/
- *
+ * <p>
  * -- NOTE --
- *    - Please note that this class is still in development in order to get the execel to work in
- *      the application. Therefore, you may find commented out code as the class is still in
- *      testing. Everything will be cleaned up before the final release of the application
+ * - Please note that this class is still in development in order to get the execel to work in
+ * the application. Therefore, you may find commented out code as the class is still in
+ * testing. Everything will be cleaned up before the final release of the application
  */
 
 
 package com.example.opendoorapp;
-
 
 
 import android.annotation.SuppressLint;
@@ -36,43 +35,29 @@ import org.json.JSONObject;
  */
 class GetDataTask extends AsyncTask<Void, Void, Void> {
 
-    int jIndex;
-    int workerIndex;
+    int serviceIndex;
+    int staffIndex;
     int serviceListSize;
     int staffListSize;
     LoadingDialog loading;
 
 
-
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-       
 
         serviceListSize = ServicesActivity.getList().size();
         staffListSize = ServicesActivity.getWorkerlistList().size();
 
-        if (serviceListSize == 0)
-            jIndex = 0;
-        else
-            jIndex = serviceListSize;
+        setIndex(serviceListSize, serviceIndex);
+        setIndex(staffListSize, staffIndex);
 
-        if (staffListSize == 0)
-            workerIndex = 0;
-        else
-            workerIndex = staffListSize;
+        // Setting the loading screen as the data is being gathered
         loading = ServicesActivity.loadingDialog;
-
-
         loading.startLoadingDialog();
 
+    } // end of onPreExecute
 
-
-
-
-
-
-    }
 
     @SuppressLint("WrongThread")
     @Nullable
@@ -82,137 +67,109 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
         /**
          * Getting JSON Object from Web Using okHttp
          */
-        JSONObject jsonObject = JSONParser.getDataFromWeb();
-        JSONObject workerObject = JSONParser.getDataFromWeb2();
+        JSONObject serviceJsonObject = JSONParser.getDataFromWeb();
+        JSONObject staffJsonObject = JSONParser.getDataFromWeb2();
 
 
         try {
-            /**
-             * Check Whether Its NULL???
-             */
-            if (jsonObject != null) {
-                /**
-                 * Check Length...
-                 */
-                if (jsonObject.length() > 0 && workerObject.length() > 0) {
-                    /**
-                     * Getting Array named "contacts" From MAIN Json Object
-                     */
-                    JSONArray array = jsonObject.getJSONArray(Keys.KEY_CONTACTS);
-                    JSONArray workerarray = workerObject.getJSONArray("Sheet1");
 
-                    /**
-                     * Check Length of Array...
-                     */
+            if (serviceJsonObject != null) {
+
+                // check for length
+                if (serviceJsonObject.length() > 0 && staffJsonObject.length() > 0) {
+
+                    //==============================================================================
+                    // Service Data
+
+                    JSONArray serviceArray = serviceJsonObject.getJSONArray(Keys.KEY_FILE);
+                    int lenServiceArray = serviceArray.length();
+                    if (lenServiceArray > 0) {
+                        for (; serviceIndex < lenServiceArray; serviceIndex++) {
 
 
-                    int lenArray = array.length();
-                    int workerArrayLen = workerarray.length();
+                            Service modelStaff = new Service();
 
-                    // Gathering all the data from service excel sheet
-                    if (lenArray > 0) {
-                        for (; jIndex < lenArray; jIndex++) {
-
-                            /**
-                             * Creating Every time New Object
-                             * and
-                             * Adding into List
-                             */
-                            Service model = new Service();
-
-                            /**
-                             * Getting Inner Object from contacts array...
-                             * and
-                             * From that We will get Name of that Contact
-                             *
-                             */
-                            JSONObject innerObject = array.getJSONObject(jIndex);
+                            // getting inner object from serviceArray from that
+                            // we will get name of the service
+                            JSONObject innerObject = serviceArray.getJSONObject(serviceIndex);
                             String name = innerObject.getString(Keys.KEY_NAME);
                             //String email = innerObject.getString(Keys.KEY_EMAIL);
                             //Boolean isEmotion = innerObject.getBoolean(Keys.KEY_ISEMOTION);
 
-                            /**
-                             * Getting Object from Object "phone"
-                             */
-                            //JSONObject phoneObject = innerObject.getJSONObject(Keys.KEY_PHONE);
-                            //String phone = phoneObject.getString(Keys.KEY_MOBILE);
-
-                            model.getEmail();
-                            model.setName(name);
+                            modelStaff.getEmail();
+                            modelStaff.setName(name);
                             //model.setEmail(email);
                             //model.setIsEmotion(isEmotion);
 
                             /**
                              * Adding name and phone concatenation in List...
                              */
-                            ServicesActivity.getList().add(model);
+                            ServicesActivity.getList().add(modelStaff);
 
 
-                        }
-                    }
+                        } // end of iterating for loop
+                    } // end of inner if
+                    // ============================================================================
+                    // Staff Data
 
-                    // gathering all the data from staff excell sheet
 
-                    if (workerArrayLen > 0) {
-                        for (; workerIndex < workerArrayLen; workerIndex++) {
+                    JSONArray staffArray = staffJsonObject.getJSONArray(Keys.KEY_FILE);
+                    int lenStaffArray = staffArray.length();
 
-                            /**
-                             * Creating Every time New Object
-                             * and
-                             * Adding into List
-                             */
+                    if (lenStaffArray > 0) {
+                        for (; staffIndex < lenStaffArray; staffIndex++) {
 
+                            // Creating a new object at every interation and adding to the list
                             Service staffModel = new Service();
 
                             /**
-                             * Getting Inner Object from contacts array...
+                             * Getting Inner Object from contacts serviceArray...
                              * and
                              * From that We will get Name of that Contact
                              *
                              */
-                            JSONObject innerObject = workerarray.getJSONObject(workerIndex);
+                            JSONObject innerObject = staffArray.getJSONObject(staffIndex);
                             String name = innerObject.getString(Keys.KEY_NAME);
                             //String email = innerObject.getString(Keys.KEY_EMAIL);
                             //Boolean isEmotion = innerObject.getBoolean(Keys.KEY_ISEMOTION);
 
-                            /**
-                             * Getting Object from Object "phone"
-                             */
-                            //JSONObject phoneObject = innerObject.getJSONObject(Keys.KEY_PHONE);
-                            //String phone = phoneObject.getString(Keys.KEY_MOBILE);
+                            // getting the objects
 
                             //model.getEmail();
                             staffModel.setName(name);
                             //model.setEmail(email);
                             //model.setIsEmotion(isEmotion);
 
-                            /**
-                             * Adding name and phone concatenation in List...
-                             */
+                            // Adding objects to list
                             ServicesActivity.getWorkerlistList().add(staffModel);
-                        }
-                    }
-                }
 
-            } else {
+                        } // end of inner for loop iterating to add objects in list
 
-            }
+                    } // end of inner if checking if empty array
+
+                } // end of outer if checking if len > 0
+
+            } // end of outer if checking if object empty
 
 
         } catch (JSONException je) {
             Log.i(JSONParser.TAG, "" + je.getLocalizedMessage());
         }
         return null;
-    }
+    } // end of doInBackground method
 
     @Override
     protected void onPostExecute(Void aVoid) {
 
         loading.dismissDialog();
 
-
+        // setting both datas to ececute
         ServicesActivity.serviceAdapter.notifyDataSetChanged();
         ServicesActivity.workerAdapter.notifyDataSetChanged();
 
+    }
+
+    private void setIndex(int listSize, int index) {
+        index = listSize;
     }
 }

@@ -1,15 +1,14 @@
 /**
  * JSONParser.java
  * by Arnold Gihozo
- *
+ * <p>
  * Code by admin from The Crazy Coders Club.
  * followed their tutorial which is why there is a class within a class found from:
  * https://www.crazycodersclub.com/android/using-google-spread-sheet-as-database-for-android-application-part-1/
- *
- *
  */
 
 package com.example.opendoorapp.parser;
+
 import android.util.Log;
 
 import androidx.annotation.NonNull;
