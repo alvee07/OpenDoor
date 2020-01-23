@@ -7,6 +7,14 @@
  * This class will give the opportunity to the user to choose between either a service
  * or a worker. If a specific services is taken, it will then lead the user to choose
  * their emotion.
+ *
+ *
+ * -- NOTE --
+ *   - Please note that this class is still in development in order to get the execel to work in
+ *     the application. Therefore, you may find commented out code as the class is still in
+ *     testing. Everything will be cleaned up before the final release of the application
+ *
+ *
  */
 
 package com.example.opendoorapp;
@@ -57,7 +65,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     private boolean isSelectedOption;
     private GestureDetectorCompat mDetector;
     public String[] test;
-    public static ArrayList<Service> list;
+    public static ArrayList<Service> serviceList;
     public static ArrayList<Service> workerlist;
     public static ServiceAdapter serviceAdapter;
     public static ServiceAdapter workerAdapter;
@@ -75,55 +83,28 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
         loadingDialog = new LoadingDialog(ServicesActivity.this );
 
-
-
-
-
-
-
-        /**
-         * Array List for Binding Data from JSON to this List
-         */
-        list = new ArrayList<>();
+        // Array List for Binding Data from JSON to this List
+        serviceList = new ArrayList<>();
         workerlist = new ArrayList<>();
 
 
-        /**
-         * Getting List and Setting List Adapter
-         */
 
-
-        /**
-         * Checking Internet Connection
-         */
+        // checking internet connect
         if (InternetConnection.checkConnection(getApplicationContext())) {
-
             new GetDataTask().execute();
-            //loadingDialog.startLoadingDialog();
-
-        } else {
-            //Snackbar.make(view, "Internet Connection Not Available", Snackbar.LENGTH_LONG).show();
         }
 
-        //loadingDialog.dismissDialog();
 
 
 
-//    List<String> strings = new ArrayList<>(list.size());
-//    for (Service object : list) {
-//      strings.add(list.toString(object,null));
-//    }
 
         services = findViewById(R.id.servicesSpinner);
         worker = findViewById(R.id.workerSpinner);
 
-
-        serviceAdapter = new ServiceAdapter(ServicesActivity.this, list);
-        //ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,test);
+        // Putting the Service Data into service spinner
+        serviceAdapter = new ServiceAdapter(ServicesActivity.this, serviceList);
         services.setAdapter(serviceAdapter);
         serviceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        //services.setAdapter(new SpinnerAdapter(list ,this));
 
         services.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
@@ -139,11 +120,8 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
 
         workerAdapter = new ServiceAdapter(ServicesActivity.this, workerlist);
-        //ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,test);
         worker.setAdapter(workerAdapter);
         workerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        //services.setAdapter(new SpinnerAdapter(list ,this));
 
         worker.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
@@ -158,35 +136,14 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
         });
 
 
-        //========================================================
-        // SPINNERS
-        //services =  findViewById(R.id.servicesSpinner);
-        //servicesSpinner();
-        //workerSpinner();
-        //ArrayAdapter<Service> adapter = new ArrayAdapter<Service>(this, R.layout.layout_spinner,R.id.txt, list);
-        //services.setAdapter(adapter);
-
-
         services.setOnItemSelectedListener(this);
         worker.setOnItemSelectedListener(this);
 
-        //======================= spinnners=========================
+
 
 
     } // end of onCreate
 
-    public List<String> getServiceInformation() {
-
-        List<String> stringArray = new ArrayList<>();
-        if (list != null) {
-            for (int i = 0; i < list.size(); i++) {
-                stringArray.add(list.get(i).getName());
-            }
-        }
-
-        return stringArray;
-
-    }
 
 
     /**
@@ -398,7 +355,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
     } // startMainActivity
 
     public static ArrayList<Service> getList() {
-        return list;
+        return serviceList;
     }
 
     public static ArrayList<Service> getWorkerlistList() {
@@ -408,7 +365,7 @@ public class ServicesActivity extends AppCompatActivity implements OnItemSelecte
 
 }// end of file
 
-// START OF NEW CLASS
+
 
 
 

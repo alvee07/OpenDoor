@@ -6,6 +6,11 @@
  * followed their tutorial which is why there is a class within a class
  * found from
  * https://www.crazycodersclub.com/android/using-google-spread-sheet-as-database-for-android-application-part-1/
+ *
+ * -- NOTE --
+ *    - Please note that this class is still in development in order to get the execel to work in
+ *      the application. Therefore, you may find commented out code as the class is still in
+ *      testing. Everything will be cleaned up before the final release of the application
  */
 
 
@@ -33,8 +38,8 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
 
     int jIndex;
     int workerIndex;
-    int x;
-    int worker;
+    int serviceListSize;
+    int staffListSize;
     LoadingDialog loading;
 
 
@@ -42,22 +47,20 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        /**
-         * Progress Dialog for User Interaction
-         */
+       
 
-        x = ServicesActivity.getList().size();
-        worker = ServicesActivity.getWorkerlistList().size();
+        serviceListSize = ServicesActivity.getList().size();
+        staffListSize = ServicesActivity.getWorkerlistList().size();
 
-        if (x == 0)
+        if (serviceListSize == 0)
             jIndex = 0;
         else
-            jIndex = x;
+            jIndex = serviceListSize;
 
-        if (worker == 0)
+        if (staffListSize == 0)
             workerIndex = 0;
         else
-            workerIndex = worker;
+            workerIndex = staffListSize;
         loading = ServicesActivity.loadingDialog;
 
 
@@ -105,6 +108,8 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
 
                     int lenArray = array.length();
                     int workerArrayLen = workerarray.length();
+
+                    // Gathering all the data from service excel sheet
                     if (lenArray > 0) {
                         for (; jIndex < lenArray; jIndex++) {
 
@@ -113,7 +118,6 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                              * and
                              * Adding into List
                              */
-                            // maybe add InternetConnection??????????
                             Service model = new Service();
 
                             /**
@@ -147,6 +151,8 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                         }
                     }
 
+                    // gathering all the data from staff excell sheet
+
                     if (workerArrayLen > 0) {
                         for (; workerIndex < workerArrayLen; workerIndex++) {
 
@@ -155,8 +161,8 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                              * and
                              * Adding into List
                              */
-                            // maybe add InternetConnection??????????
-                            Service model = new Service();
+
+                            Service staffModel = new Service();
 
                             /**
                              * Getting Inner Object from contacts array...
@@ -176,14 +182,14 @@ class GetDataTask extends AsyncTask<Void, Void, Void> {
                             //String phone = phoneObject.getString(Keys.KEY_MOBILE);
 
                             //model.getEmail();
-                            model.setName(name);
+                            staffModel.setName(name);
                             //model.setEmail(email);
                             //model.setIsEmotion(isEmotion);
 
                             /**
                              * Adding name and phone concatenation in List...
                              */
-                            ServicesActivity.getWorkerlistList().add(model);
+                            ServicesActivity.getWorkerlistList().add(staffModel);
                         }
                     }
                 }
