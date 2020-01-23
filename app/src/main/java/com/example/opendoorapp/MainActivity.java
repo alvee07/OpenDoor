@@ -100,11 +100,22 @@ public class MainActivity extends AppCompatActivity {
 
     builder.show();
   }
+  
+  
+  
+  
+  /**
+   *
+   * Starting here, everything is written by Alvee Hassan Akash
+   *
+   */
+  
+  
   /**
    * Takes user to next Activity - 'Name Activity'
    *
    * @param view - View object - Button object in this scenario
-   *     <p>by Alvee
+   *     <p>by Alvee Hassan Akash
    */
   public void checkInBtnClicked(View view) {
     Intent goToNextActivity = new Intent(MainActivity.this, NameActivity.class);

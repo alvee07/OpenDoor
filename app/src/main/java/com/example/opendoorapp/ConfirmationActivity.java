@@ -87,10 +87,11 @@ public class ConfirmationActivity extends AppCompatActivity {
    *
    * <p>emotionsForEmail - String value - Store how they are feeling today
    *
-   * <p>DELAY_TIME_TO_START_MAIN_ACTIVITY - Integer - value - 10 seconds
+   * <p>DELAY_TIME_TO_START_MAIN_ACTIVITY - Integer - value - 10 seconds to go back to Main Activity
    *
    * <p>MAIN_HANDLER_ON_THIS_ACTIVITY - Handler - handles the runnable to send to another activity
    */
+  
   private TextView thanksUser, confirmationMessage, emailSendFailed;
 
   private String userNameForEmail, servicesForEmail, workerForEmail, emotionsForEmail;
@@ -117,18 +118,28 @@ public class ConfirmationActivity extends AppCompatActivity {
     setContentView(R.layout.activity_confirmation);
     setUserCredentials();
 
-    List<String> email = new ArrayList<>(ServicesActivity.selectedEmailList);
+    
+    /*
+    Start of sending the emails
+     */
+    
+    //List<String> email = new ArrayList<>(ServicesActivity.selectedEmailList);
+    //listOfEmailSendingOverTheNetwork(email);
 
-    // JUST NOT SENDING UNNECESSARY EMAILS TO CAMROSE OPEN DOOR PEOPLE
-    // listOfEmailSendingOverTheNetwork(email);
-
+    /*
+    End of sending emails
+     */
+    
+    
+    
+    /*
+    Just for dummy email to send one email for testing.
+     */
     List<String> rec = new ArrayList<>();
     rec.add("camopnethedoor@gmail.com");
-
     listOfEmailSendingOverTheNetwork(rec);
 
-    // remove when uncomment list<>
-    //startMainActivity();
+
   } // onCreate
 
   /**
@@ -137,7 +148,6 @@ public class ConfirmationActivity extends AppCompatActivity {
    * @param recipients - List (String) of Email addresses email needs to send
    */
   private void listOfEmailSendingOverTheNetwork(List<String> recipients) {
-
     for (String temp : recipients) {
       sendGMailToStaffs(temp, emailBodyCreation(), emailSubjectCreation());
     }
