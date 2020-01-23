@@ -42,5 +42,5 @@ Benjamin Wilson: Computing Science Studetn from the University of Alberta<br/>
 Role: Worked on data being transmitted from one activity to another. Focused also into getting a service to send information at a specific email.<br/>
 Contact: bwilson1@ualberta.ca
 
-Link to Services Google sheet: https://docs.google.com/spreadsheets/d/1qtm34jzzFJAOtcNo7k_GBQpZNLPYb18x5r2azlAlKEs/edit#gid=0
-Link to Staff Google sheet: https://docs.google.com/spreadsheets/d/1YvHTxeaE1PlWLvOHkBCi3cZqbvhIv2vlFX1OaoRG5sA/edit#gid=0
+Link to Services Google sheet: https://docs.google.com/spreadsheets/d/1qtm34jzzFJAOtcNo7k_GBQpZNLPYb18x5r2azlAlKEs/edit#gid=0<br/>
+Link to Staff Google sheet: https://docs.google.com/spreadsheets/d/1YvHTxeaE1PlWLvOHkBCi3cZqbvhIv2vlFX1OaoRG5sA/edit#gid=0<br/>
