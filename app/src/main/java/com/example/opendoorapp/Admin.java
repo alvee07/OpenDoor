@@ -1,13 +1,24 @@
+/**
+ * Admin.class
+ *
+ * <p> This class was designed as a activity page for editing service and staff data.
+ *
+ * <p>Currently there is no way to edit the service and staff data on this activity page.
+ *
+ * @author Alex Taylor
+ * @since 2020-01-19
+ *
+ */
 package com.example.opendoorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
+
+import com.example.opendoorapp.R;
 
 import java.util.Timer;
 import java.util.TimerTask;
